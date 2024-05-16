@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+/.vs/TerraCRM
+/TerraCRM/x64/Debug
+/x64/Debug
