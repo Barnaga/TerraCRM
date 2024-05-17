@@ -1,0 +1,11 @@
+﻿  moc MainWindow.h
+  MainWindow.cpp
+  main.cpp
+D:\Development\TerraCRM\MainWindow.cpp(18,34): warning C4101: 'e': unreferenced local variable
+  moc_MainWindow.cpp
+  Generating code
+  182 of 239 functions (76.2%) were compiled, the rest were copied from previous compilation.
+    16 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  TerraCRM.vcxproj -> D:\Development\TerraCRM\x64\Release\TerraCRM.exe
