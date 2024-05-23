@@ -42,7 +42,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>Qt_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;sql;</QtModules>
+    <QtModules>core;gui;widgets;sql</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMakeTemplate>vcapp</QtQMakeTemplate>
   </PropertyGroup>
@@ -82,6 +82,7 @@
       <AdditionalIncludeDirectories>C:\Qt\msvc2019_64\include\QtSql;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);C:\Program Files\libpqxx\include;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files\PostgreSQL\16\lib;C:\Program Files\libpqxx\lib;</AdditionalLibraryDirectories>
@@ -118,10 +119,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="MainWindow.qrc" />
+    <QtUic Include="LoginWindow.ui" />
     <QtUic Include="MainWindow.ui" />
+    <QtMoc Include="LoginWindow.h" />
     <QtMoc Include="MainWindow.h" />
+    <ClCompile Include="db_pool.cpp" />
+    <ClCompile Include="LoginWindow.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="db_pool.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
