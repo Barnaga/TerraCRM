@@ -2,6 +2,8 @@
 
 #include <QMainWindow>
 #include <QDebug>
+
+#include "db_pool.h"
 #include "ui_LoginWindow.h"
 
 class LoginWindow : public QMainWindow
@@ -9,8 +11,8 @@ class LoginWindow : public QMainWindow
 	Q_OBJECT
 
 public:
-	LoginWindow(QWidget *parent = nullptr);
-		
+	explicit LoginWindow(QWidget *parent = nullptr);
+	shared_ptr<DbPool> pool = nullptr;
 	~LoginWindow();
 private slots:
 	void on_loginBtn_clicked();

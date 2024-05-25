@@ -79,14 +79,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\msvc2019_64\include\QtSql;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);C:\Program Files\libpqxx\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\msvc2019_64\include\QtSql;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);C:\Program Files\libpqxx\include;C:\Program Files\SOCI\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Program Files\PostgreSQL\16\lib;C:\Program Files\libpqxx\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies);$(Qt_LIBS_);libpq.lib; pqxx.lib; ws2_32.lib; wsock32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\PostgreSQL\16\lib;C:\Program Files\SOCI\lib;C:\Program Files\libpqxx\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);$(Qt_LIBS_);libpq.lib;pqxx.lib;ws2_32.lib;wsock32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -124,7 +124,9 @@
     <QtMoc Include="LoginWindow.h" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="db_pool.cpp" />
-    <ClCompile Include="LoginWindow.cpp" />
+    <ClCompile Include="LoginWindow.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Qt\msvc2019_64\include\QtSql;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);C:\Program Files\libpqxx\include;C:\Program Files\SOCI\include</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
