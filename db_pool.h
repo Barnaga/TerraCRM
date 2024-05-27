@@ -14,7 +14,7 @@ public:
 private:
 	shared_ptr<connection> m_connection;
 
-	shared_ptr<connection> getCon();
+	const shared_ptr<connection> getCon();
 	void releaseCon(shared_ptr<connection> con);
 	vector<shared_ptr<connection>> m_freeCons;
 };
