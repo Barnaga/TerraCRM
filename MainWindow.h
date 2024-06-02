@@ -12,10 +12,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     shared_ptr<DbPool> pool = nullptr;
+    Ui::MainWindowClass* ui;
     ~MainWindow();
 
 private:
-    Ui::MainWindowClass* ui;
+    //Ui::MainWindowClass* ui;
     void setLoginInterface();
     
 };
