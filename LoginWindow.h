@@ -23,9 +23,10 @@ private:
 	string login;
 	string password;
 	string role;
-	const string getHashedPassword(const string login, const string password) const;
-	bool isValid(const string login, const string password) const;
+	const string getHashedPassword(const string& login, const string& password) const;
+	bool isValid(const string& login, const string& password) const;
+	bool isValid(const string& login, const string& password, const string& role) const;
 	bool isValidLogin() const;
-	bool isValidPassword(const string login, const string password) const;
+	bool isValidPassword(const string& login, const string& password) const;
 	void openMainWindow();
 };

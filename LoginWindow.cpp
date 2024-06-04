@@ -6,7 +6,6 @@ LoginWindow::LoginWindow(QMainWindow* parent)
 {
 	ui->setupUi(this);
 }
-
 void LoginWindow::on_loginBtn_clicked() {
 	
 		LoginWindow::login = ui->loginEdit->text().toStdString();
@@ -26,13 +25,12 @@ void LoginWindow::on_loginBtn_clicked() {
 		}
 	}*/
 }
-
 void LoginWindow::on_registerBtn_clicked() {
 	LoginWindow::login = ui->loginEdit_2->text().toStdString();
 	LoginWindow::password = ui->passwordEdit_2->text().toStdString();
 	LoginWindow::role = ui->comboBox->currentText().toStdString();
 	
-	if (isValidLogin()) {
+	if (isValid(login, password, role)) {
 		result reg = parent->pool->runQuery("INSERT INTO public.users (hashedpassword, login, salt, role) VALUES ( crypt('" + password + "', gen_salt('md5')), '"+login + "',  gen_salt('md5'), '"+role+"')");
 		
 		openMainWindow();
@@ -40,7 +38,7 @@ void LoginWindow::on_registerBtn_clicked() {
 	else 
 		QMessageBox::critical(this, tr("Error"), tr("The username or password is not entered correctly"));
 }
-const string LoginWindow::getHashedPassword(const string login, const string password) const
+const string LoginWindow::getHashedPassword(const string& login, const string& password) const
 {
 	if (isValidLogin()) {
 		result log = parent->pool->runQuery("SELECT hashedPassword  FROM users where login='" + login + "'");
@@ -50,21 +48,33 @@ const string LoginWindow::getHashedPassword(const string login, const string pas
 	else return "";
 }
 bool LoginWindow::isValidLogin() const  {
+	if (isValid(login, password)) {
+		return false;
+	}
+	else {
 		result log = parent->pool->runQuery("SELECT login FROM users where login = '" + login + "'");
-		if (isValid(login, password) and log[0][0].view() == "")
+		if (log[0][0].view() == "")
 			return false;
-		else 
-			return true;		
+		else
+			return true;
+	}
+				
 }
-bool LoginWindow::isValid(const string login, const string password) const
+bool LoginWindow::isValid(const string& login, const string& password) const
 {
 	if (login.empty() and password.empty())
+		return true;
+	return false;
+}
+bool LoginWindow::isValid(const string& login, const string& password, const string& role) const
+{
+	if (login.empty() and password.empty() and role.empty())
 		return false;
 	return true;
 }
-bool LoginWindow::isValidPassword(const string login, const string password) const
+bool LoginWindow::isValidPassword(const string& login, const string& password) const
 {
-	string hashedPassword = getHashedPassword(login, password);
+	const string hashedPassword = getHashedPassword(login, password);
 	if (hashedPassword.size()==0) {
 		return false;
 	}

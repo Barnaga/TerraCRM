@@ -14,9 +14,10 @@ public:
     shared_ptr<DbPool> pool = nullptr;
     Ui::MainWindowClass* ui;
     ~MainWindow();
-
+private slots:
+    void on_crmBtn_clicked();
 private:
-    //Ui::MainWindowClass* ui;
     void setLoginInterface();
+    void setCRMInterface();
     
 };
