@@ -46,7 +46,7 @@
        <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
       </property>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="tasksBtn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -155,7 +155,7 @@
      </layout>
     </item>
     <item row="0" column="1">
-     <widget class="QWidget" name="TasksWindow" native="true">
+     <widget class="QWidget" name="TaskWindow" native="true">
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="tasksLbl">

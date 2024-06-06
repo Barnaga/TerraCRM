@@ -118,13 +118,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CRMWindow.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="CRMWindow.ui" />
     <QtUic Include="LoginWindow.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="LoginWindow.h" />
     <QtMoc Include="MainWindow.h" />
-    <ClCompile Include="CRMWindow.cpp" />
     <ClCompile Include="db_pool.cpp" />
     <ClCompile Include="LoginWindow.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Qt\msvc2019_64\include\QtSql;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);C:\Program Files\libpqxx\include;C:\Program Files\SOCI\include</AdditionalIncludeDirectories>
