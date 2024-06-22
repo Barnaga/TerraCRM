@@ -119,6 +119,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CRMWindow.cpp" />
+    <ClCompile Include="TaskTableModel.cpp" />
+    <ClCompile Include="TaskWidget.cpp" />
+    <ClCompile Include="TaskWindow.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="CRMWindow.ui" />
     <QtUic Include="LoginWindow.ui" />
@@ -131,8 +134,12 @@
     </ClCompile>
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="TaskWindow.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TaskTableModel.h" />
+    <QtMoc Include="TaskWidget.h" />
+    <QtMoc Include="TaskWindow.h" />
     <QtMoc Include="CRMWindow.h" />
     <ClInclude Include="db_pool.h" />
   </ItemGroup>

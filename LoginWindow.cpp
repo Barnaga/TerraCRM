@@ -1,5 +1,4 @@
 #include "LoginWindow.h"
-#include <iostream>
 
 LoginWindow::LoginWindow(QMainWindow* parent)
 	: parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::LoginWindowClass)
@@ -10,14 +9,17 @@ void LoginWindow::on_loginBtn_clicked() {
 	
 		LoginWindow::login = ui->loginEdit->text().toStdString();
 		LoginWindow::password = ui->passwordEdit->text().toStdString();
-		result r = parent->pool->runQuery("Select role from users where login = '" + login + "'");
-		LoginWindow::role = r[0][0].view();
+		//result r = parent->pool->runQuery("Select role from users where login = '" + login + "'");
+		//LoginWindow::role = r[0][0].view();
 		if (isValidPassword(login, password))
 		{
 			openMainWindow();
+			parent->isLogin = true;
 		}
-		else
+		else {
 			ui->errorLbl->setText("Don't correct login or password");
+		}
+			
 	
 	/*for (auto const &row : r) {
 		for (auto const & field : row) {
@@ -91,6 +93,7 @@ void LoginWindow::openMainWindow()
 {
 	this->close();
 	parent->ui->setupUi(parent);
+	parent->createMenu();
 	parent->showMaximized();
 }
 LoginWindow::~LoginWindow()

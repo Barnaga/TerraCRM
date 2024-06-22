@@ -1,10 +1,9 @@
 #pragma once
 
 #include <QMainWindow>
-#include "MainWindow.h"
 #include "ui_CRMWindow.h"
 
-class CRMWindow : public QMainWindow
+class CRMWindow : public QWidget
 {
 	Q_OBJECT
 

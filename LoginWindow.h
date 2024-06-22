@@ -4,14 +4,13 @@
 #include <MainWindow.h>
 #include "ui_LoginWindow.h"
 
-enum class Role { Leader, Manager, Marketer, Seller, Unknown};
+//enum class Role { Leader, Manager, Marketer, Seller, Unknown};
 class LoginWindow : public QMainWindow
 {
 	Q_OBJECT
 
 public:
 	explicit LoginWindow(QMainWindow *parent = nullptr);
-	
 	~LoginWindow();
 private slots:
 	void on_loginBtn_clicked();
