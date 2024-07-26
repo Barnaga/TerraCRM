@@ -7,10 +7,9 @@ LoginWindow::LoginWindow(QMainWindow* parent)
 }
 void LoginWindow::on_loginBtn_clicked() {
 	
-		LoginWindow::login = ui->loginEdit->text().toStdString();
-		LoginWindow::password = ui->passwordEdit->text().toStdString();
-		//result r = parent->pool->runQuery("Select role from users where login = '" + login + "'");
-		//LoginWindow::role = r[0][0].view();
+		LoginWindow::login = ui->loginEdit->text();
+		LoginWindow::password = ui->passwordEdit->text();
+		
 		if (isValidPassword(login, password))
 		{
 			openMainWindow();
@@ -19,72 +18,71 @@ void LoginWindow::on_loginBtn_clicked() {
 		else {
 			ui->errorLbl->setText("Don't correct login or password");
 		}
-			
-	
-	/*for (auto const &row : r) {
-		for (auto const & field : row) {
-			qDebug() << field.view();
-		}
-	}*/
 }
 void LoginWindow::on_registerBtn_clicked() {
-	LoginWindow::login = ui->loginEdit_2->text().toStdString();
-	LoginWindow::password = ui->passwordEdit_2->text().toStdString();
-	LoginWindow::role = ui->comboBox->currentText().toStdString();
+	LoginWindow::login = ui->loginEdit_2->text();
+	LoginWindow::password = ui->passwordEdit_2->text();
+	LoginWindow::role = ui->comboBox->currentText();
 	
 	if (isValid(login, password, role)) {
-		result reg = parent->pool->runQuery("INSERT INTO public.users (hashedpassword, login, salt, role) VALUES ( crypt('" + password + "', gen_salt('md5')), '"+login + "',  gen_salt('md5'), '"+role+"')");
-		
+		query.prepare("INSERT INTO public.users (hashedpassword, login, salt, role) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role)");
+		query.bindValue(":password", password);
+		query.bindValue(":login", login);
+		query.bindValue(":role", role);
+		query.exec();
 		openMainWindow();
 	}
 	else 
 		QMessageBox::critical(this, tr("Error"), tr("The username or password is not entered correctly"));
 }
-const string LoginWindow::getHashedPassword(const string& login, const string& password) const
+const QString LoginWindow::getHashedPassword(const QString& login, const QString& password)
 {
 	if (isValidLogin()) {
-		result log = parent->pool->runQuery("SELECT hashedPassword  FROM users where login='" + login + "'");
-		const string hashedPassword = (string)log[0][0].view();
+		query.prepare("SELECT hashedPassword  FROM users where login=:login");
+		query.bindValue(":login", login);
+		query.exec();
+		query.first();
+		auto hashedPassword = query.value(0).toString();
 		return hashedPassword;
 	}
 	else return "";
 }
-bool LoginWindow::isValidLogin() const  {
-	if (isValid(login, password)) {
-		return false;
-	}
+bool LoginWindow::isValidLogin()  {
+	if (isValid(login, password)) return false;
 	else {
-		result log = parent->pool->runQuery("SELECT login FROM users where login = '" + login + "'");
-		if (log[0][0].view() == "")
-			return false;
-		else
-			return true;
-	}
-				
+		query.prepare("SELECT login FROM users where login =:login");
+		query.bindValue(":login", login);
+		query.exec();
+		query.first();
+		if (query.value(0).toString().isEmpty()) return false;
+		else return true;
+	}				
 }
-bool LoginWindow::isValid(const string& login, const string& password) const
+bool LoginWindow::isValid(const QString& login, const QString& password)
 {
-	if (login.empty() and password.empty())
+	if (login.isEmpty() and password.isEmpty())
 		return true;
 	return false;
 }
-bool LoginWindow::isValid(const string& login, const string& password, const string& role) const
+bool LoginWindow::isValid(const QString& login, const QString& password, const QString& role)
 {
-	if (login.empty() and password.empty() and role.empty())
+	if (login.isEmpty() and password.isEmpty() and role.isEmpty())
 		return false;
 	return true;
 }
-bool LoginWindow::isValidPassword(const string& login, const string& password) const
+bool LoginWindow::isValidPassword(const QString& login, const QString& password)
 {
-	const string hashedPassword = getHashedPassword(login, password);
-	if (hashedPassword.size()==0) {
-		return false;
-	}
+
+	const auto hashedPassword = getHashedPassword(login, password);
+	if (hashedPassword.isEmpty()) return false;
 	else {
-		result pass = parent->pool->runQuery("SELECT (hashedPassword =crypt('" + password + "', '"
-			+ hashedPassword + "')) AS password_match FROM users WHERE login ='" + login + "'");
-		if (pass[0][0].view() == "t")
-			return true;
+		query.prepare("SELECT (hashedPassword =crypt(:password, :hashedPassword)) AS password_match FROM users WHERE login =:login");
+		query.bindValue(":password", password);
+		query.bindValue(":hashedPassword", hashedPassword);
+		query.bindValue(":login", login);
+		query.exec();
+		query.first();
+		if (query.value(0).toString() == "true") return true;
 		return false;
 	}
 

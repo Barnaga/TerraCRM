@@ -13,16 +13,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     
+    db= QSqlDatabase::addDatabase("QPSQL");
+    db.setHostName("localhost");
+    db.setDatabaseName("TerraCRM");
+    db.setUserName("postgres");
+    db.setPassword("1234");
+    auto ok = db.open();
     isLogin = false;
-    pool = make_shared<DbPool>(5);
-    if(isLogin){
-        createMenu();
-    } 
-    else {
-        setLoginInterface();
-
-    }
- 
+    if(isLogin) createMenu();
+    else   setLoginInterface();
 }
 
 MainWindow::~MainWindow()
@@ -34,14 +33,12 @@ void MainWindow::setLoginInterface()
     setCentralWidget(new LoginWindow(this));
 }
 void MainWindow::on_crmBtn_triggered() {
-    qDebug() << "Clicked crm";
     setCRMInterface();
 }
 void MainWindow::setCRMInterface() {
   setCentralWidget(new CRMWindow(this));
 }
 void MainWindow::on_tasksBtn_triggered() {
-    qDebug() << "Clicked tasks";
     setTasksInterface();
 }
 void MainWindow::setTasksInterface() {
@@ -50,20 +47,22 @@ void MainWindow::setTasksInterface() {
 
 void MainWindow::createMenu()
 {
-    QToolBar *menu = new QToolBar(this);
-    addToolBar(Qt::LeftToolBarArea, menu);
-    QAction* crmBtn = new QAction(tr("CRM"), this);
-    QAction* tasksBtn = new QAction("Tasks", this);
-    QAction* projectBtn = new QAction(tr("Project"), this);
-    QAction* financeBtn = new QAction("Finance", this);
-    QAction* teamBtn = new QAction("Team", this);
-    QAction* reportBtn = new QAction("Report", this);
-    menu->addAction(crmBtn);
-    menu->addAction(tasksBtn);
-    menu->addAction(projectBtn);
-    menu->addAction(financeBtn);
-    menu->addAction(teamBtn);
-    menu->addAction(reportBtn);
+    toolbar = new QToolBar(this);
+    addToolBar(Qt::LeftToolBarArea, toolbar);
+    crmBtn = new QAction(tr("CRM"), this);
+    tasksBtn = new QAction("Tasks", this);
+    projectBtn = new QAction(tr("Project"), this);
+    financeBtn = new QAction("Finance", this);
+    teamBtn = new QAction("Team", this);
+    reportBtn = new QAction("Report", this);
+    toolbar->addAction(crmBtn);
+    toolbar->addAction(tasksBtn);
+    toolbar->addAction(projectBtn);
+    toolbar->addAction(financeBtn);
+    toolbar->addAction(teamBtn);
+    toolbar->addAction(reportBtn);
+    toolbar->setStyleSheet("background:rgb(255,253,253); spacing: 10px; color:rgb(55, 107, 113);");
     connect(tasksBtn, SIGNAL(triggered()), this, SLOT(on_tasksBtn_triggered()));
     connect(crmBtn, SIGNAL(triggered()), this, SLOT(on_crmBtn_triggered()));
 }
+

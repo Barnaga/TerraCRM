@@ -1,36 +1,29 @@
 #pragma once
-
-#include <QMainWindow>
-
 #include "MainWindow.h"
-#include "TaskWidget.h"
+#include "RateDelegate.h"
+#include "FormTask.h"
 #include "ui_TaskWindow.h"
 
-enum class StatusTask
-{
-	All = 0,
-	Do = 1,
-	Work = 2,
-	Done = 3,
-	Completed = 4
-};
+
 class TaskWindow : public QWidget
 {
 	Q_OBJECT
 
 public:
-	TaskWindow(QMainWindow *parent = nullptr);
+	explicit TaskWindow(QMainWindow *parent = nullptr);
 	~TaskWindow();
-
+public slots:
+	void onClickCreateTaskBtn();
+	void addData();
+	void slotCustomMenuRequested(QPoint pos);
 private:
 	Ui::TaskWindowClass* ui;
 	MainWindow* parent;
-
-	QStringList taskData;
-	QStringListModel* taskDataModel;
-	QVector<TaskWidget*> tasksWidget;
-	QString getCountTask(StatusTask status);
-	QList<QStringList> getTaskData();
-	void printCountStatusTask();
-	void createTaskWidget();
+	QSqlTableModel* model;
+	FormTask* formTask;
+	QTableView *view;
+	void createModel();
+	void createConnections();
+	void createView();
+	
 };

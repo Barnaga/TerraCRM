@@ -3,8 +3,6 @@
 #include <QMainWindow>
 #include <MainWindow.h>
 #include "ui_LoginWindow.h"
-
-//enum class Role { Leader, Manager, Marketer, Seller, Unknown};
 class LoginWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -19,13 +17,14 @@ private slots:
 private:
 	Ui::LoginWindowClass* ui;
 	MainWindow* parent;
-	string login;
-	string password;
-	string role;
-	const string getHashedPassword(const string& login, const string& password) const;
-	bool isValid(const string& login, const string& password) const;
-	bool isValid(const string& login, const string& password, const string& role) const;
-	bool isValidLogin() const;
-	bool isValidPassword(const string& login, const string& password) const;
+	QString login;
+	QString password;
+	QString role;
+	QSqlQuery query;
+	const QString getHashedPassword(const QString& login, const QString& password);
+	bool isValid(const QString& login, const QString& password);
+	bool isValid(const QString& login, const QString& password, const QString& role);
+	bool isValidLogin();;
+	bool isValidPassword(const QString& login, const QString& password);
 	void openMainWindow();
 };
