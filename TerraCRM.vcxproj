@@ -121,8 +121,12 @@
   <ItemGroup>
     <ClCompile Include="CRMWindow.cpp" />
     <ClCompile Include="FormTask.cpp" />
+    <ClCompile Include="ProjectWidget.cpp" />
     <ClCompile Include="RateDelegate.cpp" />
+    <ClCompile Include="Reminder.cpp" />
     <ClCompile Include="StatusDelegate.cpp" />
+    <ClCompile Include="Task.cpp" />
+    <ClCompile Include="TaskWidget.cpp" />
     <ClCompile Include="TaskWindow.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="CRMWindow.ui" />
@@ -136,6 +140,10 @@
     </ClCompile>
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="ProjectWidget.ui" />
+    <QtUic Include="Reminder.ui" />
+    <QtUic Include="Task.ui" />
+    <QtUic Include="TaskWidget.ui" />
     <QtUic Include="TaskWindow.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -147,7 +155,11 @@
     <QtMoc Include="RateDelegate.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Task.h" />
+    <QtMoc Include="ProjectWidget.h" />
+    <QtMoc Include="Reminder.h" />
     <ClInclude Include="StatusDelegate.h" />
+    <QtMoc Include="TaskWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,10 +1,9 @@
 #include "TaskWindow.h"
 
-TaskWindow::TaskWindow(QMainWindow* parent)
-	: ui(new Ui::TaskWindowClass), parent(dynamic_cast<MainWindow*>(parent)), model(new QSqlTableModel)
+TaskWindow::TaskWindow(MainWindow* parent)
+	: ui(new Ui::TaskWindowClass), parent(dynamic_cast<MainWindow*>(parent)), model(new QSqlRelationalTableModel)
 {
 	ui->setupUi(this);
-
 	createModel();
 	createView();
 	createConnections();
@@ -15,67 +14,65 @@ TaskWindow::~TaskWindow()
 }
 void TaskWindow::createModel()
 {
+	model = new QSqlRelationalTableModel(this);
 	model->setTable("tasks");
 	model->setHeaderData(0, Qt::Horizontal, "ID");
 	model->setHeaderData(1, Qt::Horizontal, "Задание");
-	model->setHeaderData(2, Qt::Horizontal, "Статус");
+	model->setHeaderData(2, Qt::Horizontal, "Этап");
 	model->setHeaderData(3, Qt::Horizontal, "Постановщик");
+	model->setHeaderData(4, Qt::Horizontal, "Исполнитель");
+	model->setHeaderData(6, Qt::Horizontal, "Дата начала");
+	model->setHeaderData(10, Qt::Horizontal, "Крайний срок");
+	model->setHeaderData(11, Qt::Horizontal, "Проект");
+	model->setRelation(model->fieldIndex("creatorTask"), QSqlRelation("users", "id", "name"));
+	model->setRelation(model->fieldIndex("executorTask"), QSqlRelation("users", "id", "name"));
+	model->setRelation(model->fieldIndex("project"), QSqlRelation("project", "id", "name"));
 	model->setEditStrategy(QSqlTableModel::OnFieldChange);
-	model->select();
+	QList<QString> user = parent->getUser();
+
+	if (user[4] == "Leader") 
+		model->select();
+	else {
+		model->setFilter(QString("\"executorTask\"=\'%1\'").arg(user[3]));
+		model->setQuery("Select nameTask, statusTask, creatorTask, users.name From public.tasks join users on tasks.executors = users.id");
+		model->select();
+	}
 }
 void TaskWindow::createConnections()
 {
 	connect(ui->createTaskBtn, SIGNAL(clicked()), this, SLOT(onClickCreateTaskBtn()));
-	connect(formTask, SIGNAL(accepted()), this, SLOT(addData()));
-	connect(formTask->okBtn, SIGNAL(clicked()), formTask, SLOT(accept()));
-	connect(formTask->cancelBtn, SIGNAL(clicked()), formTask,  SLOT(reject()));	
+
+
+	connect(view, SIGNAL(clicked(const QModelIndex)), this, SLOT(openTask(const QModelIndex)));
 }
 void TaskWindow::createView() {
-	view = new QTableView(this);	
+	view = new QTableView(this);
+	view->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	view->setItemDelegateForColumn(2, new RateDelegate(view));
 	view->setModel(model);
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->setColumnHidden(0, true);
-	view->setContextMenuPolicy(Qt::CustomContextMenu);
+	view->setColumnHidden(5, true);
+	view->setColumnHidden(6, true);
+	view->setColumnHidden(7, true);
+	view->setColumnHidden(8, true);
+	view->setColumnHidden(9, true);
+	view->setColumnHidden(10, true);
+	view->setColumnHidden(11, true);
 	ui->tasksLayout->addWidget(view);
-	connect(view, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotCustomMenuRequested(QPoint)));
-	if (!formTask) formTask = new FormTask(this, true);
+	if (!formTask) formTask = new FormTask(this, model, parent->getUser()[3].toInt());
+}
+void TaskWindow::openTask(const QModelIndex index)
+{
+	QVector<QString> data;
+	for (auto i = 0; i < index.model()->columnCount(); ++i)
+		data.append(index.model()->index(index.row(), i).data().toString());
+	Task* task = new Task(this, data);
+	task->show();
+	
 }
 void TaskWindow::onClickCreateTaskBtn()
 {
-	formTask->createTask();
+	formTask = new FormTask(this, model, parent->getUser()[3].toInt());
 	formTask->show();
-}
-void TaskWindow::addData()
-{
-	const auto& nameTask = formTask->nameTask->text();
-	const auto& statusTask = "Сделать";
-	const auto& creatorTask = "Я";
-	const auto& row = model->rowCount();
-	if (!formTask->nameTask->text().isEmpty()) {
-		model->insertRows(row, 1);
-		model->setData(model->index(row, 1), nameTask);
-		model->setData(model->index(row, 2), statusTask);
-		model->setData(model->index(row, 3), creatorTask);
-		model->submit();
-		model->select();
-	}
-	else formTask->warningLbl->setEnabled(true);
-}
-
-void TaskWindow::slotCustomMenuRequested(QPoint pos)
-{
-	/* Создаем объект контекстного меню */
-	QMenu* menu = new QMenu(this);
-	/* Создаём действия для контекстного меню */
-	QAction* editDevice = new QAction("Редактировать", this);
-	QAction* deleteDevice = new QAction("Удалить", this);
-	/* Подключаем СЛОТы обработчики для действий контекстного меню */
-	connect(editDevice, SIGNAL(triggered()), this, SLOT(slotEditRecord()));     // Обработчик вызова диалога редактирования
-	connect(deleteDevice, SIGNAL(triggered()), this, SLOT(slotRemoveRecord())); // Обработчик удаления записи
-	/* Устанавливаем действия в меню */
-	menu->addAction(editDevice);
-	menu->addAction(deleteDevice);
-	/* Вызываем контекстное меню */
-	menu->popup(view->viewport()->mapToGlobal(pos));
 }

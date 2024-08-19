@@ -55,6 +55,18 @@
     <ClCompile Include="StatusDelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TaskWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Task.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Reminder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h">
@@ -75,6 +87,18 @@
     <QtMoc Include="RateDelegate.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="TaskWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ProjectWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Task.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Reminder.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LoginWindow.ui">
@@ -87,6 +111,18 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="FormTask.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="TaskWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ProjectWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Task.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Reminder.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

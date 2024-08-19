@@ -9,31 +9,41 @@ void LoginWindow::on_loginBtn_clicked() {
 	
 		LoginWindow::login = ui->loginEdit->text();
 		LoginWindow::password = ui->passwordEdit->text();
-		
+		parent->login = login;
 		if (isValidPassword(login, password))
 		{
 			openMainWindow();
 			parent->isLogin = true;
 		}
-		else {
+		else 
 			ui->errorLbl->setText("Don't correct login or password");
-		}
 }
 void LoginWindow::on_registerBtn_clicked() {
 	LoginWindow::login = ui->loginEdit_2->text();
 	LoginWindow::password = ui->passwordEdit_2->text();
 	LoginWindow::role = ui->comboBox->currentText();
-	
-	if (isValid(login, password, role)) {
-		query.prepare("INSERT INTO public.users (hashedpassword, login, salt, role) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role)");
+	LoginWindow::name = ui->nameEdit->text();
+	LoginWindow::surname = ui->surnameEdit->text();
+	if (registerValid()) 
+		openMainWindow();
+	else 
+		QMessageBox::critical(this, tr("Error"), tr("The username or password is not entered correctly"));	
+}
+bool LoginWindow::registerValid()
+{
+	if (isValid(login, password, role, name, surname)) {
+		query.prepare("INSERT INTO public.users (hashedpassword, login, salt, role, name, surname) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role, :name, :surname)");
 		query.bindValue(":password", password);
 		query.bindValue(":login", login);
 		query.bindValue(":role", role);
+		query.bindValue(":name", name);
+		query.bindValue(":surname", surname);
 		query.exec();
-		openMainWindow();
+		return true;
 	}
-	else 
+	else
 		QMessageBox::critical(this, tr("Error"), tr("The username or password is not entered correctly"));
+	return false;
 }
 const QString LoginWindow::getHashedPassword(const QString& login, const QString& password)
 {
@@ -52,9 +62,7 @@ bool LoginWindow::isValidLogin()  {
 	else {
 		query.prepare("SELECT login FROM users where login =:login");
 		query.bindValue(":login", login);
-		query.exec();
-		query.first();
-		if (query.value(0).toString().isEmpty()) return false;
+		if (!query.exec() && !query.first()) return false;
 		else return true;
 	}				
 }
@@ -64,15 +72,14 @@ bool LoginWindow::isValid(const QString& login, const QString& password)
 		return true;
 	return false;
 }
-bool LoginWindow::isValid(const QString& login, const QString& password, const QString& role)
+bool LoginWindow::isValid(const QString& login, const QString& password, const QString& role, const QString& name, const QString& surname)
 {
-	if (login.isEmpty() and password.isEmpty() and role.isEmpty())
+	if (login.isEmpty() and password.isEmpty() and role.isEmpty() and name.isEmpty() and surname.isEmpty())
 		return false;
 	return true;
 }
 bool LoginWindow::isValidPassword(const QString& login, const QString& password)
 {
-
 	const auto hashedPassword = getHashedPassword(login, password);
 	if (hashedPassword.isEmpty()) return false;
 	else {

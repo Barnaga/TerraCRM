@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>838</width>
+    <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,41 +16,31 @@
   <widget class="QLineEdit" name="nameTaskEdit">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>30</x>
      <y>90</y>
-     <width>241</width>
+     <width>411</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="creatorTaskEdit">
+  <widget class="QPushButton" name="saveBtn">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>170</y>
-     <width>231</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="okBtn">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>230</y>
+     <x>30</x>
+     <y>360</y>
      <width>75</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string>Добавить</string>
+    <string>Сохранить</string>
    </property>
   </widget>
   <widget class="QPushButton" name="cancelBtn">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>230</y>
+     <x>700</x>
+     <y>360</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -59,36 +49,6 @@
     <string>Отмена</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>130</y>
-     <width>241</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Сделать</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>В работе</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Сделано</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Завершено</string>
-    </property>
-   </item>
-  </widget>
   <widget class="QLabel" name="warningLbl">
    <property name="enabled">
     <bool>true</bool>
@@ -96,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>200</y>
+     <y>330</y>
      <width>231</width>
      <height>16</height>
     </rect>
@@ -115,6 +75,131 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="formLbl">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Создать задачу</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="nameTask">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>70</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Название</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="priority">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>90</y>
+     <width>68</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Низкий</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Средний</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Высокий</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="priorityLbl">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>70</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Приоритет</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="descriptionTask">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>140</y>
+     <width>491</width>
+     <height>91</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="saveCreateBtn">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>360</y>
+     <width>161</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Сохранить и создать еще</string>
+   </property>
+  </widget>
+  <widget class="QCalendarWidget" name="deadline">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>90</y>
+     <width>256</width>
+     <height>190</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="deadlineLbl">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>70</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Крайний срок</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="projectBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>250</y>
+     <width>491</width>
+     <height>22</height>
+    </rect>
    </property>
   </widget>
  </widget>

@@ -3,6 +3,9 @@
 #include "RateDelegate.h"
 #include "FormTask.h"
 #include "ui_TaskWindow.h"
+#include "Task.h"
+#include <QSqlRelationalTableModel>
+#include <QSqlRelationalDelegate>
 
 
 class TaskWindow : public QWidget
@@ -10,20 +13,23 @@ class TaskWindow : public QWidget
 	Q_OBJECT
 
 public:
-	explicit TaskWindow(QMainWindow *parent = nullptr);
+	explicit TaskWindow(MainWindow *parent = nullptr);
 	~TaskWindow();
 public slots:
 	void onClickCreateTaskBtn();
-	void addData();
-	void slotCustomMenuRequested(QPoint pos);
+
+	void openTask(const QModelIndex index);
 private:
 	Ui::TaskWindowClass* ui;
+
 	MainWindow* parent;
-	QSqlTableModel* model;
+	QSqlRelationalTableModel* model;
 	FormTask* formTask;
-	QTableView *view;
+	QTableView* view;
 	void createModel();
 	void createConnections();
 	void createView();
+	
+
 	
 };

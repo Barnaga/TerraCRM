@@ -17,16 +17,16 @@ public:
     Ui::MainWindowClass* ui;
     ~MainWindow();
     QSqlDatabase db;
-
-
+    QString login;
     bool isLogin;
-    
+    QList<QString> getUser();
     void createMenu();
 private slots:  
-    void on_crmBtn_triggered();
-    void on_tasksBtn_triggered();
-    
+    void on_crmBtn();
+    void on_tasksBtn();
+    void on_outBtn();
 private:
+    QString name, surname,  role, id;
     QToolBar* toolbar;
     QAction* crmBtn;
     QAction* tasksBtn;
@@ -34,7 +34,10 @@ private:
     QAction* financeBtn;
     QAction* teamBtn;
     QAction* reportBtn;
+    QAction* outBtn;
+
     void setLoginInterface();
     void setCRMInterface();
     void setTasksInterface();
+    
 };
