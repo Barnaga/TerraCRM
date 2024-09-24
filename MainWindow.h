@@ -22,9 +22,14 @@ public:
     QList<QString> getUser();
     void createMenu();
 private slots:  
-    void on_crmBtn();
-    void on_tasksBtn();
-    void on_outBtn();
+    void openCRM();
+    void openTasks();
+    void openProjects();
+    void openFinance();
+    void openTeam();
+    void openReport();
+    void outApp();
+
 private:
     QString name, surname,  role, id;
     QToolBar* toolbar;
@@ -36,8 +41,13 @@ private:
     QAction* reportBtn;
     QAction* outBtn;
 
+    void connectDatabase();
     void setLoginInterface();
     void setCRMInterface();
     void setTasksInterface();
+    void setProjectsInterface();
+    void setFinanceInterface();
+    void setTeamInterface();
+    void setReportInterface();
     
 };

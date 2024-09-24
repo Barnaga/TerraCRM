@@ -4,21 +4,24 @@ LoginWindow::LoginWindow(QMainWindow* parent)
 	: parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::LoginWindowClass)
 {
 	ui->setupUi(this);
+	connect(ui->loginBtn, SIGNAL(clicked()), this, SLOT(loginUser()));
+	connect(ui->registerBtn, SIGNAL(clicked()), this, SLOT(registerUser()));
 }
-void LoginWindow::on_loginBtn_clicked() {
-	
-		LoginWindow::login = ui->loginEdit->text();
-		LoginWindow::password = ui->passwordEdit->text();
-		parent->login = login;
-		if (isValidPassword(login, password))
-		{
-			openMainWindow();
-			parent->isLogin = true;
-		}
-		else 
-			ui->errorLbl->setText("Don't correct login or password");
+void LoginWindow::loginUser() {
+	qDebug() << "Login";
+	LoginWindow::login = ui->loginEdit->text();
+	LoginWindow::password = ui->passwordEdit->text();
+	parent->login = login;
+	if (isValidPassword(login, password))
+	{
+		openMainWindow();
+		parent->isLogin = true;
+
+	}
+	else 
+		ui->errorLbl->setText("Don't correct login or password");
 }
-void LoginWindow::on_registerBtn_clicked() {
+void LoginWindow::registerUser() {
 	LoginWindow::login = ui->loginEdit_2->text();
 	LoginWindow::password = ui->passwordEdit_2->text();
 	LoginWindow::role = ui->comboBox->currentText();
@@ -92,7 +95,6 @@ bool LoginWindow::isValidPassword(const QString& login, const QString& password)
 		if (query.value(0).toString() == "true") return true;
 		return false;
 	}
-
 }
 void LoginWindow::openMainWindow()
 {

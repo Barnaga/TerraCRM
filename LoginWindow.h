@@ -12,8 +12,8 @@ public:
 	
 	~LoginWindow();
 private slots:
-	void on_loginBtn_clicked();
-	void on_registerBtn_clicked();
+	void loginUser();
+	void registerUser();
 private:
 	Ui::LoginWindowClass* ui;
 	MainWindow* parent;
@@ -30,7 +30,5 @@ private:
 	bool isValidLogin();;
 	bool isValidPassword(const QString& login, const QString& password);
 	bool registerValid();
-
 	void openMainWindow();
-
 };

@@ -21,114 +21,237 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Source Files\Task">
+      <UniqueIdentifier>{cf549366-9ea5-4ea3-a645-fa8f9ba8ee79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CRM">
+      <UniqueIdentifier>{6d4d06cd-2d81-460d-80ed-a0df95a82720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Project">
+      <UniqueIdentifier>{9f8375b3-e3c9-4446-8d17-5fecc28925e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Finance">
+      <UniqueIdentifier>{fe44dad5-82c5-46c7-9780-822caea83eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Login">
+      <UniqueIdentifier>{3d048ddc-2472-47f9-a13c-4b35283a4192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{8ab42214-5192-47d5-9438-913c24905d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Delegates">
+      <UniqueIdentifier>{6c8f7706-218f-4b25-b90c-4ba0656222df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Report">
+      <UniqueIdentifier>{6333dad4-0950-44b5-b30a-0ad0241fb8b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Team">
+      <UniqueIdentifier>{1e004f55-f6d0-4f73-9997-b540c2788001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Team">
+      <UniqueIdentifier>{ebbc3307-c52b-4997-9936-c509dae2547b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Project">
+      <UniqueIdentifier>{aff68235-fc95-4306-81ac-03cacc49625f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\CRM">
+      <UniqueIdentifier>{8e6f0ee0-f6a2-4268-861c-48771aeb9f7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Main">
+      <UniqueIdentifier>{a36b3196-e222-4e56-90f9-b55173e38e64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Login">
+      <UniqueIdentifier>{f3aec79d-3e1d-4400-8815-e0321808d5e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Task">
+      <UniqueIdentifier>{2c86e815-7014-4a93-ab5f-50824f099c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Finance">
+      <UniqueIdentifier>{ee501eb0-9809-4074-8469-6f997a4c07dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Report">
+      <UniqueIdentifier>{8a561ba8-a43b-4735-a6e1-25ca5a917732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CRM">
+      <UniqueIdentifier>{3d8df90e-4043-4fe1-b386-0b4ef9f01d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Finance">
+      <UniqueIdentifier>{05f5910f-de29-4400-aed8-85b55a35342e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Task">
+      <UniqueIdentifier>{778309f9-35fa-4486-b183-2b1f28e82af8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Login">
+      <UniqueIdentifier>{3f01f21b-f97d-42d8-9b74-030bd0b2aaae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Main">
+      <UniqueIdentifier>{da71c6b3-52c6-4a0a-afdf-7d90b020cced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Delegates">
+      <UniqueIdentifier>{07d578a0-11ad-4cf7-be4d-04e173b87267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Report">
+      <UniqueIdentifier>{076589e9-7a6f-4ee1-b9b9-d9de2392f7df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Team">
+      <UniqueIdentifier>{cb67c86e-4262-4780-afe1-5b4ae9a50aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Project">
+      <UniqueIdentifier>{49418265-e5e9-4bea-bf99-9933d66a15bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWindow.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="MainWindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <ClCompile Include="MainWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CRMWindow.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Task.cpp">
+      <Filter>Source Files\Task</Filter>
     </ClCompile>
     <ClCompile Include="TaskWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="CRMWindow.cpp">
+      <Filter>Source Files\CRM</Filter>
     </ClCompile>
     <ClCompile Include="FormTask.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Task</Filter>
     </ClCompile>
-    <ClCompile Include="RateDelegate.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="DealWidget.cpp">
+      <Filter>Source Files\CRM</Filter>
     </ClCompile>
-    <ClCompile Include="StatusDelegate.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ChangeStatusProjectDialog.cpp">
+      <Filter>Source Files\Project</Filter>
     </ClCompile>
-    <ClCompile Include="TaskWidget.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="createProjectDialog.cpp">
+      <Filter>Source Files\Project</Filter>
     </ClCompile>
     <ClCompile Include="ProjectWidget.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Project</Filter>
     </ClCompile>
-    <ClCompile Include="Task.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ProjectWindow.cpp">
+      <Filter>Source Files\Project</Filter>
     </ClCompile>
-    <ClCompile Include="Reminder.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FinanceWindow.cpp">
+      <Filter>Source Files\Finance</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginWindow.cpp">
+      <Filter>Source Files\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="RateDelegate.cpp">
+      <Filter>Source Files\Delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusDelegate.cpp">
+      <Filter>Source Files\Delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportWindow.cpp">
+      <Filter>Source Files\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="TeamWindow.cpp">
+      <Filter>Source Files\Team</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="LoginWindow.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="ChangeStatusProjectDialog.h">
+      <Filter>Header Files\Project</Filter>
     </QtMoc>
-    <QtMoc Include="MainWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="CRMWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TaskWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="FormTask.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="RateDelegate.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TaskWidget.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="createProjectDialog.h">
+      <Filter>Header Files\Project</Filter>
     </QtMoc>
     <QtMoc Include="ProjectWidget.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Project</Filter>
+    </QtMoc>
+    <QtMoc Include="ProjectWindow.h">
+      <Filter>Header Files\Project</Filter>
+    </QtMoc>
+    <QtMoc Include="CRMWindow.h">
+      <Filter>Header Files\CRM</Filter>
+    </QtMoc>
+    <QtMoc Include="DealWidget.h">
+      <Filter>Header Files\CRM</Filter>
+    </QtMoc>
+    <QtMoc Include="FinanceWindow.h">
+      <Filter>Header Files\Finance</Filter>
+    </QtMoc>
+    <QtMoc Include="FormTask.h">
+      <Filter>Header Files\Task</Filter>
+    </QtMoc>
+    <QtMoc Include="TaskWindow.h">
+      <Filter>Header Files\Task</Filter>
+    </QtMoc>
+    <QtMoc Include="LoginWindow.h">
+      <Filter>Header Files\Login</Filter>
+    </QtMoc>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Header Files\Main</Filter>
+    </QtMoc>
+    <QtMoc Include="RateDelegate.h">
+      <Filter>Header Files\Delegates</Filter>
     </QtMoc>
     <QtMoc Include="Task.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Task</Filter>
     </QtMoc>
-    <QtMoc Include="Reminder.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="ReportWindow.h">
+      <Filter>Header Files\Report</Filter>
+    </QtMoc>
+    <QtMoc Include="TeamWindow.h">
+      <Filter>Header Files\Team</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="LoginWindow.ui">
-      <Filter>Form Files</Filter>
+    <QtUic Include="TeamWindow.ui">
+      <Filter>Form Files\Team</Filter>
     </QtUic>
-    <QtUic Include="CRMWindow.ui">
-      <Filter>Form Files</Filter>
+    <QtUic Include="ChangeStatusProjectDialog.ui">
+      <Filter>Form Files\Project</Filter>
     </QtUic>
-    <QtUic Include="TaskWindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="FormTask.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="TaskWidget.ui">
-      <Filter>Form Files</Filter>
+    <QtUic Include="createProjectDialog.ui">
+      <Filter>Form Files\Project</Filter>
     </QtUic>
     <QtUic Include="ProjectWidget.ui">
-      <Filter>Form Files</Filter>
+      <Filter>Form Files\Project</Filter>
+    </QtUic>
+    <QtUic Include="ProjectWindow.ui">
+      <Filter>Form Files\Project</Filter>
+    </QtUic>
+    <QtUic Include="DealWidget.ui">
+      <Filter>Form Files\CRM</Filter>
+    </QtUic>
+    <QtUic Include="CRMWindow.ui">
+      <Filter>Form Files\CRM</Filter>
+    </QtUic>
+    <QtUic Include="MainWindow.ui">
+      <Filter>Form Files\Main</Filter>
+    </QtUic>
+    <QtUic Include="LoginWindow.ui">
+      <Filter>Form Files\Login</Filter>
+    </QtUic>
+    <QtUic Include="FormTask.ui">
+      <Filter>Form Files\Task</Filter>
     </QtUic>
     <QtUic Include="Task.ui">
-      <Filter>Form Files</Filter>
+      <Filter>Form Files\Task</Filter>
     </QtUic>
-    <QtUic Include="Reminder.ui">
-      <Filter>Form Files</Filter>
+    <QtUic Include="TaskWindow.ui">
+      <Filter>Form Files\Task</Filter>
+    </QtUic>
+    <QtUic Include="FinanceWindow.ui">
+      <Filter>Form Files\Finance</Filter>
+    </QtUic>
+    <QtUic Include="ReportWindow.ui">
+      <Filter>Form Files\Report</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StatusDelegate.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Delegates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -23,6 +23,10 @@ void RateDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, 
 		{
 			painter->fillRect(option.rect, Qt::blue);
 		}
+		else if (index.data().toString() == "Архивировано")
+		{
+			painter->fillRect(option.rect, Qt::gray);
+		}
 		else
 		{
 			painter->fillRect(option.rect, Qt::green);
@@ -35,41 +39,6 @@ QSize RateDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelInd
 {
 	return QSize();
 }
-
-QWidget* RateDelegate::createEditor(QWidget* parent, const QStyleOptionViewItem& option, const QModelIndex& index) const
-{
-
-	QComboBox* dlg = new QComboBox(parent);
-	dlg->addItem("Сделать");
-	dlg->addItem("В работе");
-	dlg->addItem("Сделано");
-	dlg->addItem("Завершено");
-
-	return dlg;
-}
-
-void RateDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const
-{
-	QComboBox* comboBox = dynamic_cast<QComboBox*>(editor);
-	int value = index.data(Qt::EditRole).toInt();
-
-	comboBox->setCurrentIndex(value);
-}
-
-void RateDelegate::setModelData(QWidget* editor, QAbstractItemModel* model, const QModelIndex& index) const
-{
-	QComboBox* dialog = static_cast<QComboBox*>(editor);
-	if (dialog->model()->rowCount() != 0) {
-		model->setData(index, dialog->currentData(Qt::DisplayRole));
-	}
-	else {
-		QMessageBox msgBox;
-		msgBox.setText("is Empty");
-		msgBox.exec();
-	}
-}
-
-
 void RateDelegate::commitAndCloseEditor() {
 
 }

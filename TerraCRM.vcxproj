@@ -119,17 +119,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChangeStatusProjectDialog.cpp" />
+    <ClCompile Include="createProjectDialog.cpp" />
     <ClCompile Include="CRMWindow.cpp" />
+    <ClCompile Include="DealWidget.cpp" />
+    <ClCompile Include="FinanceWindow.cpp" />
     <ClCompile Include="FormTask.cpp" />
     <ClCompile Include="ProjectWidget.cpp" />
+    <ClCompile Include="ProjectWindow.cpp" />
     <ClCompile Include="RateDelegate.cpp" />
-    <ClCompile Include="Reminder.cpp" />
+    <ClCompile Include="ReportWindow.cpp" />
     <ClCompile Include="StatusDelegate.cpp" />
     <ClCompile Include="Task.cpp" />
-    <ClCompile Include="TaskWidget.cpp" />
     <ClCompile Include="TaskWindow.cpp" />
+    <ClCompile Include="TeamWindow.cpp" />
     <QtRcc Include="MainWindow.qrc" />
+    <QtUic Include="ChangeStatusProjectDialog.ui" />
+    <QtUic Include="createProjectDialog.ui" />
     <QtUic Include="CRMWindow.ui" />
+    <QtUic Include="DealWidget.ui" />
+    <QtUic Include="FinanceWindow.ui" />
     <QtUic Include="FormTask.ui" />
     <QtUic Include="LoginWindow.ui" />
     <QtUic Include="MainWindow.ui" />
@@ -141,10 +150,11 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="ProjectWidget.ui" />
-    <QtUic Include="Reminder.ui" />
+    <QtUic Include="ProjectWindow.ui" />
+    <QtUic Include="ReportWindow.ui" />
     <QtUic Include="Task.ui" />
-    <QtUic Include="TaskWidget.ui" />
     <QtUic Include="TaskWindow.ui" />
+    <QtUic Include="TeamWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="FormTask.h" />
@@ -155,11 +165,16 @@
     <QtMoc Include="RateDelegate.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="TeamWindow.h" />
     <QtMoc Include="Task.h" />
     <QtMoc Include="ProjectWidget.h" />
-    <QtMoc Include="Reminder.h" />
+    <QtMoc Include="DealWidget.h" />
+    <QtMoc Include="ProjectWindow.h" />
+    <QtMoc Include="ChangeStatusProjectDialog.h" />
+    <QtMoc Include="createProjectDialog.h" />
+    <QtMoc Include="FinanceWindow.h" />
+    <QtMoc Include="ReportWindow.h" />
     <ClInclude Include="StatusDelegate.h" />
-    <QtMoc Include="TaskWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

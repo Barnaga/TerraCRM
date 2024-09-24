@@ -76,13 +76,6 @@ padding: 10px 10px;
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="createEventBTn">
-             <property name="text">
-              <string>создать событие</string>
-             </property>
-            </widget>
-           </item>
           </layout>
          </item>
         </layout>

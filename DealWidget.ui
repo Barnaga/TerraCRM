@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DealWidgetClass</class>
+ <widget class="QDialog" name="DealWidgetClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>586</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DealWidget</string>
+  </property>
+  <widget class="QLabel" name="dealLbl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>561</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>290</y>
+     <width>541</width>
+     <height>88</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="contactLayout">
+    <item>
+     <widget class="QLabel" name="contactLbl">
+      <property name="text">
+       <string>Контакт</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QFormLayout" name="contactWrapper">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="infoContact">
+        <item>
+         <widget class="QLabel" name="nameLblC">
+          <property name="text">
+           <string>название компании</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="numberLblC">
+          <property name="text">
+           <string>Номер</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="emailLblC">
+          <property name="text">
+           <string>email</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="contactBtn">
+        <item>
+         <widget class="QPushButton" name="phoneCallBtnC">
+          <property name="text">
+           <string>Звонок</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="smsBtnC">
+          <property name="text">
+           <string>смс</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>108</y>
+     <width>581</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="sumLayout">
+      <item>
+       <widget class="QLabel" name="sumLbl">
+        <property name="text">
+         <string>Сумма</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="sum">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="timeDealLayout">
+      <item>
+       <widget class="QLabel" name="timeDealLbl">
+        <property name="text">
+         <string>Сроки сделки</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="timeDeal">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="sourceDealLayout">
+      <item>
+       <widget class="QLabel" name="sourceDealLbl">
+        <property name="text">
+         <string>Источник сделки</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="sourceDeal">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="responsibleLayout">
+      <item>
+       <widget class="QLabel" name="responsibleLbl">
+        <property name="text">
+         <string>Ответственный</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="responsible">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>41</x>
+     <y>171</y>
+     <width>541</width>
+     <height>86</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="infoClient">
+      <item>
+       <widget class="QLabel" name="clientLbl">
+        <property name="text">
+         <string>Клиент</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="nameCompanyLbl">
+        <property name="text">
+         <string>название компании</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="numberLbl">
+        <property name="text">
+         <string>Номер</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="emailLbl">
+        <property name="text">
+         <string>email</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="btnLayout">
+      <item>
+       <widget class="QPushButton" name="phoneCallBtn">
+        <property name="text">
+         <string>Звонок</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="smsBtn">
+        <property name="text">
+         <string>смс</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>41</x>
+     <y>401</y>
+     <width>551</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="connectionLbl">
+      <property name="text">
+       <string>Проект</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="nameConnectionLbl">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>551</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QLabel" name="statusSaleLbl">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Этап сделки:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="statusComboBox">
+      <item>
+       <property name="text">
+        <string>Новая заявка</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Переговоры</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Принятие решения</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Согласование договора</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Завершить сделку</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

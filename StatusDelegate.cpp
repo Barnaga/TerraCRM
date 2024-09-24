@@ -9,7 +9,6 @@ void StatusDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option
 {
 	QAbstractItemView* tableView;
 	if (tableView = qobject_cast<QAbstractItemView*>(this->parent())) {
-		qDebug() << index.data().toString();
 		if (index.data().toString() == "Новая заявка")
 		{		
 			painter->fillRect(option.rect, Qt::red);

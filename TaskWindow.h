@@ -16,7 +16,7 @@ public:
 	explicit TaskWindow(MainWindow *parent = nullptr);
 	~TaskWindow();
 public slots:
-	void onClickCreateTaskBtn();
+	void createTaskBtn();
 
 	void openTask(const QModelIndex index);
 private:
@@ -26,6 +26,7 @@ private:
 	QSqlRelationalTableModel* model;
 	FormTask* formTask;
 	QTableView* view;
+	Task* task;
 	void createModel();
 	void createConnections();
 	void createView();

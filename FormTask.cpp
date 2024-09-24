@@ -8,9 +8,9 @@ FormTask::FormTask(QWidget* parent, QSqlRelationalTableModel* model, int id)
 	createDataComboBox();
 	connect(ui->projectBox, SIGNAL(activated(int)), this, SLOT(getProjects(int)));
 	connect(ui->saveBtn, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(ui->saveCreateBtn, SIGNAL(clicked()), this, SLOT(addData()));
 	connect(this, SIGNAL(accepted()), this, SLOT(addData()));
 	connect(ui->cancelBtn, SIGNAL(clicked()), this, SLOT(reject()));
-
 }
 void FormTask::addData()
 {
@@ -29,15 +29,14 @@ void FormTask::addData()
 		model->setData(model->index(row, 3), creator);
 		model->setData(model->index(row, 4), creator);
 		model->setData(model->index(row, 5), date);
-		model->setData(model->index(row, 7), priority);
-		model->setData(model->index(row, 8), date);
-		model->setData(model->index(row, 9), deadline);
-		model->setData(model->index(row, 11), project);
-	/*	for (auto i = 0; i < model->columnCount(); ++i) {
-			qDebug() << model->index(row, i).data().toString();
-		}*/
-	}	
+		model->setData(model->index(row, 6), priority);
+		model->setData(model->index(row, 7), date);
+		model->setData(model->index(row, 8), deadline);
+		model->setData(model->index(row, 10), project);
+	}
 	else ui->warningLbl->setEnabled(true);
+	model->submitAll();
+	model->select();
 }
 FormTask::~FormTask()
 {}
