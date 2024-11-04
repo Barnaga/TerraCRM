@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>createProjectDialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+color:rgb(55, 107, 113);
+}</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>

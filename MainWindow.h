@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
+#include <QSqlRelationalTableModel>
 #include <QSqlQuery>
 #include <QSqlError>
 #include "ui_MainWindow.h"
@@ -11,15 +12,18 @@
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(const MainWindow& m) = delete;
+    MainWindow(const MainWindow&& m) = delete;
+    MainWindow& operator=(const MainWindow& r) = delete;
+    MainWindow& operator=(const MainWindow&& r) = delete;
     Ui::MainWindowClass* ui;
     ~MainWindow();
     QSqlDatabase db;
     QString login;
-    bool isLogin;
     QList<QString> getUser();
+    bool isLogin;
     void createMenu();
 private slots:  
     void openCRM();

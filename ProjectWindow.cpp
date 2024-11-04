@@ -50,13 +50,14 @@ void ProjectWindow::createView()
 	view->setColumnHidden(11, true);
 	view->setColumnHidden(12, true);
 	view->setColumnHidden(13, true);
+	view->setColumnHidden(14, true);
 	ui->projectsLayout->addWidget(view);
 }
 void ProjectWindow::openProject(const QModelIndex index) {
-	QVector<QString> data;
+	QList<QString> data;
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
-	project = new ProjectWidget(this, data, model, index);
+	project = new ProjectWidget(this, data, model, index, parent->getUser()[3].toInt());
 
 	project->show();
 }

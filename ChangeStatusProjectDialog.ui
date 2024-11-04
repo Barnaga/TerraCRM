@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>ChangeStatusProjectDialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+color:rgb(55, 107, 113);
+}</string>
+  </property>
   <widget class="QLabel" name="nameLbl">
    <property name="geometry">
     <rect>

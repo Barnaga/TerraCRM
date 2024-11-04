@@ -6,7 +6,7 @@ FormTask::FormTask(QWidget* parent, QSqlRelationalTableModel* model, int id)
 	ui->setupUi(this);
 	ui->warningLbl->hide();
 	createDataComboBox();
-	connect(ui->projectBox, SIGNAL(activated(int)), this, SLOT(getProjects(int)));
+	connect(ui->projectBox, SIGNAL(activated(int)), this, SLOT(getProjects()));
 	connect(ui->saveBtn, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(ui->saveCreateBtn, SIGNAL(clicked()), this, SLOT(addData()));
 	connect(this, SIGNAL(accepted()), this, SLOT(addData()));
@@ -43,12 +43,12 @@ FormTask::~FormTask()
 void FormTask::createDataComboBox() {
 	query.prepare("SELECT * FROM project");
 	query.exec();
-	QSqlQueryModel* model = new QSqlQueryModel(this);
-	model->setQuery(query);
-	ui->projectBox->setModel(model);
+	QSqlQueryModel* qModel = new QSqlQueryModel(this);
+	qModel->setQuery(query);
+	ui->projectBox->setModel(qModel);
 	ui->projectBox->setModelColumn(1);
 }
-void FormTask::getProjects(int index)
+void FormTask::getProjects()
 {
 	idProject = query.record().indexOf("id");
 }

@@ -54,18 +54,11 @@
 	border-radius:5px;
 	color: rgb(55, 107, 113);
 }
-
-.QTableView {
-    color: black;
-    gridline-color: black;
-    border-color: rgb(242, 128, 133);
-    font: 10px;
-}
 .QTableView QTableCornerButton::section {
-	background-color:rgb(71,153,176);
+	background-color: rgb(71,153,176);
 }
 .QHeaderView::section {
-    background-color: rgb(71, 153, 176);
+    background-color: rgb(71,153,176);
     color: white;
     height: 35px;
     font: 14px;

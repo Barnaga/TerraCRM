@@ -8,7 +8,7 @@ class ReportWindow : public QWidget
 	Q_OBJECT
 
 public:
-	ReportWindow(QWidget *parent = nullptr);
+	explicit ReportWindow(QWidget *parent = nullptr);
 	~ReportWindow();
 
 private:

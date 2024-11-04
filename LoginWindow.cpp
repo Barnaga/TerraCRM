@@ -1,14 +1,13 @@
 #include "LoginWindow.h"
 
 LoginWindow::LoginWindow(QMainWindow* parent)
-	: parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::LoginWindowClass)
+	: ui(new Ui::LoginWindowClass), parent(dynamic_cast<MainWindow*>(parent))
 {
 	ui->setupUi(this);
 	connect(ui->loginBtn, SIGNAL(clicked()), this, SLOT(loginUser()));
 	connect(ui->registerBtn, SIGNAL(clicked()), this, SLOT(registerUser()));
 }
 void LoginWindow::loginUser() {
-	qDebug() << "Login";
 	LoginWindow::login = ui->loginEdit->text();
 	LoginWindow::password = ui->passwordEdit->text();
 	parent->login = login;
@@ -16,7 +15,6 @@ void LoginWindow::loginUser() {
 	{
 		openMainWindow();
 		parent->isLogin = true;
-
 	}
 	else 
 		ui->errorLbl->setText("Don't correct login or password");
@@ -48,11 +46,11 @@ bool LoginWindow::registerValid()
 		QMessageBox::critical(this, tr("Error"), tr("The username or password is not entered correctly"));
 	return false;
 }
-const QString LoginWindow::getHashedPassword(const QString& login, const QString& password)
+const QString LoginWindow::getHashedPassword(const QString& l_login)
 {
 	if (isValidLogin()) {
 		query.prepare("SELECT hashedPassword  FROM users where login=:login");
-		query.bindValue(":login", login);
+		query.bindValue(":login", l_login);
 		query.exec();
 		query.first();
 		auto hashedPassword = query.value(0).toString();
@@ -69,27 +67,27 @@ bool LoginWindow::isValidLogin()  {
 		else return true;
 	}				
 }
-bool LoginWindow::isValid(const QString& login, const QString& password)
+bool LoginWindow::isValid(const QString& l_login, const QString& l_password)
 {
-	if (login.isEmpty() and password.isEmpty())
+	if (l_login.isEmpty() and l_password.isEmpty())
 		return true;
 	return false;
 }
-bool LoginWindow::isValid(const QString& login, const QString& password, const QString& role, const QString& name, const QString& surname)
+bool LoginWindow::isValid(const QString& l_login, const QString& l_password, const QString& l_role, const QString& l_name, const QString& l_surname)
 {
-	if (login.isEmpty() and password.isEmpty() and role.isEmpty() and name.isEmpty() and surname.isEmpty())
+	if (l_login.isEmpty() and l_password.isEmpty() and l_role.isEmpty() and l_name.isEmpty() and l_surname.isEmpty())
 		return false;
 	return true;
 }
-bool LoginWindow::isValidPassword(const QString& login, const QString& password)
+bool LoginWindow::isValidPassword(const QString& l_login, const QString& l_password)
 {
-	const auto hashedPassword = getHashedPassword(login, password);
+	const auto hashedPassword = getHashedPassword(l_login);
 	if (hashedPassword.isEmpty()) return false;
 	else {
 		query.prepare("SELECT (hashedPassword =crypt(:password, :hashedPassword)) AS password_match FROM users WHERE login =:login");
-		query.bindValue(":password", password);
+		query.bindValue(":password", l_password);
 		query.bindValue(":hashedPassword", hashedPassword);
-		query.bindValue(":login", login);
+		query.bindValue(":login", l_login);
 		query.exec();
 		query.first();
 		if (query.value(0).toString() == "true") return true;

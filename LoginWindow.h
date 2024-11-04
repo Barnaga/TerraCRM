@@ -9,7 +9,10 @@ class LoginWindow : public QMainWindow
 
 public:
 	explicit LoginWindow(QMainWindow *parent = nullptr);
-	
+	LoginWindow(LoginWindow& r) = delete;
+	LoginWindow(LoginWindow&& r) = delete;
+	LoginWindow& operator=(const LoginWindow& r) = delete;
+	LoginWindow& operator=(const LoginWindow&& r) = delete;
 	~LoginWindow();
 private slots:
 	void loginUser();
@@ -24,10 +27,10 @@ private:
 	QString surname;
 
 	QSqlQuery query;
-	const QString getHashedPassword(const QString& login, const QString& password);
+	const QString getHashedPassword(const QString& login);
 	bool isValid(const QString& login, const QString& password);
 	bool isValid(const QString& login, const QString& password, const QString& role, const QString& name, const QString& surname);
-	bool isValidLogin();;
+	bool isValidLogin();
 	bool isValidPassword(const QString& login, const QString& password);
 	bool registerValid();
 	void openMainWindow();

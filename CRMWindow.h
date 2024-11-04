@@ -18,14 +18,18 @@ class CRMWindow : public QWidget
 public:
 	explicit CRMWindow(QWidget*parent = nullptr);
 	~CRMWindow();
+	CRMWindow(CRMWindow& r) = delete;
+	CRMWindow(CRMWindow&& r) = delete;
+	CRMWindow& operator=(const CRMWindow& r) = delete;
+	CRMWindow& operator=(const CRMWindow&& r) = delete;
 private slots:
-	void openDeal(const QModelIndex);
+	void openDeal(const QModelIndex&);
 private:
 	Ui::CRMWindowClass* ui;
 	QMainWindow* parent;
 	QTableView* view;
 	QSqlRelationalTableModel* model;
-
+	QVector<QString> data;
 	void createModel();
 	void createView();
 	

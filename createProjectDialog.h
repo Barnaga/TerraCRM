@@ -12,7 +12,7 @@ class createProjectDialog : public QDialog
 	Q_OBJECT
 
 public:
-	createProjectDialog(QWidget* parent = nullptr, QSqlRelationalTableModel* model = nullptr, QString id = "");
+	explicit createProjectDialog(QWidget* parent = nullptr, QSqlRelationalTableModel* model = nullptr, QString id = "");
 	~createProjectDialog();
 private slots:
 	void create();

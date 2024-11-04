@@ -13,6 +13,14 @@
   <property name="windowTitle">
    <string>FormTask</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	color: rgb(55, 107, 113);
+}
+QButton {
+ border: 1px solid rgb(55, 107, 113);
+}</string>
+  </property>
   <widget class="QLineEdit" name="nameTaskEdit">
    <property name="geometry">
     <rect>

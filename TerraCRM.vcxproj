@@ -123,6 +123,7 @@
     <ClCompile Include="createProjectDialog.cpp" />
     <ClCompile Include="CRMWindow.cpp" />
     <ClCompile Include="DealWidget.cpp" />
+    <ClCompile Include="FinanceForm.cpp" />
     <ClCompile Include="FinanceWindow.cpp" />
     <ClCompile Include="FormTask.cpp" />
     <ClCompile Include="ProjectWidget.cpp" />
@@ -133,11 +134,13 @@
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskWindow.cpp" />
     <ClCompile Include="TeamWindow.cpp" />
+    <ClCompile Include="TransferForm.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="ChangeStatusProjectDialog.ui" />
     <QtUic Include="createProjectDialog.ui" />
     <QtUic Include="CRMWindow.ui" />
     <QtUic Include="DealWidget.ui" />
+    <QtUic Include="FinanceForm.ui" />
     <QtUic Include="FinanceWindow.ui" />
     <QtUic Include="FormTask.ui" />
     <QtUic Include="LoginWindow.ui" />
@@ -155,6 +158,7 @@
     <QtUic Include="Task.ui" />
     <QtUic Include="TaskWindow.ui" />
     <QtUic Include="TeamWindow.ui" />
+    <QtUic Include="TransferForm.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="FormTask.h" />
@@ -165,6 +169,7 @@
     <QtMoc Include="RateDelegate.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="TransferForm.h" />
     <QtMoc Include="TeamWindow.h" />
     <QtMoc Include="Task.h" />
     <QtMoc Include="ProjectWidget.h" />
@@ -174,7 +179,11 @@
     <QtMoc Include="createProjectDialog.h" />
     <QtMoc Include="FinanceWindow.h" />
     <QtMoc Include="ReportWindow.h" />
+    <QtMoc Include="FinanceForm.h" />
     <ClInclude Include="StatusDelegate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

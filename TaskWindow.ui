@@ -23,13 +23,13 @@
    <string notr="true">#centralwidget {
 	background-color: rgb(63, 129, 158);
 }
-.QPushButton, .QMenubar {
+.QPushButton {
 	background-color: rgb(255, 253, 253);
 	border-radius: 5px;
 	padding: 10px 10px;
 	color: rgb(55, 107, 113);
 }
-.QPushButton:hover,  QMenubar:hover {
+.QPushButton:hover {
 	color: rgb(45, 97, 100);
 	border: 1px  solid rgb(55, 107, 113);
 	cursor: pointer;
@@ -37,11 +37,18 @@
 .QLineEdit {
 	padding: 5px;
 	border-radius:5px;
-	color: rgb(55, 107, 113);
+
 }
 .QWidget {
-background-color: rgb(255,253,253);
-padding: 10px 10px;
+	background-color: rgb(255,253,253);
+	padding: 10px 10px;
+	color: rgb(55, 107, 113);
+}
+.QTableView {
+    color: rgb(55, 107, 113);
+    gridline-color: rgb(55, 107, 113);
+    border-color: rgb(55, 107, 113);
+    font: 10px;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -71,6 +78,9 @@ padding: 10px 10px;
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QLabel" name="dateLbl">
+             <property name="styleSheet">
+              <string notr="true">	color: rgb(55, 107, 113);</string>
+             </property>
              <property name="text">
               <string>4 вт</string>
              </property>
@@ -84,6 +94,9 @@ padding: 10px 10px;
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="nameLbl">
+           <property name="styleSheet">
+            <string notr="true">	color: rgb(55, 107, 113);</string>
+           </property>
            <property name="text">
             <string>Задачи</string>
            </property>

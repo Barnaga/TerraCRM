@@ -1,5 +1,5 @@
 #include "DealWidget.h"
-DealWidget::DealWidget(QWidget* parent, QSqlTableModel* model, QVector<QString> data, QModelIndex index)
+DealWidget::DealWidget(QWidget* parent, QSqlTableModel* model, QList<QString> data, const QModelIndex& index)
 	: QDialog(parent), model(model), data(data), index(index)
 {
 	auto timeDeal = data[3] + " - " + data[4];

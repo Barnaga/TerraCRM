@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>DealWidget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+color:rgb(55, 107, 113);
+}</string>
+  </property>
   <widget class="QLabel" name="dealLbl">
    <property name="geometry">
     <rect>

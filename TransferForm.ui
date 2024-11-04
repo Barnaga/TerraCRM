@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TransferFormClass</class>
+ <widget class="QDialog" name="TransferFormClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>961</width>
+    <height>570</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TransferForm</string>
+  </property>
+  <widget class="QPushButton" name="saveBtn">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>360</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>61</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Трансфер</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>911</width>
+     <height>125</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0">
+    <item row="1" column="1">
+     <layout class="QVBoxLayout" name="responsibleLayout">
+      <item>
+       <widget class="QLabel" name="responsibleLbl">
+        <property name="text">
+         <string>Ответственный</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="responsibleBox"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="cashLayout">
+      <item>
+       <widget class="QLabel" name="cashLbl">
+        <property name="text">
+         <string>Сумма</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="cash">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="fromAccountLayout">
+      <item>
+       <widget class="QLabel" name="fromAccountLbl">
+        <property name="text">
+         <string>Со счета</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="fromAccountBox">
+        <item>
+         <property name="text">
+          <string>Наличные</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Расчетный счет</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2" colspan="2">
+     <layout class="QVBoxLayout" name="toAccountLayout">
+      <item>
+       <widget class="QLabel" name="toAccountLbl">
+        <property name="text">
+         <string>На счет</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="toAccuntBox">
+        <item>
+         <property name="text">
+          <string>Расчетный счет</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Наличные</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QVBoxLayout" name="dateLayout">
+      <item>
+       <widget class="QLabel" name="dateLbl">
+        <property name="text">
+         <string>Дата оплаты</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="date">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="2" colspan="2">
+     <layout class="QVBoxLayout" name="stateLayout">
+      <item>
+       <widget class="QLabel" name="stateLbl">
+        <property name="text">
+         <string>Статус проведения</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="stateBox">
+        <item>
+         <property name="text">
+          <string>ДДС</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Не проведен</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="cancelBtn">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>360</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Отменить</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

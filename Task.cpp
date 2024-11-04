@@ -1,7 +1,7 @@
 #include "Task.h"
 
 Task::Task(QWidget* parent, QVector<QString> data, QSqlRelationalTableModel* model, QModelIndex index)
-	: QDialog(parent), data(data), model(model), index(index)
+	: QDialog(parent), index(index), data(data), model(model)
 {
 	ui.setupUi(this);
 

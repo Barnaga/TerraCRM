@@ -8,7 +8,7 @@ class TeamWindow : public QWidget
 	Q_OBJECT
 
 public:
-	TeamWindow(QWidget *parent = nullptr);
+	explicit TeamWindow(QWidget *parent = nullptr);
 	~TeamWindow();
 
 private:

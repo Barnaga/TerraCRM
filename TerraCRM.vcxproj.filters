@@ -157,6 +157,15 @@
     <ClCompile Include="TeamWindow.cpp">
       <Filter>Source Files\Team</Filter>
     </ClCompile>
+    <ClCompile Include="FinanceForm.cpp">
+      <Filter>Source Files\Finance</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferForm.cpp">
+      <Filter>Source Files\Finance</Filter>
+    </ClCompile>
+    <ClCompile Include="FinanceForm.cpp">
+      <Filter>Source Files\Finance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ChangeStatusProjectDialog.h">
@@ -204,6 +213,15 @@
     <QtMoc Include="TeamWindow.h">
       <Filter>Header Files\Team</Filter>
     </QtMoc>
+    <QtMoc Include="FinanceForm.h">
+      <Filter>Header Files\Finance</Filter>
+    </QtMoc>
+    <QtMoc Include="TransferForm.h">
+      <Filter>Header Files\Finance</Filter>
+    </QtMoc>
+    <QtMoc Include="FinanceForm.h">
+      <Filter>Header Files\Finance</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="TeamWindow.ui">
@@ -248,10 +266,19 @@
     <QtUic Include="ReportWindow.ui">
       <Filter>Form Files\Report</Filter>
     </QtUic>
+    <QtUic Include="FinanceForm.ui">
+      <Filter>Form Files\Finance</Filter>
+    </QtUic>
+    <QtUic Include="TransferForm.ui">
+      <Filter>Form Files\Finance</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StatusDelegate.h">
       <Filter>Header Files\Delegates</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

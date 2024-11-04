@@ -20,8 +20,12 @@
 .QTabWidget::pane {
 	color: rgb(255, 255, 253);
 }
+QTabBar::tab {
+			color: rgb(55, 107, 113);
+}
 .QTabWidget::tab-bar {
         left: 5px;
+
 }
  .QLabel {
 	font-size: 25px;
@@ -37,7 +41,9 @@
 	border-radius: 5px;
 	padding: 10px 10px;
 }
-
+QComboBox {
+	color: rgb(55, 107, 113);
+}
 .QLineEdit {
 	padding: 5px;
 	border-radius:5px;
@@ -317,7 +323,7 @@
          <attribute name="title">
           <string>Регистрация</string>
          </attribute>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>35</x>

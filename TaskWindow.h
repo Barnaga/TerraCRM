@@ -15,6 +15,10 @@ class TaskWindow : public QWidget
 public:
 	explicit TaskWindow(MainWindow *parent = nullptr);
 	~TaskWindow();
+	TaskWindow(TaskWindow& r) = delete;
+	TaskWindow(TaskWindow&& r) = delete;
+	TaskWindow& operator=(const TaskWindow& r) = delete;
+	TaskWindow& operator=(const TaskWindow&& r) = delete;
 public slots:
 	void createTaskBtn();
 
@@ -26,7 +30,9 @@ private:
 	QSqlRelationalTableModel* model;
 	FormTask* formTask;
 	QTableView* view;
+	QList<QString> user;
 	Task* task;
+	QList<QString> data;
 	void createModel();
 	void createConnections();
 	void createView();

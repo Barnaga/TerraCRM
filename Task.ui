@@ -19,7 +19,11 @@
 }
 TaskClass {
 	background-color: rgb(240, 240, 240);
-}</string>
+}
+QWidget {
+	color: rgb(55, 107, 113);
+}
+</string>
   </property>
   <widget class="QComboBox" name="statusBox">
    <property name="geometry">

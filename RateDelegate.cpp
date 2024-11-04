@@ -1,16 +1,13 @@
 #include "RateDelegate.h"
 #include <QPainter>
 #include <QAbstractItemView>
-#include <QComboBox>
-#include <qmessagebox.h>
 RateDelegate::RateDelegate(QObject* parent):QStyledItemDelegate(parent)
 {
 }
 
 void RateDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {	
-	QAbstractItemView* tableView;
-	if (tableView = qobject_cast<QAbstractItemView*>(this->parent())) {
+	if (auto tableView = qobject_cast<QAbstractItemView*>(this->parent())) {
 		if (index.data().toString() == "Сделать")
 		{
 			painter->fillRect(option.rect, Qt::red);
@@ -37,7 +34,7 @@ void RateDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, 
 }
 QSize RateDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
-	return QSize();
+	return QStyledItemDelegate::sizeHint(option, index);
 }
 void RateDelegate::commitAndCloseEditor() {
 

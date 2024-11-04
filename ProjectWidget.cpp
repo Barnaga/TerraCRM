@@ -1,10 +1,10 @@
 #include "ProjectWidget.h"
 
-ProjectWidget::ProjectWidget(QWidget *parent, QVector<QString> data, QSqlRelationalTableModel* model, QModelIndex index)
-	: QDialog(parent), model(model), data(data), index(index)
+ProjectWidget::ProjectWidget(QWidget* parent, QList<QString> data, QSqlRelationalTableModel* model, QModelIndex index, int id)
+	: QDialog(parent), model(model), data(data), index(index), id(id)
 {
 	ui.setupUi(this);
-	auto time = data[4] +" - "+ data[11];
+	auto time = data[4] + " - " + data[11];
 	ui.dealLbl->setText(data[1]);
 	ui.date->setText(time);
 	ui.costLbl->setText(data[5]);
@@ -13,19 +13,21 @@ ProjectWidget::ProjectWidget(QWidget *parent, QVector<QString> data, QSqlRelatio
 	if (data[4] < data[11]) {
 		model->setData(model->index(index.row(), 2), "Просрочен");
 	}
+	createConnections();
 	getClient();
 	getStatus();
 	currentIndex = ui.stageBox->currentIndex();
+	
+}
+void ProjectWidget::createConnections() {
 	connect(ui.stageBox, SIGNAL(currentIndexChanged(int)), this, SLOT(saveIndex(int)));
 	connect(ui.doneBtn, SIGNAL(clicked()), this, SLOT(completeProject()));
 	connect(ui.saveBtn, SIGNAL(clicked()), this, SLOT(updateStatus()));
 }
-void ProjectWidget::getClient() // переписать под id projecta
+void ProjectWidget::getClient()
 {
-	qDebug() << data[0];
-	if (query.prepare("SELECT * FROM \"executorsProjects\" WHERE project=:project")) {
-		query.bindValue(":project", data[0]);
-	
+	if (query.prepare("SELECT * FROM contacts WHERE \"id\" = :id")) {
+		query.bindValue(":id", data[14]);
 		if (query.exec()) {
 			while (query.next()) {
 				ui.nameCompanyLbl->setText(query.value(1).toString());
@@ -34,8 +36,9 @@ void ProjectWidget::getClient() // переписать под id projecta
 			}
 		}
 	}
+
 	else {
-		qDebug()<<query.lastError();
+		qDebug() << query.lastError() << " error";
 	}
 }
 void ProjectWidget::saveIndex(int index) {
@@ -75,6 +78,8 @@ ProjectWidget::~ProjectWidget()
 
 void ProjectWidget::completeProject()
 {
-		ChangeStatusProjectDialog* dialog = new ChangeStatusProjectDialog(this, model, index);
-		dialog->show();
+	ChangeStatusProjectDialog* dialog = new ChangeStatusProjectDialog(this, model, index);
+	dialog->show();
 }
+
+

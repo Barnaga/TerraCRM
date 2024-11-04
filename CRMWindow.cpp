@@ -1,13 +1,12 @@
 #include "CRMWindow.h"
 CRMWindow::CRMWindow(QWidget* parent) 
-	: parent(dynamic_cast<MainWindow*>(parent)),
-	ui(new Ui::CRMWindowClass),
+	: ui(new Ui::CRMWindowClass), parent(dynamic_cast<MainWindow*>(parent)),
 	model(new QSqlRelationalTableModel)
 {
 	ui->setupUi(this);
 	createModel();
 	createView();
-	connect(view, SIGNAL(clicked(const QModelIndex)), this, SLOT(openDeal(const QModelIndex)));
+	connect(view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(openDeal(const QModelIndex&)));
 	ui->dateLbl->setText("Сегодня " + QDateTime::currentDateTime().toString("dd.MM.yyyy"));
 }
 void CRMWindow::createModel() {
@@ -35,17 +34,16 @@ void CRMWindow::createView() {
 	view->setModel(model);
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->setColumnHidden(0, true);
+	view->setColumnHidden(10, true);
 	ui->crmLayout->addWidget(view);
 }
 CRMWindow::~CRMWindow()
 {}
 
-void CRMWindow::openDeal(const QModelIndex index) {
-	QVector<QString> data;
+void CRMWindow::openDeal(const QModelIndex& index) {
+	
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
-	{
 		data.append(index.model()->index(index.row(), i).data().toString());
-	}
-	DealWidget* deal = new DealWidget(this, model, data, index);
+	auto deal = new DealWidget(this, model, data, index);
 	deal->show();
 }

@@ -1,13 +1,13 @@
+#include <QToolbar>
+#include <QAction>
 #include "MainWindow.h"
 #include "LoginWindow.h"
 #include "CRMWindow.h"
 #include "TaskWindow.h"
-#include "ProjectWindow.h";
-#include "FinanceWindow.h";
-#include "TeamWindow.h";
-#include "ReportWindow.h";
-#include <QToolbar>
-#include <QAction>
+#include "ProjectWindow.h"
+#include "FinanceWindow.h"
+#include "TeamWindow.h"
+#include "ReportWindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -82,7 +82,6 @@ QList<QString> MainWindow::getUser()
     QSqlQuery query;
     query.prepare("SELECT name, surname, login, id, role FROM users WHERE login= :login");
     query.bindValue(":login", login);
-    qDebug()<< query.exec()<<query.first();
     if (query.exec() && query.first()) {
         name = query.value(0).toString();
         surname = query.value(1).toString();
@@ -91,6 +90,7 @@ QList<QString> MainWindow::getUser()
         role = query.value(4).toString();
         return QList<QString>{name, surname, login, id, role};
     }
+    return QList<QString>{"","","","",""};
 }
 
 void MainWindow::createMenu()

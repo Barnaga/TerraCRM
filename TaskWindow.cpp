@@ -25,7 +25,7 @@ void TaskWindow::createModel()
 	model->setRelation(model->fieldIndex("executorTask"), QSqlRelation("users", "id", "name"));
 	model->setRelation(model->fieldIndex("project"), QSqlRelation("project", "id", "name"));
 	model->setEditStrategy(QSqlTableModel::OnFieldChange);
-	QList<QString> user = parent->getUser();
+	user = parent->getUser();
 
 	if (user[4] == "Leader") 
 		model->select();
@@ -54,11 +54,11 @@ void TaskWindow::createView() {
 	view->setColumnHidden(9, true);
 	view->setColumnHidden(10, true);
 	ui->tasksLayout->addWidget(view);
-	if (!formTask) formTask = new FormTask(this, model, parent->getUser()[3].toInt());
+	if (!formTask) formTask = new FormTask(this, model, user[3].toInt());
 }
 void TaskWindow::openTask(const QModelIndex index)
 {
-	QVector<QString> data;
+	
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
 	task = new Task(this, data, model, index);
@@ -67,6 +67,6 @@ void TaskWindow::openTask(const QModelIndex index)
 }
 void TaskWindow::createTaskBtn()
 {
-	formTask = new FormTask(this, model, parent->getUser()[3].toInt());
+	formTask = new FormTask(this, model, user[3].toInt());
 	formTask->show();
 }
