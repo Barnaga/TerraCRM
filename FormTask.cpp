@@ -35,8 +35,10 @@ void FormTask::addData()
 		model->setData(model->index(row, 10), project);
 	}
 	else ui->warningLbl->setEnabled(true);
+
 	model->submitAll();
 	model->select();
+
 }
 FormTask::~FormTask()
 {}

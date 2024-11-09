@@ -12,7 +12,7 @@ class FinanceForm : public QDialog
 	Q_OBJECT
 
 public:
-	FinanceForm(QWidget *parent = nullptr, const QString& lbl="", QSqlRelationalTableModel* model= nullptr, QString sign="");
+	FinanceForm(QWidget *parent = nullptr, const QString& lbl="", QSqlRelationalTableModel* model= nullptr, const QString& sign="");
 	~FinanceForm();
 	FinanceForm(FinanceForm& r) = delete;
 	FinanceForm(FinanceForm&& r) = delete;

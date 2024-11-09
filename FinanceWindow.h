@@ -1,5 +1,7 @@
 #pragma once
 #include <QWidget>
+#include <QSqlRecord>
+#include <QSqlField>
 #include <MainWindow.h>
 #include <FinanceForm.h>
 #include <TransferForm.h>
@@ -15,19 +17,21 @@ public:
 	FinanceWindow(FinanceWindow&& r) = delete;
 	FinanceWindow& operator=(const FinanceWindow& r) = delete;
 	FinanceWindow& operator=(const FinanceWindow&& r) = delete;
+
+	
 private slots:
-	void addProfitAccount();
-	void addLossAccount();
+	void addProfitAmount();
+	void addLossAmount();
 	void addTransfer();
+
 private:
 	Ui::FinanceWindowClass* ui;
 	MainWindow* parent;
 	QSqlRelationalTableModel* model;
 	QTableView* view;
+	QSqlQuery query;
+	int amount;
 	void createModel();
 	void createView();
 	void createConnections();
-	void getAccount();
-
-
 };
