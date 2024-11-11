@@ -67,3 +67,4 @@ void FinanceForm::getData(const QString& table, const int& column, QComboBox* bo
 	}
 }
 
+

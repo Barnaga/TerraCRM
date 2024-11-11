@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QSqlRelationalTableModel>
 #include <QSqlQuery>
+
 #include <QSqlError>
 #include <QDateTime>
 #include "ui_FinanceForm.h"

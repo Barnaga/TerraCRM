@@ -94,18 +94,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="fromAccountBox">
-        <item>
-         <property name="text">
-          <string>Наличные</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Расчетный счет</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="fromAccountBox"/>
       </item>
      </layout>
     </item>
@@ -119,18 +108,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="toAccuntBox">
-        <item>
-         <property name="text">
-          <string>Расчетный счет</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Наличные</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="toAccountBox"/>
       </item>
      </layout>
     </item>
@@ -165,18 +143,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="stateBox">
-        <item>
-         <property name="text">
-          <string>ДДС</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Не проведен</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="stateBox"/>
       </item>
      </layout>
     </item>
