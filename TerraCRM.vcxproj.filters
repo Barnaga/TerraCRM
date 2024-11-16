@@ -157,10 +157,10 @@
     <ClCompile Include="TeamWindow.cpp">
       <Filter>Source Files\Team</Filter>
     </ClCompile>
-    <ClCompile Include="FinanceForm.cpp">
+    <ClCompile Include="TransferForm.cpp">
       <Filter>Source Files\Finance</Filter>
     </ClCompile>
-    <ClCompile Include="TransferForm.cpp">
+    <ClCompile Include="FinanceForm.cpp">
       <Filter>Source Files\Finance</Filter>
     </ClCompile>
     <ClCompile Include="FinanceForm.cpp">

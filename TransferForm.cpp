@@ -4,12 +4,22 @@ TransferForm::TransferForm(QWidget* parent)
 	: QDialog(parent), ui(new Ui::TransferFormClass), model(new QSqlTableModel)
 {
 	ui->setupUi(this);
-	ui->date->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy"));
+	query = new QSqlQuery;
 	createModel();
+	createView();
+	createConnections();
+
+}
+void TransferForm::createView()
+{
+	ui->date->setText(QDateTime::currentDateTime().toString("dd.MM.yyyy"));
 	getData("accounts", 2, ui->fromAccountBox, ui->toAccountBox);
 	getData("users", 5, ui->responsibleBox);
-	//getData("accounts", 2, ui->toAccountBox);
 	getData("\"articleEvent\"", 1, ui->stateBox);
+	msgBox = new QMessageBox;
+}
+void TransferForm::createConnections()
+{
 	connect(ui->saveBtn, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(this, SIGNAL(accepted()), this, SLOT(addData()));
 	connect(ui->fromAccountBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCurrentIndex(int)));
@@ -23,18 +33,16 @@ void TransferForm::createModel() {
 	model->setHeaderData(5, Qt::Horizontal, "Куда");
 	model->setHeaderData(6, Qt::Horizontal, "Статья");
 	model->setEditStrategy(QSqlTableModel::OnFieldChange);
-	model->select();
-	
+	model->select();	
 }
 TransferForm::~TransferForm()
 {}
-
 void TransferForm::getData(const QString& table, const int& column, QComboBox* main, QComboBox* secondary)
-{
-	query.prepare("SELECT * FROM " + table);
-	if (query.exec()) {
-		QSqlQueryModel* qModel = new QSqlQueryModel(this);
-		qModel->setQuery(query);
+{	
+	query->prepare("SELECT * FROM " + table);
+	if (query->exec()) {
+		auto qModel = new QSqlQueryModel;
+		qModel->setQuery(*query);
 		main->setModel(qModel);
 		main->setModelColumn(column);
 		if (secondary != nullptr) {
@@ -46,36 +54,37 @@ void TransferForm::getData(const QString& table, const int& column, QComboBox* m
 }
 void TransferForm::updateAccount()
 {	
-	auto balance = ui->cash->text().toInt();
-	auto toid = ui->toAccountBox->model()->index(ui->toAccountBox->currentIndex(), 0).data().toInt(); 
-	auto fromid = ui->fromAccountBox->model()->index(ui->fromAccountBox->currentIndex(), 0).data().toInt();
-	auto cash=getBalance(fromid);
-	auto payment= getBalance(toid);
-	updateQuery(balance, cash, fromid, true);
-	updateQuery(balance, payment, toid, false);
-
+	auto currentBalance = ui->cash->text().toInt();
+	auto fromId = ui->fromAccountBox->model()->index(ui->fromAccountBox->currentIndex(), 0).data().toInt();
+	auto toId = ui->toAccountBox->model()->index(ui->toAccountBox->currentIndex(), 0).data().toInt();
+	auto fromCash = ui->fromAccountBox->model()->index(ui->fromAccountBox->currentIndex(), 3).data().toInt();
+	auto toCash = ui->toAccountBox->model()->index(ui->toAccountBox->currentIndex(), 3).data().toInt();
+	updateQuery(fromCash, toCash, currentBalance, fromId, toId);
 }
-int TransferForm::getBalance(const int& id)
+void TransferForm::updateQuery(const int& fromCash, const int& toCash, const int& currentBalance, const int& fromId, const int& toId)
 {
-	QSqlQuery q;
-	q.prepare("Select balance from accounts where id=:id");
-	q.bindValue(":id", id);
-	q.exec();
-	q.first();
-	return q.value(0).toInt();
-}
-void TransferForm::updateQuery(const int& balance, const int& cash, const int& id, bool flag)
-{
-	int sum;
-	if (flag) {
-		sum = cash - balance;
+	int changeCash, changePayment;
+	if (currentBalance < 0) {
+		msgBox->setText("Введено отрицательное число");
+		msgBox->exec();
 	}
-	else sum= cash + balance;
-	QSqlQuery query;
-	query.prepare("UPDATE accounts SET balance=:balance where id=:id");
-	query.bindValue(":balance", sum);
-	query.bindValue(":id", id);
-	query.exec();
+	else if (currentBalance > fromCash) {
+		msgBox->setText("Не хватает средств для трансфера");
+		msgBox->exec();
+	}
+	else if (currentBalance > 0 and currentBalance<= fromCash) {
+		changeCash = fromCash - currentBalance;
+		changePayment = toCash + currentBalance;
+		changeQuery(changeCash, fromId);
+		changeQuery(changePayment, toId);
+	}		
+}
+void TransferForm::changeQuery(const int& changeCash, const int& id)
+{
+	query->prepare("UPDATE accounts SET balance=:balance where id=:id");
+	query->bindValue(":balance", changeCash);
+	query->bindValue(":id", id);
+	query->exec();
 }
 void TransferForm::addData()
 {
@@ -94,15 +103,10 @@ void TransferForm::addData()
 		model->setData(model->index(row, 4), fromAccount);
 		model->setData(model->index(row, 5), toAccount);
 		model->setData(model->index(row, 6), state);
-	
 	}
-	//for (auto i = 0; i < model->rowCount(); ++i) {
-	//	qDebug() << model->index(row, i).data();
-	//}
 	model->submitAll();
 	model->select();
 	updateAccount();
-	qDebug() << model->lastError();
 }
 
 void TransferForm::changeCurrentIndex(int index)

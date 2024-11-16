@@ -13,54 +13,58 @@
   <property name="windowTitle">
    <string>FinanceWindow</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="financeLbl">
-       <property name="text">
-        <string>Деньги</string>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="financeLbl">
+         <property name="text">
+          <string>Деньги</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="spendingBTn">
+         <property name="text">
+          <string>Расход</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="receiptBTn">
+         <property name="text">
+          <string>Поступление</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="transferBtn">
+         <property name="text">
+          <string>Трансфер</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="spendingBTn">
-       <property name="text">
-        <string>Расход</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="receiptBTn">
-       <property name="text">
-        <string>Поступление</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="transferBtn">
-       <property name="text">
-        <string>Трансфер</string>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="financeLayout"/>
      </item>
     </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="financeLayout"/>
    </item>
   </layout>
  </widget>

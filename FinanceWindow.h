@@ -18,7 +18,6 @@ public:
 	FinanceWindow& operator=(const FinanceWindow& r) = delete;
 	FinanceWindow& operator=(const FinanceWindow&& r) = delete;
 
-	
 private slots:
 	void addProfitAmount();
 	void addLossAmount();
@@ -29,8 +28,6 @@ private:
 	MainWindow* parent;
 	QSqlRelationalTableModel* model;
 	QTableView* view;
-	QSqlQuery query;
-	int amount;
 	void createModel();
 	void createView();
 	void createConnections();
