@@ -1,7 +1,8 @@
 #include "FinanceWindow.h"
 
 FinanceWindow::FinanceWindow(MainWindow* parent)
-	: ui(new Ui::FinanceWindowClass), parent(dynamic_cast<MainWindow*>(parent)), model(new QSqlRelationalTableModel), view(new QTableView)
+	: ui(new Ui::FinanceWindowClass), parent(dynamic_cast<MainWindow*>(parent)),
+	model(new QSqlRelationalTableModel), view(new QTableView)
 {
 	ui->setupUi(this);
 	createModel();
