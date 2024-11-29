@@ -17,23 +17,28 @@ class ProjectWidget : public QDialog
 	Q_OBJECT
 
 public:
-	ProjectWidget(QWidget *parent = nullptr, QList<QString> data={}, QSqlRelationalTableModel* model=nullptr, QModelIndex index={}, int id=-1);
+	explicit ProjectWidget(QWidget *parent = nullptr, QStringList data={}, QSqlRelationalTableModel* model= nullptr, const QModelIndex index={});
+
+	ProjectWidget(ProjectWidget& r) = delete;
+	ProjectWidget(ProjectWidget&& r) = delete;
+	ProjectWidget& operator=(const ProjectWidget& r) = delete;
+	ProjectWidget& operator=(const ProjectWidget&& r) = delete;
 	~ProjectWidget();
 private slots:
 	void updateStatus();
 	void saveIndex(int);
 	void completeProject();
 private:
-
-	Ui::ProjectWidgetClass ui;
+	Ui::ProjectWidgetClass* ui;
 	QSqlRelationalTableModel* model;
-	QList<QString> data;
-	QModelIndex index;
-	QSqlQuery query;
-	int id;
-	int temp;
+	QSqlQuery* query;
+	QStringList data;
+	const QModelIndex index;
+	int tempIndex;
 	int currentIndex;
 	void createConnections();
 	void getClient();
 	void getStatus();
+	void createView();
+	void isDeadline();
 };

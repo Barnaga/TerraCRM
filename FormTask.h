@@ -11,9 +11,9 @@
 class FormTask : public QDialog
 {
 	Q_OBJECT
-
 public:
-	explicit FormTask(QWidget *parent = nullptr, QSqlRelationalTableModel* model= nullptr, int id =-1);
+	explicit FormTask(QWidget* parent = nullptr, QSqlRelationalTableModel* model = nullptr, int id = -1);
+	
 	~FormTask();
 	FormTask(FormTask& r) = delete;
 	FormTask(FormTask&& r) = delete;
@@ -25,9 +25,9 @@ private slots:
 private:
 	Ui::FormTaskClass* ui;
 	QSqlTableModel* model;
-	
-	QSqlQuery query;
+	QSqlQuery* query;
 	void createDataComboBox();
+	void createConnections();
 	int id;
 	int idProject;
 };

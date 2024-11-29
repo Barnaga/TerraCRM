@@ -11,7 +11,7 @@
 	Q_OBJECT
 
 public:
-	explicit Task(QWidget* parent = nullptr, QVector<QString> data = {}, QSqlRelationalTableModel* model=nullptr, QModelIndex index={});
+	explicit Task(QWidget* parent = nullptr, QStringList data = {}, QSqlRelationalTableModel* model=nullptr, const QModelIndex& index={});
 	~Task();
 	Task(Task& r) = delete;
 	Task(Task&& r) = delete;
@@ -20,13 +20,13 @@ public:
 private slots:
 	void updateStatus(int);
 private:
-	Ui::TaskClass ui;
-	QString id; 
-	QModelIndex index;
-	 int currentIndex;
-	QVector<QString> data;
+	Ui::TaskClass* ui;
+	QSqlRelationalTableModel* model;
+	const QModelIndex& index;
+	QString id;
+	int currentIndex;
+	QStringList data;
 	void getStatus();
 	void isDeadline();
-	QSqlQuery query;
-	QSqlRelationalTableModel* model;
-};
+	void createView();
+ };

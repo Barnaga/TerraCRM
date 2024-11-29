@@ -23,10 +23,10 @@ private slots:
 	void addData();
 	void getDataSecondary();
 private:
-	Ui::FinanceFormClass* ui;
-	QSqlRelationalTableModel* model;
-	QSqlQuery* query;
-	QMessageBox* msgBox;
+	std::unique_ptr<Ui::FinanceFormClass> ui;
+	std::unique_ptr<QSqlRelationalTableModel> model;
+	std::unique_ptr<QSqlQuery> query;
+	std::unique_ptr<QMessageBox> msgBox;
 	const QString& lbl;
 	QString sign;
 	void createConnections();

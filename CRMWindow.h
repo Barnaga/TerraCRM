@@ -5,12 +5,6 @@
 #include "ui_CRMWindow.h"
 #include "DealWidget.h"
 #include <QSqlRelationalTableModel>
-enum class Deals {
-	NewRequests,
-	InitialNegolation,
-	ApprovalDocuments,
-	CompletionDeal
-};
 
 class CRMWindow : public QWidget
 {
@@ -29,7 +23,6 @@ private:
 	QMainWindow* parent;
 	QTableView* view;
 	QSqlRelationalTableModel* model;
-	QVector<QString> data;
 	void createModel();
 	void createView();
 	

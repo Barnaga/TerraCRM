@@ -1,11 +1,12 @@
 #include "FinanceForm.h"
 
 FinanceForm::FinanceForm(QWidget* parent, const QString& lbl, QSqlRelationalTableModel* model, const QString& sign)
-	: QDialog(parent), ui(new Ui::FinanceFormClass), model(model), lbl(lbl), sign(sign)
+	: QDialog(parent), ui(std::make_unique<Ui::FinanceFormClass>()),
+	model(model), lbl(lbl), sign(sign)
 {
 	ui->setupUi(this);
-	query = new QSqlQuery;
-	msgBox = new QMessageBox;
+	query = std::make_unique<QSqlQuery>();
+	msgBox = std::make_unique<QMessageBox>();
 	createView(lbl);
 	createConnections();
 }
@@ -71,9 +72,6 @@ void FinanceForm::addData()
 		}
 	}
 	else ui->warningLbl->setEnabled(true);
-
-	model->submitAll();
-	model->select();
 	if (model->submitAll() and model->select())
 		updateAccount(cash);
 	else return;

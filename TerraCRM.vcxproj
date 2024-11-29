@@ -129,11 +129,9 @@
     <ClCompile Include="ProjectWidget.cpp" />
     <ClCompile Include="ProjectWindow.cpp" />
     <ClCompile Include="RateDelegate.cpp" />
-    <ClCompile Include="ReportWindow.cpp" />
     <ClCompile Include="StatusDelegate.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskWindow.cpp" />
-    <ClCompile Include="TeamWindow.cpp" />
     <ClCompile Include="TransferForm.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="ChangeStatusProjectDialog.ui" />
@@ -154,10 +152,8 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="ProjectWidget.ui" />
     <QtUic Include="ProjectWindow.ui" />
-    <QtUic Include="ReportWindow.ui" />
     <QtUic Include="Task.ui" />
     <QtUic Include="TaskWindow.ui" />
-    <QtUic Include="TeamWindow.ui" />
     <QtUic Include="TransferForm.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="TransferForm.h" />
-    <QtMoc Include="TeamWindow.h" />
     <QtMoc Include="Task.h" />
     <QtMoc Include="ProjectWidget.h" />
     <QtMoc Include="DealWidget.h" />
@@ -178,7 +173,6 @@
     <QtMoc Include="ChangeStatusProjectDialog.h" />
     <QtMoc Include="createProjectDialog.h" />
     <QtMoc Include="FinanceWindow.h" />
-    <QtMoc Include="ReportWindow.h" />
     <QtMoc Include="FinanceForm.h" />
     <ClInclude Include="StatusDelegate.h" />
   </ItemGroup>

@@ -41,9 +41,10 @@ CRMWindow::~CRMWindow()
 {}
 
 void CRMWindow::openDeal(const QModelIndex& index) {
-	
+	QList<QString> data;
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
 	auto deal = new DealWidget(this, model, data, index);
 	deal->show();
+	data.clear();
 }

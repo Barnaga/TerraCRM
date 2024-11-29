@@ -1,11 +1,15 @@
 #include "FormTask.h"
 
 FormTask::FormTask(QWidget* parent, QSqlRelationalTableModel* model, int id)
-	: QDialog(parent), ui(new Ui::FormTaskClass), model(model), id(id)
+	: QDialog(parent), ui(new Ui::FormTaskClass), model(model), id(id), query(new QSqlQuery)
 {
 	ui->setupUi(this);
 	ui->warningLbl->hide();
 	createDataComboBox();
+	createConnections();
+}
+void FormTask::createConnections()
+{
 	connect(ui->projectBox, SIGNAL(activated(int)), this, SLOT(getProjects()));
 	connect(ui->saveBtn, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(ui->saveCreateBtn, SIGNAL(clicked()), this, SLOT(addData()));
@@ -20,7 +24,7 @@ void FormTask::addData()
 	const auto& date = QDateTime::currentDateTime().toString("yyyy-MM-dd");
 	const auto& priority = ui->priority->currentText();
 	const auto& deadline = ui->deadline->selectedDate();
-	const auto& project = query.value(idProject);
+	const auto& project = query->value(idProject);
 	const auto& row = model->rowCount();
 	
 	if (!name.isEmpty() and model->insertRow(row)) {
@@ -38,19 +42,18 @@ void FormTask::addData()
 
 	model->submitAll();
 	model->select();
-
 }
 FormTask::~FormTask()
 {}
 void FormTask::createDataComboBox() {
-	query.prepare("SELECT * FROM project");
-	query.exec();
-	QSqlQueryModel* qModel = new QSqlQueryModel(this);
-	qModel->setQuery(query);
+	query->prepare("SELECT * FROM project");
+	query->exec();
+	auto* qModel = new QSqlQueryModel;
+	qModel->setQuery(*query);
 	ui->projectBox->setModel(qModel);
 	ui->projectBox->setModelColumn(1);
 }
 void FormTask::getProjects()
 {
-	idProject = query.record().indexOf("id");
+	idProject = query->record().indexOf("id");
 }

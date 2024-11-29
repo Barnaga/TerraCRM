@@ -15,15 +15,15 @@ public:
 	explicit ProjectWindow(MainWindow* parent = nullptr);
 	~ProjectWindow();
 private slots:
-	void openProject(const QModelIndex index);
+	void openProject(const QModelIndex);
 	void createProject();
 private:
 	Ui::ProjectWindowClass* ui;
-
 	MainWindow* parent;
 	QTableView* view;
 	QSqlRelationalTableModel* model;
 	ProjectWidget* project;
+	QStringList data;
 	void createModel();
 	void createView();
 	void createConnections();

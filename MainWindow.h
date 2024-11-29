@@ -11,18 +11,17 @@
 
 class MainWindow : public QMainWindow
 {
+   
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     MainWindow(const MainWindow& m) = delete;
     MainWindow(const MainWindow&& m) = delete;
     MainWindow& operator=(const MainWindow& r) = delete;
-    MainWindow& operator=(const MainWindow&& r) = delete;
-    Ui::MainWindowClass* ui;
+    MainWindow& operator=(const MainWindow&& r) = delete;  
     ~MainWindow();
-    QSqlDatabase db;
+    QStringList getUser(); 
     QString login;
-    QList<QString> getUser();
     bool isLogin;
     void createMenu();
 private slots:  
@@ -30,28 +29,21 @@ private slots:
     void openTasks();
     void openProjects();
     void openFinance();
-    void openTeam();
-    void openReport();
     void outApp();
-
 private:
-    QString name, surname,  role, id;
+    Ui::MainWindowClass* ui;
+    QSqlQuery* query;
+    QSqlDatabase db; 
     QToolBar* toolbar;
     QAction* crmBtn;
     QAction* tasksBtn;
     QAction* projectBtn;
     QAction* financeBtn;
-    QAction* teamBtn;
-    QAction* reportBtn;
     QAction* outBtn;
-
     void connectDatabase();
     void setLoginInterface();
     void setCRMInterface();
     void setTasksInterface();
     void setProjectsInterface();
-    void setFinanceInterface();
-    void setTeamInterface();
-    void setReportInterface();
-    
+    void setFinanceInterface();  
 };

@@ -19,9 +19,9 @@ private slots:
 	void createContactBox(int id);
 private:
 	QString id;
-	Ui::createProjectDialogClass ui;
+	Ui::createProjectDialogClass* ui;
 	QSqlRelationalTableModel* model;
 	void getContactID(const int& row);
-	QSqlQuery query;
+	std::unique_ptr<QSqlQuery> query;
 	void createComponyBox();
 };

@@ -252,7 +252,7 @@ QComboBox {
               </size>
              </property>
              <property name="placeholderText">
-              <string>login</string>
+              <string>логин</string>
              </property>
             </widget>
            </item>
@@ -271,7 +271,7 @@ QComboBox {
               </size>
              </property>
              <property name="placeholderText">
-              <string>password</string>
+              <string>пароль</string>
              </property>
             </widget>
            </item>
@@ -307,7 +307,7 @@ QComboBox {
           </layout>
          </widget>
         </widget>
-        <widget class="QWidget" name="tab_2">
+        <widget class="QWidget" name="reg">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -329,12 +329,12 @@ QComboBox {
             <x>35</x>
             <y>30</y>
             <width>222</width>
-            <height>221</height>
+            <height>241</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
-            <widget class="QLineEdit" name="surnameEdit">
+            <widget class="QLineEdit" name="regSurnameEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -359,7 +359,7 @@ QComboBox {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="nameEdit">
+            <widget class="QLineEdit" name="regNameEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -384,7 +384,7 @@ QComboBox {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="loginEdit_2">
+            <widget class="QLineEdit" name="regLoginEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -398,12 +398,12 @@ QComboBox {
               </size>
              </property>
              <property name="placeholderText">
-              <string>login</string>
+              <string>логин</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="passwordEdit_2">
+            <widget class="QLineEdit" name="regPasswordEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -417,12 +417,19 @@ QComboBox {
               </size>
              </property>
              <property name="placeholderText">
-              <string>password</string>
+              <string>пароль</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QLineEdit" name="companyEdit">
+             <property name="placeholderText">
+              <string>компания</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="roleBox">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -437,32 +444,32 @@ QComboBox {
              </property>
              <item>
               <property name="text">
-               <string>Leader</string>
+               <string>Директор</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Administrator</string>
+               <string>Администратор</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Seller</string>
+               <string>Продавец</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Marketer</string>
+               <string>Маркетолог</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Unknown</string>
+               <string>Не определен</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Manager</string>
+               <string>Менеджер</string>
               </property>
              </item>
             </widget>

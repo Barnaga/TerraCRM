@@ -21,22 +21,17 @@ public:
 	TaskWindow& operator=(const TaskWindow&& r) = delete;
 public slots:
 	void createTaskBtn();
-
 	void openTask(const QModelIndex index);
 private:
 	Ui::TaskWindowClass* ui;
-
 	MainWindow* parent;
 	QSqlRelationalTableModel* model;
 	FormTask* formTask;
-	QTableView* view;
-	QList<QString> user;
 	Task* task;
-	QList<QString> data;
+	QTableView* view;
+	QStringList user;
+	QStringList data;
 	void createModel();
 	void createConnections();
 	void createView();
-	
-
-	
 };

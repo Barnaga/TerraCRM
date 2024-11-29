@@ -7,7 +7,6 @@ ProjectWindow::ProjectWindow(MainWindow *parent)
 	createModel();
 	createView();
 	createConnections();
-	ui->dateLbl->setText("Сегодня " + QDateTime::currentDateTime().toString("dd.MM.yyyy"));
 }
 
 ProjectWindow::~ProjectWindow()
@@ -21,7 +20,6 @@ void ProjectWindow::createProject()
 
 void ProjectWindow::createModel()
 {
-	model = new QSqlRelationalTableModel(this);
 	model->setTable("project");
 	model->setHeaderData(1, Qt::Horizontal, "Имя");
 	model->setHeaderData(2, Qt::Horizontal, "Статус");
@@ -29,13 +27,14 @@ void ProjectWindow::createModel()
 	model->setHeaderData(4, Qt::Horizontal, "Начало");
 	model->setHeaderData(11, Qt::Horizontal, "Дедлайн");
 	model->setRelation(model->fieldIndex("manager"), QSqlRelation("users", "id", "name"));
-	model->setEditStrategy(QSqlTableModel::OnFieldChange);
+	model->setEditStrategy(QSqlRelationalTableModel::OnFieldChange);
 	model->setFilter(QString("\"status\" NOT IN (\'Закрыт успешно\', \'Провален\', \'Приостановлен\')"));
 	model->select();
 }
 
 void ProjectWindow::createView()
 {
+	ui->dateLbl->setText("Сегодня " + QDateTime::currentDateTime().toString("dd.MM.yyyy"));
 	view = new QTableView(this);
 	view->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	view->setModel(model);
@@ -54,11 +53,10 @@ void ProjectWindow::createView()
 	ui->projectsLayout->addWidget(view);
 }
 void ProjectWindow::openProject(const QModelIndex index) {
-	QList<QString> data;
+	
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
-	project = new ProjectWidget(this, data, model, index, parent->getUser()[3].toInt());
-
+	project = new ProjectWidget(this, data, model, index);
 	project->show();
 }
 void ProjectWindow::createConnections()

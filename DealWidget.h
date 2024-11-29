@@ -3,6 +3,7 @@
 #include <QDialog>
 #include "ui_DealWidget.h"
 #include <QSqlQuery>
+#include <QSqlError>
 #include <QMessageBox>
 #include <QDate>
 class DealWidget : public QDialog
@@ -15,18 +16,15 @@ public:
 private slots:
 	void updateStatus(int);
 private:
-	Ui::DealWidgetClass ui;
-
+	Ui::DealWidgetClass* ui;
 	QSqlTableModel* model;
-	const QModelIndex& index;
-	QSqlQuery query;
+	const QModelIndex index;
+	QSqlQuery* query;
 	QList<QString> data;
 	QString id;
 	int idProject;
 	int currentIndex;
-
 	void getClient();
 	void getAgent(QString id);
-	void getStatus();
-	
+	void getStatus();	
 };
