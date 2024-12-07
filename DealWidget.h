@@ -11,7 +11,7 @@ class DealWidget : public QDialog
 	Q_OBJECT
 
 public:
-	explicit DealWidget(QWidget* parent = nullptr, QSqlTableModel* model = nullptr, QList<QString> data = {}, const QModelIndex& index = {});
+	explicit DealWidget(QWidget* parent = nullptr, QSqlTableModel* model=nullptr, QStringList data = {}, const QModelIndex& index = {});
 	~DealWidget();
 private slots:
 	void updateStatus(int);
@@ -19,12 +19,10 @@ private:
 	Ui::DealWidgetClass* ui;
 	QSqlTableModel* model;
 	const QModelIndex index;
-	QSqlQuery* query;
-	QList<QString> data;
+	QStringList data;
 	QString id;
 	int idProject;
 	int currentIndex;
 	void getClient();
-	void getAgent(QString id);
 	void getStatus();	
 };

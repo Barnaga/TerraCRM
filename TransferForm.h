@@ -15,7 +15,7 @@ class TransferForm : public QDialog
 	Q_OBJECT
 
 public:
-	TransferForm(QWidget *parent = nullptr);
+	TransferForm(QWidget *parent = nullptr, const QString& company_id="");
 	~TransferForm();
 	TransferForm(TransferForm& r) = delete;
 	TransferForm(TransferForm&& r) = delete;
@@ -30,6 +30,7 @@ private:
 	QSqlTableModel* model;
 	QMessageBox* msgBox;
 	QSqlQuery* query;
+	QString company_id;
 	void createModel();
 	void createView();
 	void createConnections();

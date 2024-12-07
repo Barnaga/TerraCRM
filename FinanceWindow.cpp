@@ -13,22 +13,24 @@ FinanceWindow::FinanceWindow(MainWindow* parent)
 FinanceWindow::~FinanceWindow()
 {}
 void FinanceWindow::createModel() {
+	company_id = parent->getUser()[5];
 	model->setTable("finance");
 	model->setHeaderData(1, Qt::Horizontal, "Дата");
 	model->setHeaderData(2, Qt::Horizontal, "Сумма");
-	model->setHeaderData(3, Qt::Horizontal, "Контрагент");
+	model->setHeaderData(3, Qt::Horizontal, "Клиент");
 	model->setHeaderData(4, Qt::Horizontal, "Организация");
 	model->setHeaderData(5, Qt::Horizontal, "Связи");
 	model->setHeaderData(6, Qt::Horizontal, "Ответственный");
 	model->setHeaderData(10, Qt::Horizontal, "Статья учета");
-	model->setRelation(model->fieldIndex("payer"), QSqlRelation("counterpars", "id", "name"));
-	model->setRelation(model->fieldIndex("recipient"), QSqlRelation("counterpars", "id", "name"));
+	model->setRelation(model->fieldIndex("payer"), QSqlRelation("contacts", "id", "name"));
+	model->setRelation(model->fieldIndex("recipient"), QSqlRelation("companies", "id", "name"));
 	model->setRelation(model->fieldIndex("communication"), QSqlRelation("project", "id", "name"));
 	model->setRelation(model->fieldIndex("responsible"), QSqlRelation("users", "id", "name"));
 	model->setRelation(model->fieldIndex("category"), QSqlRelation("categories", "id", "name"));
 	model->setRelation(model->fieldIndex("account"), QSqlRelation("accounts", "id", "name"));
 	model->setRelation(model->fieldIndex("state"), QSqlRelation("\"articleEvent\"", "id", "article"));
 	model->setEditStrategy(QSqlTableModel::OnFieldChange);
+	model->setFilter(QString("payer =\'%1\' or recipient =\'%1\' ").arg(company_id));
 	model->select();
 }
 void FinanceWindow::createView() {
@@ -39,6 +41,8 @@ void FinanceWindow::createView() {
 	view->setColumnHidden(7, true);
 	view->setColumnHidden(8, true);
 	view->setColumnHidden(9, true);
+
+	view->setColumnHidden(11, true);
 	ui->financeLayout->addWidget(view);
 }
 void FinanceWindow::createConnections() {
@@ -49,16 +53,16 @@ void FinanceWindow::createConnections() {
 
 void FinanceWindow::addProfitAmount()
 {
-	auto profitForm = new FinanceForm(this, "Поступление", model);
+	auto profitForm = new FinanceForm(this, "Поступление", model, company_id);
 	profitForm->show();
 }
 void FinanceWindow::addLossAmount()
 {
-	auto lossForm = new FinanceForm(this, "Расход", model, "-");
+	auto lossForm = new FinanceForm(this, "Расход", model, "-", company_id);
 	lossForm->show();
 }
 void FinanceWindow::addTransfer()
 {
-	auto transferForm = new TransferForm(this);
+	auto transferForm = new TransferForm(this, company_id);
 	transferForm->show();
 }

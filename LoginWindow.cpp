@@ -36,12 +36,12 @@ void LoginWindow::registerUser() {
 }
 bool LoginWindow::registerValid()
 {
-	query->prepare("Select company from users where company =:company");
-	query->bindValue(":company", company);
-	query->exec();
-	while (query->next()) {
-		qDebug() << query->value(0).toString();
-	}
+	//query->prepare("Select company from users where company =:company");
+	//query->bindValue(":company", company);
+	//query->exec();
+	//while (query->next()) {
+	//	qDebug() << query->value(0).toString();
+	//}
 	//if (isValid(login, password, role, name, surname)) {
 	//	query->prepare("INSERT INTO public.users (hashedpassword, login, salt, role, name, surname) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role, :name, :surname)");
 	//	query->bindValue(":password", password);

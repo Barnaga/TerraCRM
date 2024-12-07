@@ -20,7 +20,7 @@ private slots:
 	void openDeal(const QModelIndex&);
 private:
 	Ui::CRMWindowClass* ui;
-	QMainWindow* parent;
+	MainWindow* parent;
 	QTableView* view;
 	QSqlRelationalTableModel* model;
 	void createModel();

@@ -16,12 +16,12 @@ public:
 	~createProjectDialog();
 private slots:
 	void create();
-	void createContactBox(int id);
+	void createClient();
 private:
 	QString id;
 	Ui::createProjectDialogClass* ui;
 	QSqlRelationalTableModel* model;
 	void getContactID(const int& row);
-	std::unique_ptr<QSqlQuery> query;
-	void createComponyBox();
+	QString client;
+	QSqlQuery* query;
 };

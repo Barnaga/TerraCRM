@@ -25,30 +25,27 @@ void Task::createView()
 	ui->completedDate->setText(data[9]);
 	ui->id->setText(data[0]);
 	ui->create->setText(data[5]);
-	ui->com->setText(data[10]);
 	id = data[0];
 }
 
 Task::~Task()
-{}
+{
+	delete ui;
+}
 void Task::getStatus()
 {
-	if (data[2] == "Сделать") {
+	if (data[2] == "Сделать") 
 		ui->statusBox->setCurrentIndex(0);
-	}
-	else if (data[2] == "В работе") {
+	else if (data[2] == "В работе") 
 		ui->statusBox->setCurrentIndex(1);
-	}
-	else if (data[2] == "Сделано") {
+	else if (data[2] == "Сделано") 
 		ui->statusBox->setCurrentIndex(2);
-	}
 	else ui->statusBox->setCurrentIndex(3);
 }
 
 void Task::isDeadline() {
 	auto current = QDate::currentDate();
 	auto end = QDate::fromString(data[8], "yyyy-MM-dd");
-
 	if (ui->statusBox->currentIndex()==3) {
 		ui->warning->setText("Задача выполнена");
 	}
@@ -63,9 +60,11 @@ void Task::updateStatus(int temp) {
 		model->setData(model->index(index.row(), 2), ui->statusBox->currentText());
 		model->setData(model->index(index.row(), 9), QDate::currentDate().toString());
 	}
-	else if(currentIndex < temp) {
+	else if (currentIndex < temp) {
 		model->setData(model->index(index.row(), 2), ui->statusBox->currentText());
+		qDebug() << index.row();
 	}
+
 	else {
 		auto* msg = new QMessageBox;
 		msg->setText("Обратно нельзя");

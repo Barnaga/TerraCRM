@@ -28,7 +28,9 @@ private:
 	MainWindow* parent;
 	QSqlRelationalTableModel* model;
 	QTableView* view;
+	QString company_id;
 	void createModel();
 	void createView();
 	void createConnections();
+
 };

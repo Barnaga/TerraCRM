@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>229</height>
+    <height>365</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -77,22 +77,12 @@ color:rgb(55, 107, 113);
     <string>Крайний срок</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="contact">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>140</y>
-     <width>211</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="contactLbl">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>140</y>
-     <width>111</width>
+     <x>30</x>
+     <y>100</y>
+     <width>91</width>
      <height>16</height>
     </rect>
    </property>
@@ -103,8 +93,8 @@ color:rgb(55, 107, 113);
   <widget class="QPushButton" name="saveBtn">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>180</y>
+     <x>30</x>
+     <y>280</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -113,27 +103,96 @@ color:rgb(55, 107, 113);
     <string>Сохранить</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="company">
+  <widget class="QLineEdit" name="clientEdit">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>100</y>
-     <width>211</width>
-     <height>22</height>
+     <x>130</x>
+     <y>130</y>
+     <width>451</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="companyLbl">
+  <widget class="QLineEdit" name="phoneEdit">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>100</y>
-     <width>111</width>
+     <x>130</x>
+     <y>160</y>
+     <width>451</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="emailEdit">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>190</y>
+     <width>451</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="nameCLbl">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>130</y>
+     <width>49</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Компания</string>
+    <string>Имя</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="phoneLbl">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>160</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Номер</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="emailLbl">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>190</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Почта</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Планируемый расход</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="receiptEdit">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>230</y>
+     <width>441</width>
+     <height>21</height>
+    </rect>
    </property>
   </widget>
  </widget>

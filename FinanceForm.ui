@@ -55,44 +55,33 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>16</x>
      <y>50</y>
-     <width>931</width>
-     <height>200</height>
+     <width>921</width>
+     <height>137</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout" columnstretch="25,25,25,25" columnminimumwidth="25,25,25,25">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0">
     <property name="rightMargin">
      <number>0</number>
     </property>
     <property name="horizontalSpacing">
-     <number>10</number>
+     <number>9</number>
     </property>
     <property name="verticalSpacing">
      <number>0</number>
     </property>
-    <item row="1" column="2">
-     <layout class="QVBoxLayout" name="orgAccount">
+    <item row="1" column="1">
+     <layout class="QVBoxLayout" name="payerLayout">
       <item>
-       <widget class="QLabel" name="orgAccountLbl">
+       <widget class="QLabel" name="payerLbl">
         <property name="text">
-         <string>Счет организации</string>
+         <string>Плательщик</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="orgAccountBox">
-        <item>
-         <property name="text">
-          <string>Наличные</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Расчетный счет</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="payerBox"/>
       </item>
      </layout>
     </item>
@@ -110,56 +99,11 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="1">
-     <layout class="QVBoxLayout" name="recipientLayout">
-      <item>
-       <widget class="QLabel" name="recipientLbl">
-        <property name="text">
-         <string>Получатель</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="recipientBox">
-        <item>
-         <property name="text">
-          <string>Моя компания</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="3">
-     <layout class="QVBoxLayout" name="communicationLayout">
-      <item>
-       <widget class="QLabel" name="communicationLbl">
-        <property name="text">
-         <string>Связь</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="communicationBox"/>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="cashLayout">
-      <item>
-       <widget class="QLabel" name="cashLbl">
-        <property name="text">
-         <string>Сумма</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="cash"/>
-      </item>
-     </layout>
-    </item>
     <item row="2" column="0" colspan="2">
      <layout class="QVBoxLayout" name="categoryLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+      </property>
       <item>
        <widget class="QLabel" name="categoryLbl">
         <property name="text">
@@ -213,6 +157,104 @@
       </item>
      </layout>
     </item>
+    <item row="1" column="0">
+     <layout class="QVBoxLayout" name="recipientLayout">
+      <item>
+       <widget class="QLabel" name="recipientLbl">
+        <property name="text">
+         <string>Получатель</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="recipientBox"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="2">
+     <layout class="QVBoxLayout" name="orgAccount">
+      <item>
+       <widget class="QLabel" name="orgAccountLbl">
+        <property name="text">
+         <string>Счет организации</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="orgAccountBox">
+        <item>
+         <property name="text">
+          <string>Наличные</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Расчетный счет</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="3">
+     <layout class="QVBoxLayout" name="communicationLayout">
+      <item>
+       <widget class="QLabel" name="communicationLbl">
+        <property name="text">
+         <string>Связь</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="communicationBox"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="dateLayout">
+      <item>
+       <widget class="QLabel" name="dateLbl">
+        <property name="text">
+         <string>Дата оплаты</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="date"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="cashLayout">
+      <item>
+       <widget class="QLabel" name="cashLbl">
+        <property name="text">
+         <string>Сумма</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="cash"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="2" colspan="2">
+     <layout class="QVBoxLayout" name="noteLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+      </property>
+      <item>
+       <widget class="QLabel" name="noteLbl">
+        <property name="text">
+         <string>Примечание</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="note"/>
+      </item>
+     </layout>
+    </item>
     <item row="0" column="3">
      <layout class="QVBoxLayout" name="stateLayout">
       <item>
@@ -245,54 +287,6 @@
          </property>
         </item>
        </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="1">
-     <layout class="QVBoxLayout" name="dateLayout">
-      <item>
-       <widget class="QLabel" name="dateLbl">
-        <property name="text">
-         <string>Дата оплаты</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="date"/>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <layout class="QVBoxLayout" name="payerLayout">
-      <item>
-       <widget class="QLabel" name="payerLbl">
-        <property name="text">
-         <string>Плательщик</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="payerBox">
-        <item>
-         <property name="text">
-          <string>Выберите плательщика</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="2" column="2" colspan="2">
-     <layout class="QVBoxLayout" name="noteLayout">
-      <item>
-       <widget class="QLabel" name="noteLbl">
-        <property name="text">
-         <string>Примечание</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="note"/>
       </item>
      </layout>
     </item>

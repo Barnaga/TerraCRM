@@ -1,7 +1,7 @@
 #include "TransferForm.h"
 
-TransferForm::TransferForm(QWidget* parent)
-	: QDialog(parent), ui(new Ui::TransferFormClass), model(new QSqlTableModel)
+TransferForm::TransferForm(QWidget* parent, const QString& company_id)
+	: QDialog(parent), ui(new Ui::TransferFormClass), model(new QSqlTableModel), company_id(company_id)
 {
 	ui->setupUi(this);
 	query = new QSqlQuery;
@@ -38,18 +38,23 @@ void TransferForm::createModel() {
 TransferForm::~TransferForm()
 {}
 void TransferForm::getData(const QString& table, const int& column, QComboBox* main, QComboBox* secondary)
-{	
-	query->prepare("SELECT * FROM " + table);
-	if (query->exec()) {
-		auto qModel = new QSqlQueryModel;
-		qModel->setQuery(*query);
-		main->setModel(qModel);
-		main->setModelColumn(column);
-		if (secondary != nullptr) {
-			secondary->setModel(qModel);
-			secondary->setModelColumn(column);
-			secondary->setCurrentIndex(main->currentIndex() + 1);
-		}
+{
+	if (table.compare("\"articleEvent\"")==0) {
+		query->prepare("SELECT * FROM " + table);
+	}
+	else {
+		query->prepare("SELECT * FROM " + table + " where company_id=:company_id");
+		query->bindValue(":company_id", company_id);
+	}
+	query->exec();
+	auto qModel = new QSqlQueryModel;
+	qModel->setQuery(*query);
+	main->setModel(qModel);
+	main->setModelColumn(column);
+	if (secondary != nullptr) {
+		secondary->setModel(qModel);
+		secondary->setModelColumn(column);
+		secondary->setCurrentIndex(main->currentIndex() + 1);
 	}
 }
 void TransferForm::updateAccount()

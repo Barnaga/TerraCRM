@@ -11,7 +11,7 @@ class ChangeStatusProjectDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit ChangeStatusProjectDialog(QWidget *parent = nullptr, QSqlTableModel* model= nullptr, const QModelIndex index={});
+	explicit ChangeStatusProjectDialog(QWidget* parent = nullptr, QSqlTableModel* model = nullptr, const QModelIndex& index = {});
 	~ChangeStatusProjectDialog();
 private slots:
 	void updateStatus();

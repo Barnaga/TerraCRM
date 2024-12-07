@@ -242,8 +242,15 @@ color:rgb(55, 107, 113);
      </item>
     </layout>
    </item>
+   <item alignment="Qt::AlignmentFlag::AlignHCenter">
+    <widget class="QLabel" name="debit">
+     <property name="text">
+      <string>Расходы</string>
+     </property>
+    </widget>
+   </item>
    <item>
-    <widget class="QTextEdit" name="descEdit"/>
+    <widget class="QLineEdit" name="debitEdit"/>
    </item>
    <item>
     <widget class="QPushButton" name="saveBtn">

@@ -18,6 +18,7 @@ void FormTask::createConnections()
 }
 void FormTask::addData()
 {
+	const auto& row = model->rowCount();
 	const auto& name = ui->nameTaskEdit->text();
 	const auto& status = "Сделать";
 	const auto& creator = id;
@@ -25,7 +26,7 @@ void FormTask::addData()
 	const auto& priority = ui->priority->currentText();
 	const auto& deadline = ui->deadline->selectedDate();
 	const auto& project = query->value(idProject);
-	const auto& row = model->rowCount();
+	const auto& company_id = model->index(row - 1, 11).data().toString();
 	
 	if (!name.isEmpty() and model->insertRow(row)) {
 		model->setData(model->index(row, 1), name);
@@ -37,6 +38,7 @@ void FormTask::addData()
 		model->setData(model->index(row, 7), date);
 		model->setData(model->index(row, 8), deadline);
 		model->setData(model->index(row, 10), project);
+		model->setData(model->index(row, 11), company_id);
 	}
 	else ui->warningLbl->setEnabled(true);
 
@@ -46,7 +48,8 @@ void FormTask::addData()
 FormTask::~FormTask()
 {}
 void FormTask::createDataComboBox() {
-	query->prepare("SELECT * FROM project");
+	query->prepare("SELECT * FROM project where company_id=:id");
+	query->bindValue(":id", model->index(1, 11).data().toString());
 	query->exec();
 	auto* qModel = new QSqlQueryModel;
 	qModel->setQuery(*query);

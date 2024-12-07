@@ -19,7 +19,7 @@ void MainWindow::connectDatabase()
 {
     db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName("localhost");
-    db.setDatabaseName("RedFaction");
+    db.setDatabaseName("TerraCRM");
     db.setUserName("postgres");
     db.setPassword("1234");
     db.open();
@@ -62,7 +62,7 @@ void MainWindow::outApp(){
 QStringList MainWindow::getUser()
 {
     query = new QSqlQuery;
-    query->prepare("SELECT name, surname, login, id, role FROM users WHERE login= :login");
+    query->prepare("SELECT name, surname, login, id, role, company_id FROM users WHERE login= :login");
     query->bindValue(":login", login);
     if (query->exec() && query->first()) 
         return QStringList{
@@ -70,8 +70,9 @@ QStringList MainWindow::getUser()
         query->value(1).toString(),
         login,
         query->value(3).toString(),
-        query->value(4).toString()};   
-    return QStringList{ "","","","","" };
+        query->value(4).toString(),
+        query->value(5).toString()};
+    return QStringList{ "","","","","",""};
 }
 
 void MainWindow::createMenu()

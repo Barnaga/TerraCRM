@@ -15,7 +15,7 @@ public:
 	explicit ProjectWindow(MainWindow* parent = nullptr);
 	~ProjectWindow();
 private slots:
-	void openProject(const QModelIndex);
+	void openProject(const QModelIndex&);
 	void createProject();
 private:
 	Ui::ProjectWindowClass* ui;

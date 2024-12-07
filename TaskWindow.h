@@ -21,7 +21,7 @@ public:
 	TaskWindow& operator=(const TaskWindow&& r) = delete;
 public slots:
 	void createTaskBtn();
-	void openTask(const QModelIndex index);
+	void openTask(const QModelIndex&);
 private:
 	Ui::TaskWindowClass* ui;
 	MainWindow* parent;

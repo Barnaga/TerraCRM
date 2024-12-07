@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QFileDialog>
 #include <QSqlQuery>
+#include <QSqlError>
 #include "ui_Task.h"
 #include <QMessageBox>
 #include <QSqlRelationalTableModel>
@@ -11,7 +12,7 @@
 	Q_OBJECT
 
 public:
-	explicit Task(QWidget* parent = nullptr, QStringList data = {}, QSqlRelationalTableModel* model=nullptr, const QModelIndex& index={});
+	explicit Task(QWidget* parent = nullptr, QStringList data = {}, QSqlRelationalTableModel* model = nullptr, const QModelIndex& index = {});
 	~Task();
 	Task(Task& r) = delete;
 	Task(Task&& r) = delete;
@@ -22,7 +23,7 @@ private slots:
 private:
 	Ui::TaskClass* ui;
 	QSqlRelationalTableModel* model;
-	const QModelIndex& index;
+	const QModelIndex index;
 	QString id;
 	int currentIndex;
 	QStringList data;

@@ -61,7 +61,7 @@ QWidget {
      <x>20</x>
      <y>10</y>
      <width>391</width>
-     <height>60</height>
+     <height>61</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -120,43 +120,9 @@ QWidget {
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>120</y>
-     <width>391</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_12">
-    <item>
-     <widget class="QLabel" name="comLbl">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Связи</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="com">
-      <property name="text">
-       <string>Проект, сделка или контрашент</string>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
      <x>431</x>
      <y>12</y>
-     <width>173</width>
+     <width>206</width>
      <height>331</height>
     </rect>
    </property>
@@ -315,7 +281,7 @@ QWidget {
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>240</y>
+     <y>120</y>
      <width>391</width>
      <height>80</height>
     </rect>

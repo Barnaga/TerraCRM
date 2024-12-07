@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>586</height>
+    <width>513</width>
+    <height>227</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,9 +21,9 @@ color:rgb(55, 107, 113);
   <widget class="QLabel" name="dealLbl">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>561</width>
+     <x>9</x>
+     <y>9</y>
+     <width>49</width>
      <height>16</height>
     </rect>
    </property>
@@ -31,78 +31,12 @@ color:rgb(55, 107, 113);
     <string>TextLabel</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget_3">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>290</y>
-     <width>541</width>
-     <height>88</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="contactLayout">
-    <item>
-     <widget class="QLabel" name="contactLbl">
-      <property name="text">
-       <string>Контакт</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QFormLayout" name="contactWrapper">
-      <item row="0" column="0">
-       <layout class="QVBoxLayout" name="infoContact">
-        <item>
-         <widget class="QLabel" name="nameLblC">
-          <property name="text">
-           <string>название компании</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="numberLblC">
-          <property name="text">
-           <string>Номер</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="emailLblC">
-          <property name="text">
-           <string>email</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="1">
-       <layout class="QHBoxLayout" name="contactBtn">
-        <item>
-         <widget class="QPushButton" name="phoneCallBtnC">
-          <property name="text">
-           <string>Звонок</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="smsBtnC">
-          <property name="text">
-           <string>смс</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
   <widget class="QWidget" name="layoutWidget_4">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>108</y>
-     <width>581</width>
+     <x>9</x>
+     <y>96</y>
+     <width>331</width>
      <height>42</height>
     </rect>
    </property>
@@ -184,97 +118,9 @@ color:rgb(55, 107, 113);
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>41</x>
-     <y>171</y>
-     <width>541</width>
-     <height>86</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <layout class="QVBoxLayout" name="infoClient">
-      <item>
-       <widget class="QLabel" name="clientLbl">
-        <property name="text">
-         <string>Клиент</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="nameCompanyLbl">
-        <property name="text">
-         <string>название компании</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="numberLbl">
-        <property name="text">
-         <string>Номер</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="emailLbl">
-        <property name="text">
-         <string>email</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="btnLayout">
-      <item>
-       <widget class="QPushButton" name="phoneCallBtn">
-        <property name="text">
-         <string>Звонок</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="smsBtn">
-        <property name="text">
-         <string>смс</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>41</x>
-     <y>401</y>
-     <width>551</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="connectionLbl">
-      <property name="text">
-       <string>Проект</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="nameConnectionLbl">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>50</y>
-     <width>551</width>
+     <x>9</x>
+     <y>67</y>
+     <width>233</width>
      <height>23</height>
     </rect>
    </property>
@@ -322,6 +168,110 @@ color:rgb(55, 107, 113);
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>144</y>
+     <width>96</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLabel" name="client">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="clientLbl">
+      <property name="text">
+       <string>Клиент</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>176</y>
+     <width>95</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <item>
+     <widget class="QLabel" name="numberLbl">
+      <property name="text">
+       <string>Номер</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="number">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>200</y>
+     <width>86</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <item>
+     <widget class="QLabel" name="emailLbl">
+      <property name="text">
+       <string>email</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="email">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="phoneCallBtn">
+   <property name="geometry">
+    <rect>
+     <x>112</x>
+     <y>145</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Звонок</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="smsBtn">
+   <property name="geometry">
+    <rect>
+     <x>193</x>
+     <y>145</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>смс</string>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
