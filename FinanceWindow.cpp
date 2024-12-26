@@ -15,7 +15,7 @@ FinanceWindow::~FinanceWindow()
 void FinanceWindow::createModel() {
 	company_id = parent->getUser()[5];
 	model->setTable("finance");
-	model->setHeaderData(1, Qt::Horizontal, "Дата");
+	model->setHeaderData(1, Qt::Horizontal, "Дата", 0);
 	model->setHeaderData(2, Qt::Horizontal, "Сумма");
 	model->setHeaderData(3, Qt::Horizontal, "Клиент");
 	model->setHeaderData(4, Qt::Horizontal, "Организация");
@@ -35,13 +35,13 @@ void FinanceWindow::createModel() {
 }
 void FinanceWindow::createView() {
 	view->setEditTriggers(QAbstractItemView::NoEditTriggers); 
+	view->setItemDelegateForColumn(1, new DateDelegate());
 	view->setModel(model);
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->setColumnHidden(0, true);
 	view->setColumnHidden(7, true);
 	view->setColumnHidden(8, true);
 	view->setColumnHidden(9, true);
-
 	view->setColumnHidden(11, true);
 	ui->financeLayout->addWidget(view);
 }

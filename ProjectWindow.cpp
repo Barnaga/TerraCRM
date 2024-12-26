@@ -55,7 +55,9 @@ void ProjectWindow::createView()
 	view->setColumnHidden(12, true);
 	ui->projectsLayout->addWidget(view);
 }
+
 void ProjectWindow::openProject(const QModelIndex& index) {
+	
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
 	project = new ProjectWidget(this, data, model, index);

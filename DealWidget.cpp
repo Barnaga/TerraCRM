@@ -13,7 +13,6 @@ DealWidget::DealWidget(QWidget* parent, QSqlTableModel* model, QStringList data,
 	getStatus();
 	currentIndex = ui->statusComboBox->currentIndex();
 	connect(ui->statusComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateStatus(int)));
-
 }
 DealWidget::~DealWidget()
 {

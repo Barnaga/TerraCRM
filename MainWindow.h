@@ -10,8 +10,7 @@
 #include "ui_MainWindow.h"
 
 class MainWindow : public QMainWindow
-{
-   
+{  
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -40,7 +39,7 @@ private:
     QAction* projectBtn;
     QAction* financeBtn;
     QAction* outBtn;
-    void connectDatabase();
+    void connectDatabase(QString database, QString host, QString name, QString user, QString password);
     void setLoginInterface();
     void setCRMInterface();
     void setTasksInterface();

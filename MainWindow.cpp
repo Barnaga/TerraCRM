@@ -10,20 +10,27 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindowClass), isLogin(false)
 {
     ui->setupUi(this);
-    connectDatabase();
+    auto database = "QPSQL";
+    auto host = "localhost";
+    auto name = "TerraCRM";
+    auto user = "postgres";
+    auto password = "1234";
+    connectDatabase(database, host, name, user, password);
     ui->dateLbl->setText("Сегодня " + QDateTime::currentDateTime().toString("dd.MM.yyyy"));
     if (!isLogin) setLoginInterface();
     else this->activateWindow();
 }
-void MainWindow::connectDatabase()
+
+void MainWindow::connectDatabase(QString database, QString host, QString name, QString user, QString password)
 {
-    db = QSqlDatabase::addDatabase("QPSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("TerraCRM");
-    db.setUserName("postgres");
-    db.setPassword("1234");
+    db = QSqlDatabase::addDatabase(database);
+    db.setHostName(host);
+    db.setDatabaseName(name);
+    db.setUserName(user);
+    db.setPassword(password);
     db.open();
 }
+
 MainWindow::~MainWindow()
 {
 }
@@ -42,6 +49,7 @@ void MainWindow::setProjectsInterface() {
 void MainWindow::setFinanceInterface() {
     setCentralWidget(new FinanceWindow(this));
 }
+
 void MainWindow::openCRM() {
     setCRMInterface();
 }

@@ -99,9 +99,7 @@ void FinanceForm::updateQuery(const int& changeCash, const int& account)
 	query->prepare("UPDATE accounts SET balance=:balance where id=:id");
 	query->bindValue(":balance", changeCash);
 	query->bindValue(":id", account);
-	qDebug() << account << changeCash;
 	query->exec();
-	qDebug() << query->lastError();
 }
 void FinanceForm::getData(const QString& table, const int& column, QComboBox* main, QComboBox* secondary)
 {

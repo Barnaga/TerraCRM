@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>553</height>
+    <width>623</width>
+    <height>309</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,248 +18,365 @@
 color:rgb(55, 107, 113);
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <layout class="QGridLayout" name="header">
-     <item row="0" column="2">
-      <widget class="QPushButton" name="doneBtn">
-       <property name="text">
-        <string>Завершить</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="dealLbl">
-       <property name="text">
-        <string>Название задачи</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="common">
-     <item>
-      <layout class="QVBoxLayout" name="plannedAdmissionLayout">
-       <item>
-        <widget class="QLabel" name="admissionLbl">
-         <property name="text">
-          <string>Плановые поступление</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="costLbl">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="expenseLayout">
-       <item>
-        <widget class="QLabel" name="expenseLbl">
-         <property name="text">
-          <string>Расходы</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="expense">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="doneTaskLayout">
-       <item>
-        <widget class="QLabel" name="doneTaskLbl">
-         <property name="text">
-          <string>Задач выполнено</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="count">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="dateProjectLayout">
-       <item>
-        <widget class="QLabel" name="dateProjectLbl">
-         <property name="text">
-          <string>Сроки проекта</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="date">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="managerLayout">
-       <item>
-        <widget class="QLabel" name="MamagerProjectLbl">
-         <property name="text">
-          <string>Менеджер проекта</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="manager">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Текущий этап проекта</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="stageBox">
-       <item>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>611</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="header">
+      <item row="0" column="2">
+       <widget class="QPushButton" name="doneBtn">
         <property name="text">
-         <string>Подготовка</string>
+         <string>Завершить</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="dealLbl">
         <property name="text">
-         <string>Проектирование</string>
+         <string>Название задачи</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="common">
+      <item>
+       <layout class="QVBoxLayout" name="plannedAdmissionLayout">
+        <item>
+         <widget class="QLabel" name="admissionLbl">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Плановые поступление</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="costLbl">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="expenseLayout">
+        <item>
+         <widget class="QLabel" name="expenseLbl">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Расходы</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="expense">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="doneTaskLayout">
+        <item>
+         <widget class="QLabel" name="doneTaskLbl">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Задач выполнено</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="count">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="dateProjectLayout">
+        <item>
+         <widget class="QLabel" name="dateProjectLbl">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Сроки проекта</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="date">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="managerLayout">
+        <item>
+         <widget class="QLabel" name="MamagerProjectLbl">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Менеджер проекта</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="manager">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Разработка</string>
+         <string>Текущий этап проекта</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="stageBox">
+        <item>
+         <property name="text">
+          <string>Подготовка</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Проектирование</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Разработка</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Коррекция</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Завершение</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <layout class="QVBoxLayout" name="clientLayout">
+      <item>
+       <widget class="QLabel" name="clientLbl">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Коррекция</string>
+         <string>Клиент</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="infoClient">
+          <item>
+           <widget class="QLabel" name="nameCompanyLbl">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>название компании</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="numberLbl">
+            <property name="text">
+             <string>Номер</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="emailLbl">
+            <property name="text">
+             <string>email</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="btnLayout">
+          <item>
+           <widget class="QPushButton" name="phoneCallBtn">
+            <property name="maximumSize">
+             <size>
+              <width>90</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Звонок</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="smsBtn">
+            <property name="maximumSize">
+             <size>
+              <width>90</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>смс</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
+       <widget class="QLabel" name="debit">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Завершение</string>
+         <string>Расходы</string>
         </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="clientLayout">
-     <item>
-      <widget class="QLabel" name="clientLbl">
-       <property name="text">
-        <string>Клиент</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <layout class="QVBoxLayout" name="infoClient">
-         <item>
-          <widget class="QLabel" name="nameCompanyLbl">
-           <property name="text">
-            <string>название компании</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="numberLbl">
-           <property name="text">
-            <string>Номер</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="emailLbl">
-           <property name="text">
-            <string>email</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="1">
-        <layout class="QHBoxLayout" name="btnLayout">
-         <item>
-          <widget class="QPushButton" name="phoneCallBtn">
-           <property name="text">
-            <string>Звонок</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="smsBtn">
-           <property name="text">
-            <string>смс</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item alignment="Qt::AlignmentFlag::AlignHCenter">
-    <widget class="QLabel" name="debit">
-     <property name="text">
-      <string>Расходы</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="debitEdit"/>
-   </item>
-   <item>
-    <widget class="QPushButton" name="saveBtn">
-     <property name="text">
-      <string>Сохранить</string>
-     </property>
-    </widget>
-   </item>
-  </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="debitEdit">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="saveBtn">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Сохранить</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

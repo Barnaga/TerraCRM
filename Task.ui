@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>615</width>
-    <height>356</height>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -86,7 +86,7 @@ QWidget {
        <enum>QFrame::Shape::NoFrame</enum>
       </property>
       <property name="text">
-       <string/>
+       <string>Название задачи</string>
       </property>
       <property name="textFormat">
        <enum>Qt::TextFormat::PlainText</enum>
@@ -105,7 +105,7 @@ QWidget {
     <item>
      <widget class="QLabel" name="dealLbl">
       <property name="text">
-       <string/>
+       <string>Название проекта</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -290,7 +290,7 @@ QWidget {
     <item>
      <widget class="QLabel" name="warning">
       <property name="text">
-       <string/>
+       <string>Описание</string>
       </property>
      </widget>
     </item>

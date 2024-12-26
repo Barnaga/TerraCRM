@@ -26,6 +26,7 @@ private:
 	QString name;
 	QString surname;
 	QString company;
+	QString phone;
 	const QString getHashedPassword(const QString& login);
 	bool isValid(const QString& login, const QString& password);
 	bool isValid(const QString& login, const QString& password, const QString& role, const QString& name, const QString& surname);

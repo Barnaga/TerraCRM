@@ -142,6 +142,9 @@
     <ClCompile Include="FinanceForm.cpp">
       <Filter>Source Files\Finance</Filter>
     </ClCompile>
+    <ClCompile Include="DateDelegate.cpp">
+      <Filter>Source Files\Delegates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ChangeStatusProjectDialog.h">
@@ -191,6 +194,9 @@
     </QtMoc>
     <QtMoc Include="FinanceForm.h">
       <Filter>Header Files\Finance</Filter>
+    </QtMoc>
+    <QtMoc Include="DateDelegate.h">
+      <Filter>Header Files\Delegates</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>962</width>
-    <height>618</height>
+    <width>453</width>
+    <height>768</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1920</width>
+    <height>1080</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>LoginWindow</string>
@@ -70,52 +82,27 @@ QComboBox {
      <height>1080</height>
     </size>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <property name="leftMargin">
-     <number>0</number>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <property name="sizeConstraint">
+     <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
     </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <property name="spacing">
-       <number>0</number>
-      </property>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="sizeConstraint">
-       <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+       <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
       </property>
       <item>
-       <spacer name="verticalSpacer">
+       <spacer name="verticalSpacer_2">
         <property name="orientation">
          <enum>Qt::Orientation::Vertical</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Policy::Maximum</enum>
+         <enum>QSizePolicy::Policy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>240</height>
+          <height>40</height>
          </size>
         </property>
        </spacer>
@@ -136,7 +123,7 @@ QComboBox {
         </property>
         <property name="maximumSize">
          <size>
-          <width>300</width>
+          <width>1920</width>
           <height>30</height>
          </size>
         </property>
@@ -149,25 +136,25 @@ QComboBox {
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_2">
+       <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Orientation::Vertical</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Policy::Maximum</enum>
+         <enum>QSizePolicy::Policy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>60</height>
          </size>
         </property>
        </spacer>
       </item>
-      <item>
+      <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
        <widget class="QTabWidget" name="tabWidget">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -175,13 +162,13 @@ QComboBox {
         <property name="minimumSize">
          <size>
           <width>300</width>
-          <height>300</height>
+          <height>600</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>300</width>
-          <height>300</height>
+          <width>900</width>
+          <height>1100</height>
          </size>
         </property>
         <property name="font">
@@ -194,15 +181,21 @@ QComboBox {
         </property>
         <widget class="QWidget" name="tab">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="maximumSize">
+         <property name="minimumSize">
           <size>
            <width>300</width>
-           <height>300</height>
+           <height>600</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>900</width>
+           <height>700</height>
           </size>
          </property>
          <attribute name="title">
@@ -214,31 +207,15 @@ QComboBox {
             <x>20</x>
             <y>0</y>
             <width>252</width>
-            <height>198</height>
+            <height>201</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
            <property name="spacing">
             <number>12</number>
            </property>
-           <item>
-            <spacer name="verticalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Policy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
            <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-            <widget class="QLineEdit" name="loginEdit">
+            <widget class="QLineEdit" name="emailEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -252,7 +229,7 @@ QComboBox {
               </size>
              </property>
              <property name="placeholderText">
-              <string>логин</string>
+              <string>email</string>
              </property>
             </widget>
            </item>
@@ -277,6 +254,9 @@ QComboBox {
            </item>
            <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QLabel" name="errorLbl">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <property name="styleSheet">
               <string notr="true">font-size:12px</string>
              </property>
@@ -309,15 +289,21 @@ QComboBox {
         </widget>
         <widget class="QWidget" name="reg">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="maximumSize">
+         <property name="minimumSize">
           <size>
            <width>300</width>
-           <height>300</height>
+           <height>600</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>900</width>
+           <height>700</height>
           </size>
          </property>
          <attribute name="title">
@@ -329,7 +315,7 @@ QComboBox {
             <x>35</x>
             <y>30</y>
             <width>222</width>
-            <height>241</height>
+            <height>291</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -384,7 +370,7 @@ QComboBox {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="regLoginEdit">
+            <widget class="QLineEdit" name="regEmailEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -398,7 +384,7 @@ QComboBox {
               </size>
              </property>
              <property name="placeholderText">
-              <string>логин</string>
+              <string>email</string>
              </property>
             </widget>
            </item>
@@ -418,6 +404,13 @@ QComboBox {
              </property>
              <property name="placeholderText">
               <string>пароль</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="phoneEdit">
+             <property name="placeholderText">
+              <string>номер телефона</string>
              </property>
             </widget>
            </item>
@@ -475,19 +468,6 @@ QComboBox {
             </widget>
            </item>
            <item>
-            <spacer name="verticalSpacer_4">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
             <widget class="QPushButton" name="registerBtn">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -512,19 +492,6 @@ QComboBox {
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="0" column="2">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
     </item>
    </layout>
   </widget>

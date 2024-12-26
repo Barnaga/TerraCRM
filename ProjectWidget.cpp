@@ -1,5 +1,6 @@
 #include "ProjectWidget.h"
 
+
 ProjectWidget::ProjectWidget(QWidget* parent, QStringList data, QSqlRelationalTableModel* model, const QModelIndex& index)
 	: QDialog(parent), ui(new Ui::ProjectWidgetClass),
 	model(model), query(new QSqlQuery), data(data), index(index)
@@ -66,11 +67,11 @@ void ProjectWidget::addDebit() {
 	if (ui->debitEdit->text().isEmpty()) return;
 	else if (model->index(index.row(), 6).data().toInt() != 0) {
 		auto temp = model->index(index.row(), 6).data().toInt() + ui->debitEdit->text().toInt();
-		//model->setData(model->index(index.row(), 6), temp);
+		model->setData(model->index(index.row(), 6), temp);
 		addCash(ui->debitEdit->text().toInt());
 	}
 	else {
-		//model->setData(model->index(index.row(), 6), ui->debitEdit->text());
+		model->setData(model->index(index.row(), 6), ui->debitEdit->text());
 		addCash(ui->debitEdit->text().toInt());
 	}
 }
@@ -79,7 +80,7 @@ void ProjectWidget::addCash(int cash)
 	auto responsible = getResponsible().toInt();
 	auto payment = getPaymentAccount().toInt();
 	query->prepare("INSERT INTO finance(date, cash, payer, recipient, communication, responsible, category, account, note, state, company_id) VALUES(:date, :cash, :payer, :recipient, :communication, :responsible, :category, :account, NULL, :state, :company_id)");
-	query->bindValue(":date", QDateTime::currentDateTime().toString("yyyy-dd-MM"));
+	query->bindValue(":date", QDateTime::currentDateTime().toString("dd-MM-yyyy"));
 	query->bindValue(":cash", -cash);
 	query->bindValue(":payer", data[11].toInt());
 	query->bindValue(":recipient", data[12].toInt());

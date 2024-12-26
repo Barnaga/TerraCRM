@@ -1,4 +1,5 @@
 #include "LoginWindow.h"
+#include "CRMWindow.h"
 
 LoginWindow::LoginWindow(QMainWindow* parent)
 	: ui(new Ui::LoginWindowClass),
@@ -6,6 +7,7 @@ LoginWindow::LoginWindow(QMainWindow* parent)
 	query(new QSqlQuery)
 {
 	ui->setupUi(this);
+	
 	createConnections();
 }
 void LoginWindow::createConnections()
@@ -14,7 +16,7 @@ void LoginWindow::createConnections()
 	connect(ui->registerBtn, SIGNAL(clicked()), this, SLOT(registerUser()));
 }
 void LoginWindow::loginUser() {
-	login = ui->loginEdit->text();
+	login = ui->emailEdit->text();
 	password = ui->passwordEdit->text();
 	parent->login = login;
 	if (isValidPassword(login, password))
@@ -23,37 +25,48 @@ void LoginWindow::loginUser() {
 		ui->errorLbl->setText("Don't correct login or password");
 }
 void LoginWindow::registerUser() {
-	login = ui->regLoginEdit->text();
+	login = ui->regEmailEdit->text();
 	password = ui->regPasswordEdit->text();
 	role = ui->roleBox->currentText();
 	name = ui->regNameEdit->text();
 	surname = ui->regSurnameEdit->text();
+	phone = ui->phoneEdit->text();
 	company = ui->companyEdit->text();
 	if (registerValid()) 
 		openMainWindow();
-	/*else 
-		QMessageBox::critical(this, tr("Error"), tr("Ошибка"));	*/
+	else 
+		QMessageBox::critical(this, tr("Error"), tr("Ошибка"));
 }
 bool LoginWindow::registerValid()
-{
-	//query->prepare("Select company from users where company =:company");
-	//query->bindValue(":company", company);
-	//query->exec();
-	//while (query->next()) {
-	//	qDebug() << query->value(0).toString();
-	//}
-	//if (isValid(login, password, role, name, surname)) {
-	//	query->prepare("INSERT INTO public.users (hashedpassword, login, salt, role, name, surname) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role, :name, :surname)");
-	//	query->bindValue(":password", password);
-	//	query->bindValue(":login", login);
-	//	query->bindValue(":role", role);
-	//	query->bindValue(":name", name);
-	//	query->bindValue(":surname", surname);
-	//	query->exec();
-	//	return true;
-	//}
-	//else
-	//	QMessageBox::critical(this, tr("Error"), tr("Не все поля заполнены"));
+{	
+	QString company_id = "";
+	query->prepare("SELECT id FROM companies WHERE name =:company");
+	query->bindValue(":company", company);
+
+	qDebug() << query->exec();
+	qDebug() << query->lastError();
+	while (query->next()) {
+		company_id = query->value(0).toString();
+	}
+	if (isValid(login, password, role, name, surname)) {
+		query->prepare("INSERT INTO public.users (hashedpassword, login, salt, role, name, surname, phone, company_id) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role, :name, :surname,:phone, :company_id)");
+		query->bindValue(":password", password);
+		query->bindValue(":login", login);
+		query->bindValue(":role", role);
+		query->bindValue(":name", name);
+		query->bindValue(":surname", surname);
+		query->bindValue(":phone", phone);
+		query->bindValue(":company_id", company_id);
+		
+		if (query->exec()) {
+			return true;
+		}
+		qDebug() << query->exec();
+		qDebug() << query->lastError();
+		return false;
+	}
+	else
+		QMessageBox::critical(this, tr("Error"), tr("Не все поля заполнены"));
 	return false;
 }
 const QString LoginWindow::getHashedPassword(const QString& login)
@@ -109,6 +122,7 @@ void LoginWindow::openMainWindow()
 	parent->isLogin = true;
 	parent->activateWindow();
 	parent->createMenu();
+
 	parent->showMaximized();
 }
 LoginWindow::~LoginWindow()

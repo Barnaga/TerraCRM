@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "MainWindow.h"
 #include "ProjectWidget.h"
 #include "createProjectDialog.h"

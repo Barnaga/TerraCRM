@@ -64,9 +64,9 @@ void TransferForm::updateAccount()
 	auto toId = ui->toAccountBox->model()->index(ui->toAccountBox->currentIndex(), 0).data().toInt();
 	auto fromCash = ui->fromAccountBox->model()->index(ui->fromAccountBox->currentIndex(), 3).data().toInt();
 	auto toCash = ui->toAccountBox->model()->index(ui->toAccountBox->currentIndex(), 3).data().toInt();
-	updateQuery(fromCash, toCash, currentBalance, fromId, toId);
+	checkQuery(fromCash, toCash, currentBalance, fromId, toId);
 }
-void TransferForm::updateQuery(const int& fromCash, const int& toCash, const int& currentBalance, const int& fromId, const int& toId)
+void TransferForm::checkQuery(const int& fromCash, const int& toCash, const int& currentBalance, const int& fromId, const int& toId)
 {
 	int changeCash, changePayment;
 	if (currentBalance < 0) {
@@ -80,11 +80,11 @@ void TransferForm::updateQuery(const int& fromCash, const int& toCash, const int
 	else if (currentBalance > 0 and currentBalance<= fromCash) {
 		changeCash = fromCash - currentBalance;
 		changePayment = toCash + currentBalance;
-		changeQuery(changeCash, fromId);
-		changeQuery(changePayment, toId);
+		updateQuery(changeCash, fromId);
+		updateQuery(changePayment, toId);
 	}		
 }
-void TransferForm::changeQuery(const int& changeCash, const int& id)
+void TransferForm::updateQuery(const int& changeCash, const int& id)
 {
 	query->prepare("UPDATE accounts SET balance=:balance where id=:id");
 	query->bindValue(":balance", changeCash);

@@ -36,6 +36,6 @@ private:
 	void createConnections();
 	void getData(const QString& table, const int& column, QComboBox* main, QComboBox* secondary=nullptr);
 	void updateAccount();
-	void updateQuery(const int& fromCash, const int& toCash, const int& currentBalance, const int& fromId, const int& toId);
-	void changeQuery(const int& changeCash, const int& id);
+	void checkQuery(const int& fromCash, const int& toCash, const int& currentBalance, const int& fromId, const int& toId);
+	void updateQuery(const int& changeCash, const int& id);
 };

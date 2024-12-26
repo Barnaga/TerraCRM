@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>513</width>
-    <height>227</height>
+    <width>391</width>
+    <height>245</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,255 +23,313 @@ color:rgb(55, 107, 113);
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>49</width>
+     <width>381</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>Название сделки</string>
    </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget_4">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>96</y>
-     <width>331</width>
-     <height>42</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <layout class="QVBoxLayout" name="sumLayout">
-      <item>
-       <widget class="QLabel" name="sumLbl">
-        <property name="text">
-         <string>Сумма</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="sum">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="timeDealLayout">
-      <item>
-       <widget class="QLabel" name="timeDealLbl">
-        <property name="text">
-         <string>Сроки сделки</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="timeDeal">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="sourceDealLayout">
-      <item>
-       <widget class="QLabel" name="sourceDealLbl">
-        <property name="text">
-         <string>Источник сделки</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="sourceDeal">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="responsibleLayout">
-      <item>
-       <widget class="QLabel" name="responsibleLbl">
-        <property name="text">
-         <string>Ответственный</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="responsible">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>67</y>
-     <width>233</width>
-     <height>23</height>
+     <y>32</y>
+     <width>381</width>
+     <height>201</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
-    <item>
-     <widget class="QLabel" name="statusSaleLbl">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Этап сделки:</string>
-      </property>
-     </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="statusSaleLbl">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Этап сделки:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="statusComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>25</height>
+         </size>
+        </property>
+        <item>
+         <property name="text">
+          <string>Новая заявка</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Переговоры</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Принятие решения</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Согласование договора</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Завершить сделку</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
     </item>
-    <item>
-     <widget class="QComboBox" name="statusComboBox">
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <property name="text">
-        <string>Новая заявка</string>
-       </property>
+       <layout class="QVBoxLayout" name="sumLayout">
+        <item>
+         <widget class="QLabel" name="sumLbl">
+          <property name="text">
+           <string>Сумма</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="sum">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <property name="text">
-        <string>Переговоры</string>
-       </property>
+       <layout class="QVBoxLayout" name="timeDealLayout">
+        <item>
+         <widget class="QLabel" name="timeDealLbl">
+          <property name="text">
+           <string>Сроки сделки</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="timeDeal">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <property name="text">
-        <string>Принятие решения</string>
-       </property>
+       <layout class="QVBoxLayout" name="sourceDealLayout">
+        <item>
+         <widget class="QLabel" name="sourceDealLbl">
+          <property name="text">
+           <string>Источник сделки</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="sourceDeal">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <property name="text">
-        <string>Согласование договора</string>
-       </property>
+       <layout class="QVBoxLayout" name="responsibleLayout">
+        <item>
+         <widget class="QLabel" name="responsibleLbl">
+          <property name="text">
+           <string>Ответственный</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="responsible">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="clientLbl">
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Клиент</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="client">
+          <property name="maximumSize">
+           <size>
+            <width>90</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <property name="text">
-        <string>Завершить сделку</string>
-       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QPushButton" name="phoneCallBtn">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Звонок</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="smsBtn">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>смс</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-     </widget>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="numberLbl">
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Номер</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="number">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="emailLbl">
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>email</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="email">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>144</y>
-     <width>96</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QLabel" name="client">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="clientLbl">
-      <property name="text">
-       <string>Клиент</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>176</y>
-     <width>95</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_4">
-    <item>
-     <widget class="QLabel" name="numberLbl">
-      <property name="text">
-       <string>Номер</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="number">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>200</y>
-     <width>86</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_5">
-    <item>
-     <widget class="QLabel" name="emailLbl">
-      <property name="text">
-       <string>email</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="email">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="phoneCallBtn">
-   <property name="geometry">
-    <rect>
-     <x>112</x>
-     <y>145</y>
-     <width>75</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Звонок</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="smsBtn">
-   <property name="geometry">
-    <rect>
-     <x>193</x>
-     <y>145</y>
-     <width>75</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>смс</string>
-   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

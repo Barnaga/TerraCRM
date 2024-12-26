@@ -95,8 +95,8 @@ color:rgb(55, 107, 113);
     <rect>
      <x>30</x>
      <y>280</y>
-     <width>75</width>
-     <height>24</height>
+     <width>90</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">

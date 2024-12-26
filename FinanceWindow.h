@@ -5,6 +5,7 @@
 #include <MainWindow.h>
 #include <FinanceForm.h>
 #include <TransferForm.h>
+#include "DateDelegate.h"
 #include "ui_FinanceWindow.h"
 
 class FinanceWindow : public QWidget

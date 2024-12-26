@@ -36,8 +36,8 @@ QButton {
     <rect>
      <x>30</x>
      <y>330</y>
-     <width>75</width>
-     <height>24</height>
+     <width>90</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">
@@ -50,7 +50,7 @@ QButton {
      <x>700</x>
      <y>330</y>
      <width>75</width>
-     <height>24</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">
@@ -160,7 +160,7 @@ QButton {
      <x>210</x>
      <y>330</y>
      <width>161</width>
-     <height>24</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="text">
