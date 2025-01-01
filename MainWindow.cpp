@@ -4,7 +4,6 @@
 #include "TaskWindow.h"
 #include "ProjectWindow.h"
 #include "FinanceWindow.h"
-#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindowClass), isLogin(false)

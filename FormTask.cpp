@@ -28,7 +28,7 @@ void FormTask::addData()
 	const auto& project = query->value(idProject);
 	const auto& company_id = model->index(row - 1, 11).data().toString();
 	
-	if (!name.isEmpty() and model->insertRow(row)) {
+	if (!name.isEmpty() and !priority.isEmpty() and !deadline.isNull() and !project.toString().isEmpty() and model->insertRow(row)) {
 		model->setData(model->index(row, 1), name);
 		model->setData(model->index(row, 2), status);
 		model->setData(model->index(row, 3), creator);

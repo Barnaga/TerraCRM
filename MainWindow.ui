@@ -35,7 +35,7 @@
 	font: Tahoma;
 	font-size: 12px;
 }
-#label {
+.QLabel#name {
 	font: Tahoma;
 	font-size: 24px;
 }
@@ -124,7 +124,7 @@ QScrollBar:vertical {
      </widget>
     </item>
     <item alignment="Qt::AlignmentFlag::AlignHCenter">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="name">
       <property name="text">
        <string>Добро пожаловать</string>
       </property>

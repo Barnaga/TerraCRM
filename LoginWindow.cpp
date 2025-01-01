@@ -1,5 +1,5 @@
 #include "LoginWindow.h"
-#include "CRMWindow.h"
+#include <QTest>
 
 LoginWindow::LoginWindow(QMainWindow* parent)
 	: ui(new Ui::LoginWindowClass),
@@ -7,8 +7,8 @@ LoginWindow::LoginWindow(QMainWindow* parent)
 	query(new QSqlQuery)
 {
 	ui->setupUi(this);
-	
 	createConnections();
+	counter = 0;
 }
 void LoginWindow::createConnections()
 {
@@ -21,8 +21,16 @@ void LoginWindow::loginUser() {
 	parent->login = login;
 	if (isValidPassword(login, password))
 		openMainWindow();
-	else 
-		ui->errorLbl->setText("Don't correct login or password");
+	else if(counter>=3){
+		ui->errorLbl->setText("Превышено количество попыток авторизации");
+		ui->loginBtn->hide();
+		QTimer::singleShot(180000, ui->loginBtn, SLOT(show()));
+		counter = 0;
+	}
+	else {
+		ui->errorLbl->setText("Неверный логин и пароль");
+		++counter;
+	}
 }
 void LoginWindow::registerUser() {
 	login = ui->regEmailEdit->text();
@@ -34,21 +42,17 @@ void LoginWindow::registerUser() {
 	company = ui->companyEdit->text();
 	if (registerValid()) 
 		openMainWindow();
-	else 
-		QMessageBox::critical(this, tr("Error"), tr("Ошибка"));
+		
 }
 bool LoginWindow::registerValid()
 {	
-	QString company_id = "";
 	query->prepare("SELECT id FROM companies WHERE name =:company");
 	query->bindValue(":company", company);
+	query->exec();
+	query->first();
+	QString company_id = query->value(0).toString();
 
-	qDebug() << query->exec();
-	qDebug() << query->lastError();
-	while (query->next()) {
-		company_id = query->value(0).toString();
-	}
-	if (isValid(login, password, role, name, surname)) {
+	if (isValid(login, password, role, name, surname) and compareLoginNPhone()->constFirst() =="" or compareLoginNPhone()->constLast() =="") {
 		query->prepare("INSERT INTO public.users (hashedpassword, login, salt, role, name, surname, phone, company_id) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role, :name, :surname,:phone, :company_id)");
 		query->bindValue(":password", password);
 		query->bindValue(":login", login);
@@ -58,16 +62,26 @@ bool LoginWindow::registerValid()
 		query->bindValue(":phone", phone);
 		query->bindValue(":company_id", company_id);
 		
-		if (query->exec()) {
+		if (query->exec()) 
 			return true;
-		}
-		qDebug() << query->exec();
-		qDebug() << query->lastError();
 		return false;
 	}
 	else
-		QMessageBox::critical(this, tr("Error"), tr("Не все поля заполнены"));
+		ui->errorLblReg->setText("Не все поля заполнены");
 	return false;
+}
+QStringList* LoginWindow::compareLoginNPhone()
+{
+	query->prepare("SELECT login, phone FROM users WHERE login=:login or phone=:phone");
+	query->bindValue(":login", login);
+	query->bindValue(":phone", phone);
+	query->exec();
+	if (query->first()) {
+		return new QStringList{ query->value(0).toString(), query->value(1).toString() };
+	}
+	else {
+		return new QStringList{ "",""};
+	}
 }
 const QString LoginWindow::getHashedPassword(const QString& login)
 {
@@ -98,8 +112,8 @@ bool LoginWindow::isValid(const QString& login, const QString& password)
 bool LoginWindow::isValid(const QString& login, const QString& password, const QString& role, const QString& name, const QString& surname)
 {
 	if (login.isEmpty() and password.isEmpty() and role.isEmpty() and name.isEmpty() and surname.isEmpty())
-		return false;
-	return true;
+		return true;
+	return false;
 }
 bool LoginWindow::isValidPassword(const QString& login, const QString& password)
 {

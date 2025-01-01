@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>453</width>
+    <width>579</width>
     <height>768</height>
    </rect>
   </property>
@@ -43,7 +43,7 @@ QTabBar::tab {
 	font-size: 25px;
     color: rgb(255, 253, 253);
 }
- .QLabel#errorLlb{
+ .QLabel#errorLlb,  .QLabel#errorLlbReg{
 	font-size: 20px;
 }
 
@@ -92,22 +92,6 @@ QComboBox {
        <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
       </property>
       <item>
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Orientation::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Policy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QLabel" name="nameCompany">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -136,7 +120,7 @@ QComboBox {
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer">
+       <spacer name="verticalSpacer_2">
         <property name="orientation">
          <enum>Qt::Orientation::Vertical</enum>
         </property>
@@ -146,12 +130,12 @@ QComboBox {
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>60</height>
+          <height>40</height>
          </size>
         </property>
        </spacer>
       </item>
-      <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+      <item alignment="Qt::AlignmentFlag::AlignHCenter">
        <widget class="QTabWidget" name="tabWidget">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -161,7 +145,7 @@ QComboBox {
         </property>
         <property name="minimumSize">
          <size>
-          <width>300</width>
+          <width>350</width>
           <height>600</height>
          </size>
         </property>
@@ -177,7 +161,7 @@ QComboBox {
          </font>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab">
          <property name="sizePolicy">
@@ -206,7 +190,7 @@ QComboBox {
            <rect>
             <x>20</x>
             <y>0</y>
-            <width>252</width>
+            <width>321</width>
             <height>201</height>
            </rect>
           </property>
@@ -256,6 +240,24 @@ QComboBox {
             <widget class="QLabel" name="errorLbl">
              <property name="enabled">
               <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>16777215</height>
+              </size>
              </property>
              <property name="styleSheet">
               <string notr="true">font-size:12px</string>
@@ -312,14 +314,14 @@ QComboBox {
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>35</x>
-            <y>30</y>
-            <width>222</width>
-            <height>291</height>
+            <x>20</x>
+            <y>20</y>
+            <width>281</width>
+            <height>309</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QLineEdit" name="regSurnameEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -344,7 +346,7 @@ QComboBox {
              </property>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QLineEdit" name="regNameEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -369,7 +371,7 @@ QComboBox {
              </property>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QLineEdit" name="regEmailEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -388,7 +390,7 @@ QComboBox {
              </property>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QLineEdit" name="regPasswordEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -407,21 +409,51 @@ QComboBox {
              </property>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QLineEdit" name="phoneEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>220</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>220</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="placeholderText">
               <string>номер телефона</string>
              </property>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QLineEdit" name="companyEdit">
+             <property name="minimumSize">
+              <size>
+               <width>220</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>220</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="placeholderText">
               <string>компания</string>
              </property>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QComboBox" name="roleBox">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -433,6 +465,12 @@ QComboBox {
               <size>
                <width>220</width>
                <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>220</width>
+               <height>16777215</height>
               </size>
              </property>
              <item>
@@ -467,7 +505,7 @@ QComboBox {
              </item>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
             <widget class="QPushButton" name="registerBtn">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -486,10 +524,33 @@ QComboBox {
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="QLabel" name="errorLblReg">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </widget>
        </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Policy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>60</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </item>

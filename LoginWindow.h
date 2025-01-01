@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
-#include <MainWindow.h>
+#include "MainWindow.h"
 #include "ui_LoginWindow.h"
 class LoginWindow : public QMainWindow
 {
@@ -13,6 +13,7 @@ public:
 	LoginWindow& operator=(const LoginWindow& r) = delete;
 	LoginWindow& operator=(const LoginWindow&& r) = delete;
 	~LoginWindow();
+
 private slots:
 	void loginUser();
 	void registerUser();
@@ -20,6 +21,7 @@ private:
 	Ui::LoginWindowClass* ui;
 	MainWindow* parent;
 	QSqlQuery* query;
+	int counter;
 	QString login;
 	QString password;
 	QString role;
@@ -33,6 +35,7 @@ private:
 	bool isValidLogin();
 	bool isValidPassword(const QString& login, const QString& password);
 	bool registerValid();
+	QStringList* compareLoginNPhone();
 	void openMainWindow();
 	void createConnections();
 };

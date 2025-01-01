@@ -37,7 +37,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>Qt_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;sql</QtModules>
+    <QtModules>core;gui;widgets;sql;testlib</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -61,6 +61,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>D:\Development\FuncTest;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -79,14 +80,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\msvc2019_64\include\QtSql;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);C:\Program Files\libpqxx\include;C:\Program Files\SOCI\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\msvc2019_64\include;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_);C:\Program Files\libpqxx\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Program Files\PostgreSQL\16\lib;C:\Program Files\SOCI\lib;C:\Program Files\libpqxx\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\PostgreSQL\16\lib;C:\Program Files\libpqxx\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies);$(Qt_LIBS_);libpq.lib;pqxx.lib;ws2_32.lib;wsock32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
