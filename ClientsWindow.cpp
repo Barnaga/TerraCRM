@@ -86,6 +86,7 @@ void ClientsWindow::createCompanyView()
 	company_view->setModel(company_model);
 	company_view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	company_view->setColumnHidden(0, true);
+	company_view->setColumnHidden(5, true);
 	auto layout = new QVBoxLayout;
 	layout->addWidget(company_view);
 	companies->setLayout(layout);

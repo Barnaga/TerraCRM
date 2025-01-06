@@ -18,6 +18,7 @@ void FinanceForm::createConnections()
 	connect(ui->cancelBtn, SIGNAL(clicked()), this, SLOT(reject()));
 	connect(ui->payerBox, SIGNAL(currentIndexChanged(int)), this, SLOT(getDataSecondary()));
 	connect(ui->recipientBox, SIGNAL(currentIndexChanged(int)), this, SLOT(getDataSecondary()));
+	connect(ui->recipientBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCurrentIndex(int)));
 }
 
 void FinanceForm::createView(const QString& lbl)
@@ -36,11 +37,16 @@ void FinanceForm::createView(const QString& lbl)
 
 void FinanceForm::getPayer()
 {
-	query->prepare("Select name from companies where id=:company_id");
-	query->bindValue(":company_id", company_id);
-	query->exec();
-	query->first();
-	ui->payerBox->addItem(query->value(0).toString());
+	if (lbl == "Расходы") {
+		query->prepare("Select name from companies where id=:company_id");
+		query->bindValue(":company_id", company_id);
+		query->exec();
+		query->first();
+		ui->payerBox->addItem(query->value(0).toString());
+	}
+	else {
+		getData("companies", 1 ,ui->payerBox);
+	}
 }
 
 FinanceForm::~FinanceForm()
@@ -69,24 +75,24 @@ void FinanceForm::addData()
 			const auto& category = ui->categoryBox->model()->index(ui->categoryBox->currentIndex(), 0).data().toInt();
 			const auto& note = ui->note->text();
 			const auto& communication = ui->communicationBox->model()->index(ui->communicationBox->currentIndex(), 0).data().toInt();
-			//model->setData(model->index(row, 1), date);
-			//model->setData(model->index(row, 2), cash);
-			//model->setData(model->index(row, 3), payer);
-			//model->setData(model->index(row, 4), recipient);
-			//model->setData(model->index(row, 5), communication);
-			//model->setData(model->index(row, 6), responsible);
-			//model->setData(model->index(row, 7), note);
-			//model->setData(model->index(row, 8), category);
-			//model->setData(model->index(row, 9), account);
-			//model->setData(model->index(row, 10), state);
-			//model->setData(model->index(row, 10), company_id);
+			model->setData(model->index(row, 1), date);
+			model->setData(model->index(row, 2), cash);
+			model->setData(model->index(row, 3), payer);
+			model->setData(model->index(row, 4), recipient);
+			model->setData(model->index(row, 5), communication);
+			model->setData(model->index(row, 6), responsible);
+			model->setData(model->index(row, 7), note);
+			model->setData(model->index(row, 8), category);
+			model->setData(model->index(row, 9), account);
+			model->setData(model->index(row, 10), state);
+			model->setData(model->index(row, 10), company_id);
 		}
 	}
 	else ui->warningLbl->setEnabled(true);
-	updateAccount(cash);
-	//if (model->submitAll() and model->select())
-	//	
-	//else return;
+
+	if (model->submitAll() and model->select())
+		updateAccount(cash);
+	else return;
 }
 void FinanceForm::updateAccount(const int& cash)
 {
@@ -118,7 +124,7 @@ void FinanceForm::getData(const QString& table, const int& column, QComboBox* ma
 void FinanceForm::getDataSecondary()
 {
 	int	id = ui->recipientBox->model()->index(ui->recipientBox->currentIndex(), 0).data().toInt();
-	query->prepare("SELECT * FROM project where \"company\" = :id");
+	query->prepare("SELECT * FROM project where company_id = :id");
 	query->bindValue(":id", id);
 	query->exec();
 	auto qModel = new QSqlQueryModel;
@@ -127,5 +133,10 @@ void FinanceForm::getDataSecondary()
 	ui->communicationBox->setModelColumn(1);
 }
 
-
+void FinanceForm::changeCurrentIndex(int index)
+{
+	ui->recipientBox->currentIndex() == 1 ?
+		ui->payerBox->setCurrentIndex(index - 1) :
+		ui->payerBox->setCurrentIndex(index + 1);
+}
 

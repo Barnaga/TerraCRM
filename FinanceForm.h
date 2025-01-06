@@ -22,6 +22,7 @@ public:
 private slots:
 	void addData();
 	void getDataSecondary();
+	void changeCurrentIndex(int);
 private:
 	std::unique_ptr<Ui::FinanceFormClass> ui;
 	QSqlRelationalTableModel* model;

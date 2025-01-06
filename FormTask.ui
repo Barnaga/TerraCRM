@@ -21,239 +21,168 @@ QButton {
  border: 1px solid rgb(55, 107, 113);
 }</string>
   </property>
-  <widget class="QLineEdit" name="nameTaskEdit">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>90</y>
-     <width>391</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>35</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="saveBtn">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>330</y>
-     <width>90</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>35</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>Сохранить</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancelBtn">
-   <property name="geometry">
-    <rect>
-     <x>700</x>
-     <y>330</y>
-     <width>75</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>35</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>Отмена</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="warningLbl">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>280</y>
-     <width>491</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>35</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>Вы не ввели данные</string>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::TextFormat::AutoText</enum>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="formLbl">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>161</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>35</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>13</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Создать задачу</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="nameTask">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>71</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Название</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="priority">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>90</y>
-     <width>90</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>90</width>
-     <height>35</height>
-    </size>
-   </property>
-   <item>
-    <property name="text">
-     <string>Низкий</string>
-    </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="formLbl">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Создать задачу</string>
+     </property>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>Средний</string>
-    </property>
+   <item row="1" column="0">
+    <widget class="QLabel" name="nameTask">
+     <property name="text">
+      <string>Название</string>
+     </property>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>Высокий</string>
-    </property>
+   <item row="1" column="2">
+    <widget class="QLabel" name="priorityLbl">
+     <property name="text">
+      <string>Приоритет</string>
+     </property>
+    </widget>
    </item>
-  </widget>
-  <widget class="QLabel" name="priorityLbl">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>70</y>
-     <width>101</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Приоритет</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="saveCreateBtn">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>330</y>
-     <width>161</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>35</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>Сохранить и создать еще</string>
-   </property>
-  </widget>
-  <widget class="QCalendarWidget" name="deadline">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>90</y>
-     <width>256</width>
-     <height>190</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="deadlineLbl">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>70</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Крайний срок</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="projectBox">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>491</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>25</height>
-    </size>
-   </property>
-  </widget>
+   <item row="1" column="3">
+    <widget class="QLabel" name="deadlineLbl">
+     <property name="text">
+      <string>Крайний срок</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLineEdit" name="nameTaskEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QComboBox" name="priority">
+     <property name="minimumSize">
+      <size>
+       <width>90</width>
+       <height>35</height>
+      </size>
+     </property>
+     <item>
+      <property name="text">
+       <string>Низкий</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Средний</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Высокий</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="2" column="3" rowspan="2" colspan="2">
+    <widget class="QCalendarWidget" name="deadline"/>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QComboBox" name="projectBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>25</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <widget class="QLabel" name="warningLbl">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Вы не ввели данные</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::TextFormat::AutoText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QPushButton" name="saveBtn">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Сохранить</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="saveCreateBtn">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Сохранить и создать еще</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4">
+    <widget class="QPushButton" name="cancelBtn">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Отмена</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

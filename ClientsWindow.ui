@@ -34,36 +34,24 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QLabel" name="name">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Контрагенты</string>
-   </property>
-  </widget>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>30</y>
-     <width>591</width>
-     <height>361</height>
-    </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>600</width>
-     <height>400</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">.QTabWidget::pane {
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="name">
+     <property name="text">
+      <string>Контрагенты</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="maximumSize">
+      <size>
+       <width>600</width>
+       <height>400</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">.QTabWidget::pane {
 	color: rgb(254, 255, 244);
 }
 .QTableView QTableCornerButton::section {
@@ -89,11 +77,13 @@ QScrollBar:vertical {
     background: rgb(71, 153, 176);
  }
 </string>
-   </property>
-   <property name="currentIndex">
-    <number>-1</number>
-   </property>
-  </widget>
+     </property>
+     <property name="currentIndex">
+      <number>-1</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

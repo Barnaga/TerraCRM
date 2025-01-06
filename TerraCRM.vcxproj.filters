@@ -145,17 +145,17 @@
     <ClCompile Include="DateDelegate.cpp">
       <Filter>Source Files\Delegates</Filter>
     </ClCompile>
-    <ClCompile Include="ClientsWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ClientWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ClientWidget.cpp">
       <Filter>Source Files\CRM</Filter>
     </ClCompile>
+    <ClCompile Include="ClientsWindow.cpp">
+      <Filter>Source Files\CRM</Filter>
+    </ClCompile>
     <ClCompile Include="CompanyWidget.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\CRM</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientWidget.cpp">
+      <Filter>Source Files\CRM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,17 +210,17 @@
     <QtMoc Include="DateDelegate.h">
       <Filter>Header Files\Delegates</Filter>
     </QtMoc>
-    <QtMoc Include="ClientsWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ClientWidget.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\CRM</Filter>
+    </QtMoc>
+    <QtMoc Include="ClientsWindow.h">
+      <Filter>Header Files\CRM</Filter>
     </QtMoc>
     <QtMoc Include="ClientWidget.h">
       <Filter>Header Files\CRM</Filter>
     </QtMoc>
     <QtMoc Include="CompanyWidget.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\CRM</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

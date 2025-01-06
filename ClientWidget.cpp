@@ -8,7 +8,7 @@ ClientWidget::ClientWidget(QStringList data)
 	ui->birth->setText(data[7].replace("-","."));
 	ui->category->setText(data[4]);
 	ui->email->setText(data[3]);
-	ui->phone->setText(data[2]);
+	ui->phone->setText(data[2]);	
 	createProjects("project", ui->projectsView);
 }
 

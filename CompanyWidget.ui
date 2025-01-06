@@ -13,177 +13,68 @@
   <property name="windowTitle">
    <string>CompanyWidget</string>
   </property>
-  <widget class="QLabel" name="fullname">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>311</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>30</y>
-     <width>601</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QTabWidget{
-background-color: rgba(122,122,122,0);
-}</string>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Общие</string>
-    </attribute>
-    <widget class="QLabel" name="siteLbl">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Сайт</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="site">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>35</y>
-       <width>191</width>
-       <height>21</height>
-      </rect>
-     </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QLabel" name="fullname">
      <property name="styleSheet">
-      <string notr="true">site:
-{
-rgb(85, 85, 255);
-}</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="categoryLbl">
-     <property name="geometry">
-      <rect>
-       <x>410</x>
-       <y>10</y>
-       <width>101</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Категория</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="category">
-     <property name="geometry">
-      <rect>
-       <x>410</x>
-       <y>40</y>
-       <width>171</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="emailLblb">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>email</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="email">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>70</y>
-       <width>221</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="phoneLbl">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>100</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>номер телефона</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="phone">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>100</y>
-       <width>151</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="projects">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>140</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Проекты</string>
-     </property>
-    </widget>
-    <widget class="QTableView" name="projectsView">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>170</y>
-       <width>581</width>
-       <height>192</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">.QTabWidget::pane {
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="emailLblb">
+         <property name="text">
+          <string>email</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="email">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="categoryLbl">
+         <property name="text">
+          <string>Категория</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="category">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="projects">
+         <property name="text">
+          <string>Проекты</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableView" name="projectsView">
+         <property name="styleSheet">
+          <string notr="true">.QTabWidget::pane {
 	color: rgb(254, 255, 244);
 }
 .QTableView QTableCornerButton::section {
@@ -209,15 +100,56 @@ QScrollBar:vertical {
     background: rgb(71, 153, 176);
  }
 </string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Tab 2</string>
-    </attribute>
-   </widget>
-  </widget>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="siteLbl">
+         <property name="text">
+          <string>Сайт</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="site">
+         <property name="styleSheet">
+          <string notr="true">site:
+{
+rgb(85, 85, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="phoneLbl">
+         <property name="text">
+          <string>номер телефона</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="phone">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
