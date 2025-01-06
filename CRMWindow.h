@@ -4,6 +4,7 @@
 #include "StatusDelegate.h"
 #include "ui_CRMWindow.h"
 #include "DealWidget.h"
+#include "ClientsWindow.h"
 #include <QSqlRelationalTableModel>
 
 class CRMWindow : public QWidget
@@ -18,6 +19,7 @@ public:
 	CRMWindow& operator=(const CRMWindow&& r) = delete;
 private slots:
 	void openDeal(const QModelIndex&);
+	void openClients();
 private:
 	Ui::CRMWindowClass* ui;
 	MainWindow* parent;
@@ -25,6 +27,7 @@ private:
 	QSqlRelationalTableModel* model;
 	void createModel();
 	void createView();
+	void createConnections();
 	
 	
 };

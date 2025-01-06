@@ -1,5 +1,5 @@
-
-<ui version="6.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>CRMWindowClass</class>
  <widget class="QWidget" name="CRMWindowClass">
   <property name="geometry">
@@ -46,6 +46,13 @@ color:rgb(55, 107, 113);
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="clientBtn">
+       <property name="text">
+        <string>Контрагенты</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="dateLbl">

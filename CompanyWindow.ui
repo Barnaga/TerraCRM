@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CompanyWindowClass</class>
+ <widget class="QWidget" name="CompanyWindowClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CompanyWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">.QTabWidget::pane {
+	color: rgb(254, 255, 244);
+}
+.QTableView QTableCornerButton::section {
+	background-color: rgb(71,153,176);
+}
+.QHeaderView::section {
+    background-color: rgb(71,153,176);
+    color: white;
+    height: 35px;
+    font: 14px;
+}
+
+QScrollBar:vertical {
+    background: rgb(188, 224, 235);
+}
+.QScrollBar::handle:vertical {
+    background: rgb(71, 153, 176);
+ }
+.QScrollBar:horizontal {
+    background: rgb(188, 224, 235);
+}
+.QScrollBar::handle:horizontal {
+    background: rgb(71, 153, 176);
+ }
+</string>
+  </property>
+  <widget class="QTableView" name="projectsList">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>160</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tasksList">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>160</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

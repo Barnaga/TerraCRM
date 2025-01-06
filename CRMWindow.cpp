@@ -6,8 +6,13 @@ CRMWindow::CRMWindow(QWidget* parent)
 	ui->setupUi(this);
 	createModel();
 	createView();
-	connect(view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(openDeal(const QModelIndex&)));
+	createConnections();
 	ui->dateLbl->setText("Сегодня " + QDateTime::currentDateTime().toString("dd.MM.yyyy"));
+}
+void CRMWindow::createConnections()
+{
+	connect(view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(openDeal(const QModelIndex&)));
+	connect(ui->clientBtn, SIGNAL(clicked()), this, SLOT(openClients()));
 }
 void CRMWindow::createModel() {
 	model->setTable("deals");
@@ -52,3 +57,11 @@ void CRMWindow::openDeal(const QModelIndex& index) {
 	deal->show();
 	data.clear();
 }
+
+void CRMWindow::openClients()
+{
+	ClientsWindow* clients = new ClientsWindow;
+	clients->show();
+}
+
+

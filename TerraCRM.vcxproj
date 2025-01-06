@@ -121,6 +121,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ChangeStatusProjectDialog.cpp" />
+    <ClCompile Include="ClientsWindow.cpp" />
+    <ClCompile Include="ClientWidget.cpp" />
+    <ClCompile Include="CompanyWidget.cpp" />
     <ClCompile Include="createProjectDialog.cpp" />
     <ClCompile Include="CRMWindow.cpp" />
     <ClCompile Include="DateDelegate.cpp" />
@@ -137,6 +140,9 @@
     <ClCompile Include="TransferForm.cpp" />
     <QtRcc Include="MainWindow.qrc" />
     <QtUic Include="ChangeStatusProjectDialog.ui" />
+    <QtUic Include="ClientsWindow.ui" />
+    <QtUic Include="ClientWidget.ui" />
+    <QtUic Include="CompanyWidget.ui" />
     <QtUic Include="createProjectDialog.ui" />
     <QtUic Include="CRMWindow.ui" />
     <QtUic Include="DealWidget.ui" />
@@ -177,6 +183,9 @@
     <QtMoc Include="FinanceWindow.h" />
     <QtMoc Include="FinanceForm.h" />
     <QtMoc Include="DateDelegate.h" />
+    <QtMoc Include="ClientsWindow.h" />
+    <QtMoc Include="ClientWidget.h" />
+    <QtMoc Include="CompanyWidget.h" />
     <ClInclude Include="StatusDelegate.h" />
   </ItemGroup>
   <ItemGroup>
