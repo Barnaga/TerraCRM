@@ -37,7 +37,6 @@ void FinanceForm::createView(const QString& lbl)
 
 void FinanceForm::getPayer()
 {
-	if (lbl == "Расходы") {
 		query->prepare("Select name from companies where id=:company_id");
 		query->bindValue(":company_id", company_id);
 		query->exec();
@@ -45,7 +44,6 @@ void FinanceForm::getPayer()
 		ui->payerBox->addItem(query->value(0).toString());
 	}
 	else {
-		getData("companies", 1 ,ui->payerBox);
 	}
 }
 
