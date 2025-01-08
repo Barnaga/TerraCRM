@@ -14,7 +14,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -27,9 +26,9 @@
 *.lib
 
 # Executables
-*.exe
 *.out
 *.app
 /.vs/TerraCRM
 /TerraCRM/x64/Debug
 /x64/Debug
+/x64/Release
