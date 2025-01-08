@@ -29,9 +29,10 @@ private slots:
 	void saveIndex(int);
 	void completeProject();
 private:
-	Ui::ProjectWidgetClass* ui;
+	std::unique_ptr<Ui::ProjectWidgetClass> ui;
 	QSqlRelationalTableModel* model;
-	QSqlQuery* query;
+	std::unique_ptr<QSqlQuery> query;
+	std::unique_ptr<ChangeStatusProjectDialog> changeStatusProject;
 	QStringList data;
 	const QModelIndex index;
 	int tempIndex;

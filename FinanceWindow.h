@@ -25,10 +25,10 @@ private slots:
 	void addTransfer();
 
 private:
-	Ui::FinanceWindowClass* ui;
+	std::unique_ptr<Ui::FinanceWindowClass> ui;
 	MainWindow* parent;
-	QSqlRelationalTableModel* model;
-	QTableView* view;
+	std::unique_ptr<QSqlRelationalTableModel> model;
+	std::unique_ptr <QTableView> view;
 	QString company_id;
 	void createModel();
 	void createView();

@@ -16,7 +16,7 @@ public:
 private slots:
 	void updateStatus();
 private:
-	Ui::ChangeStatusProjectDialogClass* ui;
+	std::unique_ptr<Ui::ChangeStatusProjectDialogClass> ui;
 	QSqlTableModel* model;
 	const QModelIndex index;
 	QString currentDate;

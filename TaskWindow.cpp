@@ -1,10 +1,10 @@
 #include "TaskWindow.h"
 
 TaskWindow::TaskWindow(MainWindow* parent)
-	: ui(new Ui::TaskWindowClass),
+	: ui(std::make_unique<Ui::TaskWindowClass>()),
 	parent(dynamic_cast<MainWindow*>(parent)),
-	model(new QSqlRelationalTableModel),
-	view(new QTableView)
+	model(std::make_shared<QSqlRelationalTableModel>()),
+	view(std::make_unique<QTableView>())
 {
 	ui->setupUi(this);
 	createModel();
@@ -35,13 +35,13 @@ void TaskWindow::createModel()
 void TaskWindow::createConnections()
 {
 	connect(ui->createTaskBtn, SIGNAL(clicked()), this, SLOT(createTaskBtn()));
-	connect(view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(openTask(const QModelIndex&)));
+	connect(view.get(), SIGNAL(clicked(const QModelIndex&)), this, SLOT(openTask(const QModelIndex&)));
 }
 void TaskWindow::createView() {
 	ui->dateLbl->setText("Сегодня " + QDateTime::currentDateTime().toString("dd.MM.yyyy"));
 	view->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	view->setItemDelegateForColumn(2, new RateDelegate(view));
-	view->setModel(model);
+	view->setItemDelegateForColumn(2, new RateDelegate(view.get()));
+	view->setModel(model.get());
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->setColumnHidden(0, true);
 	view->setColumnHidden(5, true);
@@ -51,19 +51,19 @@ void TaskWindow::createView() {
 	view->setColumnHidden(9, true);
 	view->setColumnHidden(10, true);
 	view->setColumnHidden(11, true);
-	ui->tasksLayout->addWidget(view);
-	if (!formTask) auto* formTask(new FormTask(this, model, user[3].toInt()));
+	ui->tasksLayout->addWidget(view.get());
+	if (!formTask) auto formTask(std::make_unique<FormTask>(this, model.get(), user[3].toInt()));
 }
 void TaskWindow::openTask(const QModelIndex& index)
 {
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
-	task = new Task(this, data, model, index);
+	task = std::make_unique<Task>(this, data, model.get(), index);
 	task->show();
 	data.clear();
 }
 void TaskWindow::createTaskBtn()
 {
-	formTask = new FormTask(this, model, user[3].toInt());
+	formTask = std::make_unique<FormTask>(this, model.get(), user[3].toInt());
 	formTask->show();
 }

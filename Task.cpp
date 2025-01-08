@@ -1,8 +1,8 @@
 #include "Task.h"
 
 Task::Task(QWidget* parent, QStringList data, QSqlRelationalTableModel* model, const QModelIndex& index)
-	: QDialog(parent), ui(new Ui::TaskClass),
-	model(model), index(index), data(data)
+	: QDialog(parent), ui(std::make_unique<Ui::TaskClass>()),
+	model(new QSqlRelationalTableModel), index(index), data(data)
 {
 	ui->setupUi(this);
 	createView();
@@ -30,7 +30,6 @@ void Task::createView()
 
 Task::~Task()
 {
-	delete ui;
 }
 void Task::getStatus()
 {
@@ -62,11 +61,10 @@ void Task::updateStatus(int temp) {
 	}
 	else if (currentIndex < temp) {
 		model->setData(model->index(index.row(), 2), ui->statusBox->currentText());
-		qDebug() << index.row();
 	}
 
 	else {
-		auto* msg = new QMessageBox;
+		auto msg = std::make_unique<QMessageBox>();
 		msg->setText("Обратно нельзя");
 		msg->exec();
 	}

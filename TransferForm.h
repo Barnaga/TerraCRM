@@ -25,17 +25,18 @@ private slots:
 	void addData();
 	void changeCurrentIndex(int);
 private:
-	Ui::TransferFormClass* ui;
-	QWidget* parent;
-	QSqlTableModel* model;
-	QMessageBox* msgBox;
-	QSqlQuery* query;
+	std::unique_ptr<Ui::TransferFormClass> ui;
+	std::unique_ptr<QWidget> parent;
+	std::unique_ptr<QSqlTableModel> model;
+	std::unique_ptr<QMessageBox> msgBox;
+	std::unique_ptr<QSqlQuery> query;
+	QSqlQueryModel* qModel;
 	QString company_id;
 	void createModel();
 	void createView();
 	void createConnections();
-	void getData(const QString& table, const int& column, QComboBox* main, QComboBox* secondary=nullptr);
+	void getData(const QString&, const int&, QComboBox*, QComboBox* secondary=nullptr);
 	void updateAccount();
-	void checkQuery(const int& fromCash, const int& toCash, const int& currentBalance, const int& fromId, const int& toId);
-	void updateQuery(const int& changeCash, const int& id);
+	void checkQuery(const int&, const int&, const int&, const int&, const int&);
+	void updateQuery(const int&, const int&);
 };

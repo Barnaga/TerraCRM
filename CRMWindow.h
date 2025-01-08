@@ -21,10 +21,12 @@ private slots:
 	void openDeal(const QModelIndex&);
 	void openClients();
 private:
-	Ui::CRMWindowClass* ui;
+	std::unique_ptr<Ui::CRMWindowClass> ui;
 	MainWindow* parent;
-	QTableView* view;
-	QSqlRelationalTableModel* model;
+	std::unique_ptr<QTableView> view;
+	std::unique_ptr<QSqlRelationalTableModel> model;
+	std::unique_ptr<DealWidget> deal;
+	std::unique_ptr<ClientsWindow> clients;
 	void createModel();
 	void createView();
 	void createConnections();

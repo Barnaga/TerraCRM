@@ -18,9 +18,9 @@ private slots:
 	void loginUser();
 	void registerUser();
 private:
-	Ui::LoginWindowClass* ui;
+	std::unique_ptr<Ui::LoginWindowClass> ui;
 	MainWindow* parent;
-	QSqlQuery* query;
+	std::unique_ptr <QSqlQuery> query;
 	int counter;
 	QString login;
 	QString password;
@@ -29,13 +29,13 @@ private:
 	QString surname;
 	QString company;
 	QString phone;
-	const QString getHashedPassword(const QString& login);
-	bool isValid(const QString& login, const QString& password);
-	bool isValid(const QString& login, const QString& password, const QString& role, const QString& name, const QString& surname);
+	QStringList compareLoginNPhone();
+	const QString getHashedPassword(const QString&);
+	bool isValid(const QString&, const QString&);
+	bool isValid(const QString&, const QString&, const QString&, const QString&, const QString&);
 	bool isValidLogin();
-	bool isValidPassword(const QString& login, const QString& password);
+	bool isValidPassword(const QString&, const QString&);
 	bool registerValid();
-	QStringList* compareLoginNPhone();
 	void openMainWindow();
 	void createConnections();
 };

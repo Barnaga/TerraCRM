@@ -16,7 +16,7 @@ public:
 	~ClientWidget();
 
 private:
-	Ui::ClientWidgetClass* ui;
+	std::unique_ptr<Ui::ClientWidgetClass> ui;
 	QStringList data;
-	void createProjects(QString table, QTableView* view);
+	void createProjects(QString, QTableView*);
 };

@@ -16,7 +16,7 @@ public:
 	~CompanyWidget();
 
 private:
-	Ui::CompanyWidgetClass* ui;
+	std::unique_ptr<Ui::CompanyWidgetClass> ui;
 	QStringList data;
 	void createProjects(QString table, QString field, QTableView* view);
 };

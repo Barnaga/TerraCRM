@@ -2,8 +2,8 @@
 
 
 ProjectWidget::ProjectWidget(QWidget* parent, QStringList data, QSqlRelationalTableModel* model, const QModelIndex& index)
-	: QDialog(parent), ui(new Ui::ProjectWidgetClass),
-	model(model), query(new QSqlQuery), data(data), index(index)
+	: QDialog(parent), ui(std::make_unique<Ui::ProjectWidgetClass>()),
+	model(model), query(std::make_unique<QSqlQuery>()), data(data), index(index)
 {
 	ui->setupUi(this);
 	createView();
@@ -16,9 +16,8 @@ ProjectWidget::ProjectWidget(QWidget* parent, QStringList data, QSqlRelationalTa
 }
 void ProjectWidget::isDeadline()
 {
-	if (data[4] < data[9]) {
+	if (data[4] < data[9])
 		model->setData(model->index(index.row(), 2), "Просрочен");
-	}
 }
 void ProjectWidget::createView()
 {
@@ -54,11 +53,10 @@ void ProjectWidget::saveIndex(int changeIndex) {
 }
 void ProjectWidget::updateStatus() {
 	if (currentIndex == tempIndex) return;
-	else if (currentIndex < tempIndex) {
+	else if (currentIndex < tempIndex)
 		model->setData(model->index(index.row(), 3), ui->stageBox->currentText());
-	}
 	else {
-		auto* msg = new QMessageBox;
+		auto msg = std::make_unique<QMessageBox>();
 		msg->setText("Обратно нельзя");
 		msg->exec();
 	}
@@ -122,14 +120,12 @@ void ProjectWidget::getStatus()
 	else ui->stageBox->setCurrentIndex(4);
 }
 ProjectWidget::~ProjectWidget()
-{
-	delete ui;
-}
+{}
 
 void ProjectWidget::completeProject()
 {
-	ChangeStatusProjectDialog* dialog = new ChangeStatusProjectDialog(this, model, index);
-	dialog->show();
+	changeStatusProject = std::make_unique<ChangeStatusProjectDialog>(this, model, index);
+	changeStatusProject->show();
 }
 
 

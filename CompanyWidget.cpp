@@ -1,7 +1,7 @@
 #include "CompanyWidget.h"
 
 CompanyWidget::CompanyWidget(QStringList data)
-	:ui(new Ui::CompanyWidgetClass), data(data)
+	:ui(std::make_unique<Ui::CompanyWidgetClass>()), data(data)
 {
 	ui->setupUi(this);
 	ui->fullname->setText(data[1]);
@@ -17,14 +17,14 @@ CompanyWidget::~CompanyWidget()
 
 void CompanyWidget::createProjects(QString table, QString field, QTableView* view)
 {
-	QSqlQueryModel* queryModel = new QSqlQueryModel;
-	QSqlQuery* query = new QSqlQuery;
+	auto queryModel = std::make_unique<QSqlQueryModel>();
+	auto query = std::make_unique<QSqlQuery>();
 	query->prepare("Select name from " + table + " where " + field +" = :id");
 	query->bindValue(":id", data[0]);
 	query->exec();
 	queryModel->setQuery(*query);
 	queryModel->setHeaderData(0, Qt::Horizontal, tr("Name"));
-	view->setModel(queryModel);
+	view->setModel(queryModel.release());
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->show();
 }

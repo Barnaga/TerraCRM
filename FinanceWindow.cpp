@@ -1,8 +1,8 @@
 #include "FinanceWindow.h"
 
 FinanceWindow::FinanceWindow(MainWindow* parent)
-	: ui(new Ui::FinanceWindowClass), parent(dynamic_cast<MainWindow*>(parent)),
-	model(new QSqlRelationalTableModel), view(new QTableView)
+	: ui(std::make_unique<Ui::FinanceWindowClass>()), parent(dynamic_cast<MainWindow*>(parent)),
+	model(std::make_unique<QSqlRelationalTableModel>()), view(std::make_unique <QTableView>())
 {
 	ui->setupUi(this);
 	createModel();
@@ -15,14 +15,14 @@ FinanceWindow::~FinanceWindow()
 void FinanceWindow::createModel() {
 	company_id = parent->getUser()[5];
 	model->setTable("finance");
-	model->setHeaderData(1, Qt::Horizontal, "Дата", 0);
+	model->setHeaderData(1, Qt::Horizontal, "Дата");
 	model->setHeaderData(2, Qt::Horizontal, "Сумма");
-	model->setHeaderData(3, Qt::Horizontal, "Клиент");
-	model->setHeaderData(4, Qt::Horizontal, "Организация");
+	model->setHeaderData(3, Qt::Horizontal, "Плательщик");
+	model->setHeaderData(4, Qt::Horizontal, "Получатель");
 	model->setHeaderData(5, Qt::Horizontal, "Связи");
 	model->setHeaderData(6, Qt::Horizontal, "Ответственный");
 	model->setHeaderData(10, Qt::Horizontal, "Статья учета");
-	model->setRelation(model->fieldIndex("payer"), QSqlRelation("contacts", "id", "name"));
+	model->setRelation(model->fieldIndex("payer"), QSqlRelation("companies", "id", "name"));
 	model->setRelation(model->fieldIndex("recipient"), QSqlRelation("companies", "id", "name"));
 	model->setRelation(model->fieldIndex("communication"), QSqlRelation("project", "id", "name"));
 	model->setRelation(model->fieldIndex("responsible"), QSqlRelation("users", "id", "name"));
@@ -36,14 +36,14 @@ void FinanceWindow::createModel() {
 void FinanceWindow::createView() {
 	view->setEditTriggers(QAbstractItemView::NoEditTriggers); 
 	view->setItemDelegateForColumn(1, new DateDelegate());
-	view->setModel(model);
+	view->setModel(model.get());
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->setColumnHidden(0, true);
 	view->setColumnHidden(7, true);
 	view->setColumnHidden(8, true);
 	view->setColumnHidden(9, true);
 	view->setColumnHidden(11, true);
-	ui->financeLayout->addWidget(view);
+	ui->financeLayout->addWidget(view.get());
 }
 void FinanceWindow::createConnections() {
 	connect(ui->receiptBTn, SIGNAL(clicked()), this, SLOT(addProfitAmount()));
@@ -53,12 +53,13 @@ void FinanceWindow::createConnections() {
 
 void FinanceWindow::addProfitAmount()
 {
-	auto profitForm = new FinanceForm(this, "Поступление", model, company_id);
+	qDebug() << company_id;
+	auto profitForm = new FinanceForm(this, "Поступление", model.get(), "", company_id);
 	profitForm->show();
 }
 void FinanceWindow::addLossAmount()
 {
-	auto lossForm = new FinanceForm(this, "Расход", model, "-", company_id);
+	auto lossForm = new FinanceForm(this, "Расход", model.get(), "-", company_id);
 	lossForm->show();
 }
 void FinanceWindow::addTransfer()

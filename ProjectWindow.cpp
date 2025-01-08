@@ -1,10 +1,10 @@
 #include "ProjectWindow.h"
 
 ProjectWindow::ProjectWindow(MainWindow *parent)
-	: ui(new Ui::ProjectWindowClass),
+	: ui(std::make_unique<Ui::ProjectWindowClass>()),
 	parent(dynamic_cast<MainWindow*>(parent)),
-	model(new QSqlRelationalTableModel), 
-	view(new QTableView)
+	model(std::make_unique<QSqlRelationalTableModel>()), 
+	view(std::make_unique<QTableView>())
 {
 	ui->setupUi(this);
 	createModel();
@@ -14,14 +14,12 @@ ProjectWindow::ProjectWindow(MainWindow *parent)
 
 ProjectWindow::~ProjectWindow()
 {
-	delete ui;
-
 }
 
 void ProjectWindow::createProject()
 {
-	createProjectDialog* dialog = new createProjectDialog(this, model, parent->getUser()[3]);
-	dialog->show();
+	createProjectWindow = std::make_unique<createProjectDialog>(this, model.get(), parent->getUser()[3]);
+	createProjectWindow->show();
 }
 
 void ProjectWindow::createModel()
@@ -43,7 +41,7 @@ void ProjectWindow::createView()
 {
 	ui->dateLbl->setText("Сегодня " + QDateTime::currentDateTime().toString("dd.MM.yyyy"));
 	view->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	view->setModel(model);
+	view->setModel(model.get());
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->setColumnHidden(0, true);
 	view->setColumnHidden(5, true);
@@ -53,19 +51,19 @@ void ProjectWindow::createView()
 	view->setColumnHidden(10, true);
 	view->setColumnHidden(11, true);
 	view->setColumnHidden(12, true);
-	ui->projectsLayout->addWidget(view);
+	ui->projectsLayout->addWidget(view.get());
 }
 
 void ProjectWindow::openProject(const QModelIndex& index) {
 	
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
-	project = new ProjectWidget(this, data, model, index);
+	project = std::make_unique<ProjectWidget>(this, data, model.get(), index);
 	project->show();
 	data.clear();
 }
 void ProjectWindow::createConnections()
 {
-	connect(view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(openProject(const QModelIndex&)));
+	connect(view.get(), SIGNAL(clicked(const QModelIndex&)), this, SLOT(openProject(const QModelIndex&)));
 	connect(ui->createBtn, SIGNAL(clicked()), this, SLOT(createProject()));
 }

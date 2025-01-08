@@ -1,6 +1,6 @@
 #include "DealWidget.h"
 DealWidget::DealWidget(QWidget* parent, QSqlTableModel* model, QStringList data, const QModelIndex& index)
-	: ui(new Ui::DealWidgetClass),QDialog(parent), model(model), data(data), index(index)
+	: ui(std::make_unique<Ui::DealWidgetClass>()),QDialog(parent), model(model), data(data), index(index)
 {
 	auto timeDeal = data[3] + " - " + data[4];
 	ui->setupUi(this);
@@ -16,11 +16,10 @@ DealWidget::DealWidget(QWidget* parent, QSqlTableModel* model, QStringList data,
 }
 DealWidget::~DealWidget()
 {
-	delete ui;
 }
 void DealWidget::getClient()
 {
-	auto* query = new QSqlQuery;
+	auto query = std::make_unique<QSqlQuery>();
 	if (query->prepare("SELECT * FROM contacts WHERE id=:id")) {
 		query->bindValue(":id", data[8]);
 		if (query->exec()) {
@@ -55,7 +54,7 @@ void DealWidget::updateStatus(int temp) {
 	else if (currentIndex < temp)
 		model->setData(model->index(index.row(), 5), ui->statusComboBox->currentText());
 	else {
-		auto* msg=new QMessageBox;
+		auto msg=std::make_unique<QMessageBox>();
 		msg->setText("Обратно нельзя");
 		msg->exec();
 	}

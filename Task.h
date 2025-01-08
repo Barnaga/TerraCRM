@@ -21,7 +21,7 @@ public:
 private slots:
 	void updateStatus(int);
 private:
-	Ui::TaskClass* ui;
+	std::unique_ptr<Ui::TaskClass> ui;
 	QSqlRelationalTableModel* model;
 	const QModelIndex index;
 	QString id;

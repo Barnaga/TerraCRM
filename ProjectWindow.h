@@ -16,11 +16,12 @@ private slots:
 	void openProject(const QModelIndex&);
 	void createProject();
 private:
-	Ui::ProjectWindowClass* ui;
+	std::unique_ptr<Ui::ProjectWindowClass> ui;
 	MainWindow* parent;
-	QTableView* view;
-	QSqlRelationalTableModel* model;
-	ProjectWidget* project;
+	std::unique_ptr<QTableView> view;
+	std::unique_ptr<QSqlRelationalTableModel> model;
+	std::unique_ptr<ProjectWidget> project;
+	std::unique_ptr<createProjectDialog> createProjectWindow;
 	QStringList data;
 	void createModel();
 	void createView();

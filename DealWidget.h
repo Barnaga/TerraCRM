@@ -16,7 +16,7 @@ public:
 private slots:
 	void updateStatus(int);
 private:
-	Ui::DealWidgetClass* ui;
+	std::unique_ptr<Ui::DealWidgetClass> ui;
 	QSqlTableModel* model;
 	const QModelIndex index;
 	QStringList data;

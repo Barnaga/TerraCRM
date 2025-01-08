@@ -1,8 +1,8 @@
 #include "createProjectDialog.h"
 
 createProjectDialog::createProjectDialog(QWidget* parent, QSqlRelationalTableModel* model, QString id)
-	: QDialog(parent), ui(new Ui::createProjectDialogClass),
-	model(model), id(id), query(new QSqlQuery)
+	: QDialog(parent), ui(std::make_unique<Ui::createProjectDialogClass>()),
+	model(model), id(id), query(std::make_unique<QSqlQuery>())
 {
 	ui->setupUi(this);
 	connect(ui->saveBtn, SIGNAL(clicked()), this, SLOT(create()));
@@ -23,6 +23,9 @@ void createProjectDialog::create(){
 		model->setData(model->index(row, 9), deadline);
 		model->setData(model->index(row, 11), client);
 		model->setData(model->index(row, 12), model->index(row - 1, 12).data().toString());
+		qDebug() << name << status << "Подготовка" << QDate::currentDate().toString() <<
+			ui->receiptEdit->text() << id << deadline << client << model->index(row - 1, 12).data().toString();
+
 	}
 	model->submitAll();
 	model->select();
@@ -34,7 +37,7 @@ void createProjectDialog::createClient()
 	query->bindValue(":name", ui->clientEdit->text());
 	query->bindValue(":phone", ui->phoneEdit->text());
 	query->bindValue(":email", ui->emailEdit->text());
-	qDebug() << query->lastError();
+	
 	if (query->exec() and query->first()) {
 		client = query->value(0).toString();
 	}
@@ -43,7 +46,14 @@ void createProjectDialog::createClient()
 		query->bindValue(":name", ui->clientEdit->text());
 		query->bindValue(":phone", ui->phoneEdit->text());
 		query->bindValue(":email", ui->emailEdit->text());
-		query->exec();
+		query->exec();	
+		query->prepare("SELECT * FROM contacts WHERE name=:name and phone=:phone and email=:email");
+		query->bindValue(":name", ui->clientEdit->text());
+		query->bindValue(":phone", ui->phoneEdit->text());
+		query->bindValue(":email", ui->emailEdit->text());
+		if (query->exec() and query->first()) {
+			client = query->value(0).toString();
+		}
 	}
 }
 void createProjectDialog::getContactID(const int& row) {

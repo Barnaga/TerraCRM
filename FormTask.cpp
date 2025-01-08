@@ -1,7 +1,7 @@
 #include "FormTask.h"
 
 FormTask::FormTask(QWidget* parent, QSqlRelationalTableModel* model, int id)
-	: QDialog(parent), ui(new Ui::FormTaskClass), model(model), id(id), query(new QSqlQuery)
+	: QDialog(parent), ui(std::make_unique<Ui::FormTaskClass>()), model(model), id(id), query(std::make_unique<QSqlQuery>())
 {
 	ui->setupUi(this);
 	ui->warningLbl->hide();
@@ -51,9 +51,9 @@ void FormTask::createDataComboBox() {
 	query->prepare("SELECT * FROM project where company_id=:id");
 	query->bindValue(":id", model->index(1, 11).data().toString());
 	query->exec();
-	auto* qModel = new QSqlQueryModel;
+	auto qModel = std::make_unique<QSqlQueryModel>();
 	qModel->setQuery(*query);
-	ui->projectBox->setModel(qModel);
+	ui->projectBox->setModel(qModel.release());
 	ui->projectBox->setModelColumn(1);
 }
 void FormTask::getProjects()

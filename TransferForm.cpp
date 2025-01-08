@@ -1,10 +1,10 @@
 #include "TransferForm.h"
 
 TransferForm::TransferForm(QWidget* parent, const QString& company_id)
-	: QDialog(parent), ui(new Ui::TransferFormClass), model(new QSqlTableModel), company_id(company_id)
+	: QDialog(parent), ui(std::make_unique<Ui::TransferFormClass>()), model(std::make_unique<QSqlTableModel>()), company_id(company_id)
 {
 	ui->setupUi(this);
-	query = new QSqlQuery;
+	query = std::make_unique<QSqlQuery>();
 	createModel();
 	createView();
 	createConnections();
@@ -16,7 +16,7 @@ void TransferForm::createView()
 	getData("accounts", 2, ui->fromAccountBox, ui->toAccountBox);
 	getData("users", 5, ui->responsibleBox);
 	getData("\"articleEvent\"", 1, ui->stateBox);
-	msgBox = new QMessageBox;
+	msgBox = std::make_unique<QMessageBox>();
 }
 void TransferForm::createConnections()
 {
@@ -36,7 +36,9 @@ void TransferForm::createModel() {
 	model->select();	
 }
 TransferForm::~TransferForm()
-{}
+{
+	delete qModel;
+}
 void TransferForm::getData(const QString& table, const int& column, QComboBox* main, QComboBox* secondary)
 {
 	if (table.compare("\"articleEvent\"")==0) {
@@ -46,8 +48,8 @@ void TransferForm::getData(const QString& table, const int& column, QComboBox* m
 		query->prepare("SELECT * FROM " + table + " where company_id=:company_id");
 		query->bindValue(":company_id", company_id);
 	}
-	query->exec();
-	auto qModel = new QSqlQueryModel;
+	query->exec();	
+	qModel = new QSqlQueryModel;
 	qModel->setQuery(*query);
 	main->setModel(qModel);
 	main->setModelColumn(column);
@@ -55,6 +57,10 @@ void TransferForm::getData(const QString& table, const int& column, QComboBox* m
 		secondary->setModel(qModel);
 		secondary->setModelColumn(column);
 		secondary->setCurrentIndex(main->currentIndex() + 1);
+		
+	}
+	else {
+		qDebug() << "NULL";
 	}
 }
 void TransferForm::updateAccount()
@@ -108,10 +114,14 @@ void TransferForm::addData()
 		model->setData(model->index(row, 4), fromAccount);
 		model->setData(model->index(row, 5), toAccount);
 		model->setData(model->index(row, 6), state);
+		model->setData(model->index(row, 7), company_id);
+		qDebug() << date << cash << responsible << fromAccount << toAccount << state;
 	}
-	model->submitAll();
-	model->select();
-	updateAccount();
+	if (model->submitAll()) {
+		model->select();
+		updateAccount();
+	}
+	else return;
 }
 
 void TransferForm::changeCurrentIndex(int index)

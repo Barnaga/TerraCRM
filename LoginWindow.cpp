@@ -2,9 +2,9 @@
 #include <QTest>
 
 LoginWindow::LoginWindow(QMainWindow* parent)
-	: ui(new Ui::LoginWindowClass),
+	: ui(std::make_unique<Ui::LoginWindowClass>()),
 	parent(dynamic_cast<MainWindow*>(parent)),
-	query(new QSqlQuery)
+	query(std::make_unique<QSqlQuery>())
 {
 	ui->setupUi(this);
 	createConnections();
@@ -42,7 +42,6 @@ void LoginWindow::registerUser() {
 	company = ui->companyEdit->text();
 	if (registerValid()) 
 		openMainWindow();
-		
 }
 bool LoginWindow::registerValid()
 {	
@@ -52,7 +51,7 @@ bool LoginWindow::registerValid()
 	query->first();
 	QString company_id = query->value(0).toString();
 
-	if (isValid(login, password, role, name, surname) and compareLoginNPhone()->constFirst() =="" or compareLoginNPhone()->constLast() =="") {
+	if (isValid(login, password, role, name, surname) and compareLoginNPhone().constFirst() =="" or compareLoginNPhone().constLast() =="") {
 		query->prepare("INSERT INTO public.users (hashedpassword, login, salt, role, name, surname, phone, company_id) VALUES ( crypt(:password, gen_salt('md5')), :login,  gen_salt('md5'), :role, :name, :surname,:phone, :company_id)");
 		query->bindValue(":password", password);
 		query->bindValue(":login", login);
@@ -61,7 +60,6 @@ bool LoginWindow::registerValid()
 		query->bindValue(":surname", surname);
 		query->bindValue(":phone", phone);
 		query->bindValue(":company_id", company_id);
-		
 		if (query->exec()) 
 			return true;
 		return false;
@@ -70,17 +68,17 @@ bool LoginWindow::registerValid()
 		ui->errorLblReg->setText("Не все поля заполнены");
 	return false;
 }
-QStringList* LoginWindow::compareLoginNPhone()
+QStringList LoginWindow::compareLoginNPhone()
 {
 	query->prepare("SELECT login, phone FROM users WHERE login=:login or phone=:phone");
 	query->bindValue(":login", login);
 	query->bindValue(":phone", phone);
 	query->exec();
 	if (query->first()) {
-		return new QStringList{ query->value(0).toString(), query->value(1).toString() };
+		return QStringList{ query->value(0).toString(), query->value(1).toString() };
 	}
 	else {
-		return new QStringList{ "",""};
+		return QStringList{ "",""};
 	}
 }
 const QString LoginWindow::getHashedPassword(const QString& login)

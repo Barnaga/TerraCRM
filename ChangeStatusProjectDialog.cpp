@@ -1,7 +1,7 @@
 #include "ChangeStatusProjectDialog.h"
 
 ChangeStatusProjectDialog::ChangeStatusProjectDialog(QWidget *parent, QSqlTableModel* model, const QModelIndex& index)
-	: ui(new Ui::ChangeStatusProjectDialogClass), QDialog(parent), model(model), index(index)
+	: ui(std::make_unique<Ui::ChangeStatusProjectDialogClass>()), QDialog(parent), model(model), index(index)
 {
 	ui->setupUi(this);
 	currentDate = QDate::currentDate().toString("dd.MM.yyyy");
@@ -14,7 +14,7 @@ void ChangeStatusProjectDialog::updateStatus() {
 	model->setData(model->index(index.row(), 12), currentDate);
 
 	if (ui->checkArchiveTask->isChecked()) {
-		QSqlQuery* query = new QSqlQuery;
+		auto query = std::make_unique<QSqlQuery>();
 		query->prepare("Update tasks SET \"statusTask\" =\'Архивировано\' where project=:id");
 		query->bindValue(":id", model->index(index.row(), 0).data().toString());
 		query->exec();

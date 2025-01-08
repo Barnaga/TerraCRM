@@ -22,13 +22,15 @@ private slots:
 	void openClient(const QModelIndex&);
 	void openCompany(const QModelIndex&);
 private:
-	Ui::ClientsWindowClass* ui;
-	QSqlRelationalTableModel* client_model;
-	QTableView* client_view;
+	std::unique_ptr<Ui::ClientsWindowClass> ui;
+	std::unique_ptr<QSqlRelationalTableModel> client_model;
+	std::unique_ptr<QTableView> client_view;
 	void createClientModel();
 	void createClientView();
-	QSqlRelationalTableModel* company_model;
-	QTableView* company_view;
+	std::unique_ptr<QSqlRelationalTableModel> company_model;
+	std::unique_ptr<QTableView> company_view;
+	std::unique_ptr<ClientWidget> client_widget;
+	std::unique_ptr<CompanyWidget> company_widget;
 	void createCompanyModel();
 	void createCompanyView();
 };

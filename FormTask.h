@@ -23,9 +23,9 @@ private slots:
 	void addData();
 	void getProjects();
 private:
-	Ui::FormTaskClass* ui;
+	std::unique_ptr<Ui::FormTaskClass> ui;
 	QSqlTableModel* model;
-	QSqlQuery* query;
+	std::unique_ptr<QSqlQuery> query;
 	void createDataComboBox();
 	void createConnections();
 	int id;

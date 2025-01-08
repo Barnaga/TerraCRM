@@ -23,12 +23,12 @@ public slots:
 	void createTaskBtn();
 	void openTask(const QModelIndex&);
 private:
-	Ui::TaskWindowClass* ui;
+	std::unique_ptr<Ui::TaskWindowClass> ui;
 	MainWindow* parent;
-	QSqlRelationalTableModel* model;
-	FormTask* formTask;
-	Task* task;
-	QTableView* view;
+	std::shared_ptr<QSqlRelationalTableModel> model;
+	std::unique_ptr<FormTask> formTask;
+	std::unique_ptr<Task> task;
+	std::unique_ptr<QTableView> view;
 	QStringList user;
 	QStringList data;
 	void createModel();

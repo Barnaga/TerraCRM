@@ -6,7 +6,7 @@
 #include "FinanceWindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindowClass), isLogin(false)
+    : QMainWindow(parent), ui(std::make_unique<Ui::MainWindowClass>()), isLogin(false)
 {
     ui->setupUi(this);
     auto database = "QPSQL";
@@ -19,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
     if (!isLogin) setLoginInterface();
     else this->activateWindow();
 }
-
 void MainWindow::connectDatabase(QString database, QString host, QString name, QString user, QString password)
 {
     db = QSqlDatabase::addDatabase(database);
@@ -29,7 +28,6 @@ void MainWindow::connectDatabase(QString database, QString host, QString name, Q
     db.setPassword(password);
     db.open();
 }
-
 MainWindow::~MainWindow()
 {
 }
@@ -48,7 +46,6 @@ void MainWindow::setProjectsInterface() {
 void MainWindow::setFinanceInterface() {
     setCentralWidget(new FinanceWindow(this));
 }
-
 void MainWindow::openCRM() {
     setCRMInterface();
 }
@@ -61,14 +58,12 @@ void MainWindow::openProjects() {
 void MainWindow::openFinance() {
     setFinanceInterface();
 }
-
 void MainWindow::outApp(){
     this->close();
 }
-
 QStringList MainWindow::getUser()
 {
-    query = new QSqlQuery;
+    query = std::make_unique<QSqlQuery>();
     query->prepare("SELECT name, surname, login, id, role, company_id FROM users WHERE login= :login");
     query->bindValue(":login", login);
     if (query->exec() && query->first()) 
@@ -81,26 +76,24 @@ QStringList MainWindow::getUser()
         query->value(5).toString()};
     return QStringList{ "","","","","",""};
 }
-
 void MainWindow::createMenu()
 {
-    toolbar = new QToolBar;
-    addToolBar(Qt::LeftToolBarArea, toolbar);
-    crmBtn = new QAction("CRM", this);
-    tasksBtn = new QAction("Задачи", this);
-    projectBtn = new QAction("Проекты", this);
-    financeBtn = new QAction("Финансы", this);
-    outBtn = new QAction("Выход", this);
-    toolbar->addAction(crmBtn);
-    toolbar->addAction(tasksBtn);
-    toolbar->addAction(projectBtn);
-    toolbar->addAction(financeBtn);
-    toolbar->addAction(outBtn);
+    toolbar = std::make_unique<QToolBar>();
+    addToolBar(Qt::LeftToolBarArea, toolbar.get());
+    crmBtn = std::make_unique<QAction>("CRM", this);
+    tasksBtn = std::make_unique<QAction>("Задачи", this);
+    projectBtn = std::make_unique<QAction>("Проекты", this);
+    financeBtn = std::make_unique<QAction>("Финансы", this);
+    outBtn = std::make_unique<QAction>("Выход", this);
+    toolbar->addAction(crmBtn.get());
+    toolbar->addAction(tasksBtn.get());
+    toolbar->addAction(projectBtn.get());
+    toolbar->addAction(financeBtn.get());
+    toolbar->addAction(outBtn.get());
     toolbar->setStyleSheet("background:rgb(255,253,253); spacing: 10px; color:rgb(55, 107, 113);");
-    connect(tasksBtn, SIGNAL(triggered()), this, SLOT(openTasks()));
-    connect(crmBtn, SIGNAL(triggered()), this, SLOT(openCRM()));
-    connect(projectBtn, SIGNAL(triggered()), this, SLOT(openProjects()));
-    connect(financeBtn, SIGNAL(triggered()), this, SLOT(openFinance()));
-    connect(outBtn, SIGNAL(triggered()), this, SLOT(outApp()));
+    connect(tasksBtn.get(), SIGNAL(triggered()), this, SLOT(openTasks()));
+    connect(crmBtn.get(), SIGNAL(triggered()), this, SLOT(openCRM()));
+    connect(projectBtn.get(), SIGNAL(triggered()), this, SLOT(openProjects()));
+    connect(financeBtn.get(), SIGNAL(triggered()), this, SLOT(openFinance()));
+    connect(outBtn.get(), SIGNAL(triggered()), this, SLOT(outApp()));
 }
-

@@ -1,7 +1,7 @@
 #include "CRMWindow.h"
 CRMWindow::CRMWindow(QWidget* parent) 
-	: ui(new Ui::CRMWindowClass), parent(dynamic_cast<MainWindow*>(parent)),
-	model(new QSqlRelationalTableModel), view(new QTableView)
+	: ui(std::make_unique<Ui::CRMWindowClass>()), parent(dynamic_cast<MainWindow*>(parent)),
+	model(std::make_unique<QSqlRelationalTableModel>()), view(std::make_unique<QTableView>())
 {
 	ui->setupUi(this);
 	createModel();
@@ -11,7 +11,7 @@ CRMWindow::CRMWindow(QWidget* parent)
 }
 void CRMWindow::createConnections()
 {
-	connect(view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(openDeal(const QModelIndex&)));
+	connect(view.get(), SIGNAL(clicked(const QModelIndex&)), this, SLOT(openDeal(const QModelIndex&)));
 	connect(ui->clientBtn, SIGNAL(clicked()), this, SLOT(openClients()));
 }
 void CRMWindow::createModel() {
@@ -32,35 +32,31 @@ void CRMWindow::createModel() {
 }
 
 void CRMWindow::createView() {
-	view->setItemDelegateForColumn(5, new StatusDelegate(view));
-	view->setModel(model);
+	view->setItemDelegateForColumn(5, new StatusDelegate(view.get()));
+	view->setModel(model.get());
 	view->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	view->setColumnHidden(0, true);
 	view->setColumnHidden(8, true);
 	view->setColumnHidden(9, true);
 	view->setColumnHidden(10, true);
-	ui->crmLayout->addWidget(view);
+	ui->crmLayout->addWidget(view.get());
 }
 CRMWindow::~CRMWindow()
 {
-	delete ui;
-	delete model;
-	delete view;
-
 }
 
 void CRMWindow::openDeal(const QModelIndex& index) {
 	QStringList data;
 	for (auto i = 0; i < index.model()->columnCount(); ++i)
 		data.append(index.model()->index(index.row(), i).data().toString());
-	auto deal = new DealWidget(this, model, data, index);
+	deal = std::make_unique<DealWidget>(this, model.get(), data, index);
 	deal->show();
 	data.clear();
 }
 
 void CRMWindow::openClients()
 {
-	ClientsWindow* clients = new ClientsWindow;
+	clients = std::make_unique<ClientsWindow>();
 	clients->show();
 }
 

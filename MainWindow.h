@@ -31,16 +31,16 @@ private slots:
     void openFinance();
     void outApp();
 private:
-    Ui::MainWindowClass* ui;
-    QSqlQuery* query;
+    std::unique_ptr<Ui::MainWindowClass> ui;
+    std::unique_ptr<QSqlQuery> query;
     QSqlDatabase db; 
-    QToolBar* toolbar;
-    QAction* crmBtn;
-    QAction* tasksBtn;
-    QAction* projectBtn;
-    QAction* financeBtn;
-    QAction* outBtn;
-    void connectDatabase(QString database, QString host, QString name, QString user, QString password);
+    std::unique_ptr<QToolBar> toolbar;
+    std::unique_ptr<QAction> crmBtn;
+    std::unique_ptr<QAction> tasksBtn;
+    std::unique_ptr<QAction> projectBtn;
+    std::unique_ptr<QAction> financeBtn;
+    std::unique_ptr<QAction> outBtn;
+    void connectDatabase(QString, QString, QString, QString, QString);
     void setLoginInterface();
     void setCRMInterface();
     void setTasksInterface();
